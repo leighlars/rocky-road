@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import {Route} from 'react-router-dom'
 import './App.css';
 // import MapContainer from '../map/Map';
 import Header from '../Header/Header'
+// import Home from '../Home/Home'
+// import Results from '../Results/Results'
+// import Location from '../Location/Location'
 
 class App extends Component {
   constructor() {
@@ -9,12 +13,7 @@ class App extends Component {
     this.state = {
      parks: [],
      error: "",
-     favorites: [],
-     location: {
-      address: "1600 Amphitheatre Parkway, Mountain View, California.",
-      lat: 37.42216,
-      lng: -122.08427,
-     },
+     favorites: []
     };
   }
   
@@ -25,7 +24,30 @@ class App extends Component {
    <div className="App">
     <Header />
     <main>
-      {/* <MapContainer location={this.state.location} zoom={17}/> */}
+     {/* <Route 
+        exact path="/"
+        render={() => {
+          return <Home />
+        }}
+      /> */}
+     {/* <Route 
+        exact path="/about"
+        render={() => {
+          return <About />
+        }}
+      /> */}
+     {/* <Route 
+        exact path="/results"
+        render={() => {
+          return <Results />
+        }}
+      /> */}
+     {/* <Route 
+        exact path="/results/:id"
+        render={() => {
+          return <Location />
+        }}
+      /> */}
     </main>
    </div>
   );
