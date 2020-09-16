@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 // import MapContainer from '../map/Map';
+import Header from '../Header/Header'
 
 class App extends Component {
   constructor() {
@@ -22,9 +23,7 @@ class App extends Component {
   render() { 
   return (
    <div className="App">
-    <header className="App-header">
-     'hello'
-    </header>
+    <Header />
     <main>
       {/* <MapContainer location={this.state.location} zoom={17}/> */}
     </main>

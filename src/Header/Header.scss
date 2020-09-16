@@ -1,0 +1,14 @@
+@import '../styles/_variables.scss';
+
+header {
+  @include rowDisplay();
+  background: $prussianBlue;
+  width: 100%;
+  height: 3em;
+  position: fixed;
+  z-index: 3;
+
+  h1 {
+    @include headerFont(2em);
+  }
+}

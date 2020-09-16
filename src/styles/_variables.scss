@@ -1,12 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
-$headerFont: 'Amatic', cursive;
-$textFont: 'Raleway', sans-serif;
+$amaticFont: 'Amatic', cursive;
+$abrilFont: 'Abril Fatface', cursive;
+$ralewayFont: 'Raleway', sans-serif;
 $alabaster: #EEEDE8;
 $prussianBlue: #083248;
 $blueSapphire: #315B74;
 $khaki: #7F725C;
 $bronze: #676405;
 $pewterBlue: #799AAB;
+
+@mixin rowDisplay {
+  display: flex;
+  flex-direction: row;
+  padding: 1%;
+  align-items: center;
+}
+
+@mixin columnDisplay {
+  @include rowDisplay();
+  flex-direction: column;
+}
+
+@mixin headerFont($fontSize) {
+  font-family: $abrilFont;
+  color: $alabaster;
+  font-size: $fontSize;
+  margin: 0;
+  text-shadow: 1px 1px black;
+}
+
+@mixin textFont($fontSize) {
+  font-family: $ralewayFont;
+  color: $alabaster;
+  font-size: $fontSize;
+  text-align: justify;
+  margin: 0;
+}
