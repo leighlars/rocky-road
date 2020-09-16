@@ -8,13 +8,13 @@ const Header = () => {
    <header>
     <h1>Along the Rocky Road</h1>
     <nav>
-     <Link to="/home" className="nav-btns">
+     <Link to="/home" className="nav-btns home-link">
       Take A Drive
      </Link>
-     <Link to="/" className="nav-btns">
+     <Link to="/" className="nav-btns search-link">
       Search
      </Link>
-     <Link to="/about" className="nav-btns">
+     <Link to="/about" className="nav-btns about-link">
       About
      </Link>
     </nav>
