@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
 import './App.scss';
 // import Header from '../Header/Header'
+import About from '../About/About'
 import Landing from '../Landing/Landing'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
@@ -29,12 +30,12 @@ class App extends Component {
           return <Landing />
         }}
       />
-     {/* <Route 
+     <Route 
         exact path="/about"
         render={() => {
           return <About />
         }}
-      /> */}
+      />
      {/* <Route 
         exact path="/results"
         render={() => {
