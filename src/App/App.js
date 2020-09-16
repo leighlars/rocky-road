@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
-import './App.css';
-import Header from '../Header/Header'
-// import Home from '../Home/Home'
+import './App.scss';
+// import Header from '../Header/Header'
+import Home from '../Home/Home'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -21,14 +21,14 @@ class App extends Component {
   render() { 
   return (
    <div className="App">
-    <Header />
+    {/* <Header /> */}
     <main>
-     {/* <Route 
+     <Route 
         exact path="/"
         render={() => {
           return <Home />
         }}
-      /> */}
+      />
      {/* <Route 
         exact path="/about"
         render={() => {

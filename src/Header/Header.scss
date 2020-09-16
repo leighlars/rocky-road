@@ -1,28 +1,27 @@
 @import '../styles/_variables.scss';
 
 header {
-  @include rowDisplay();
-  justify-content: space-between;
-  background: $prussianBlue;
-  width: 100%;
-  height: 3em;
+  @include columnDisplay();
+  width: 80%;
+  // justify-content: space-between;
+  height: 2em;
+  margin-top: 5em;
+  // margin-left: 22em;
   position: fixed;
   z-index: 3;
 
   h1 {
     @include headerFont(3em);
-    margin: 50px;
   }
 
   nav {
     @include rowDisplay();
     justify-content: space-around;
-    width: 150px;
-    margin: 50px;
     .nav-btns {
       @include textFont(1em);
       text-decoration: none;
-      
+      margin: 20px;
+      margin-top: 0;
       font-weight: 500;
       text-transform: uppercase;
       text-shadow: 1px 1px solid;

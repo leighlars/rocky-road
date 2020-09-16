@@ -28,7 +28,7 @@ $pewterBlue: #799AAB;
 @mixin headerFont($fontSize) {
   font-family: $amaticFont;
   text-transform: uppercase;
-  color: $alabaster;
+  color: $prussianBlue;
   font-size: $fontSize;
   margin: 0;
   text-shadow: 1px 1px black;
@@ -36,7 +36,7 @@ $pewterBlue: #799AAB;
 
 @mixin textFont($fontSize) {
   font-family: $ralewayFont;
-  color: $alabaster;
+  color: $prussianBlue;
   font-size: $fontSize;
   text-align: justify;
   margin: 0;

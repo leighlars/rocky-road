@@ -7,3 +7,8 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+#blockColorBlindContent, #colorBlindSVG {
+  display: none;
+}
