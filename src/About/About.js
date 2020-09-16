@@ -7,7 +7,7 @@ const About = () => {
    <section className="about">
     <Header />
     <section className="about-boxes">
-     <article class="about-box">
+     <article className="about-box">
       <h2>Places</h2>
       <p>
        Colorado, Idaho, Wyoming, <br />
@@ -16,14 +16,14 @@ const About = () => {
        <b>we go.</b>
       </p>
      </article>
-     <article class="about-box">
+     <article className="about-box">
       <h2>Activities</h2>
       <p>
        Browse pictures, check weather, <br />
        search parks, or add parks to your itinerary. 
       </p>
      </article>
-     <article class="about-box">
+     <article className="about-box">
       <h2>Information</h2>
       <p>Up to date national park and monument information is sourced from the</p>
       <a href="ridb.recreation.gov" target="_blank" rel="noopener noreferrer">
