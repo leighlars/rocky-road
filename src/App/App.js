@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
 import './App.css';
-// import MapContainer from '../map/Map';
 import Header from '../Header/Header'
 // import Home from '../Home/Home'
 // import Results from '../Results/Results'

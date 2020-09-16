@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
-$amaticFont: 'Amatic', cursive;
+$amaticFont: 'Amatic SC', cursive;
 $abrilFont: 'Abril Fatface', cursive;
 $ralewayFont: 'Raleway', sans-serif;
 $alabaster: #EEEDE8;
@@ -26,7 +26,8 @@ $pewterBlue: #799AAB;
 }
 
 @mixin headerFont($fontSize) {
-  font-family: $abrilFont;
+  font-family: $amaticFont;
+  text-transform: uppercase;
   color: $alabaster;
   font-size: $fontSize;
   margin: 0;

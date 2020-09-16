@@ -10,7 +10,7 @@ header {
   z-index: 3;
 
   h1 {
-    @include headerFont(2em);
+    @include headerFont(3em);
     margin: 50px;
   }
 
@@ -20,8 +20,9 @@ header {
     width: 150px;
     margin: 50px;
     .nav-btns {
+      @include textFont(1em);
       text-decoration: none;
-      color: $alabaster;
+      
       font-weight: 500;
       text-transform: uppercase;
       text-shadow: 1px 1px solid;
