@@ -1,6 +1,6 @@
 @import '../styles/variables';
 
-.home {
+.landing {
   @include columnDisplay();
   background: url(../assets/mtRoad.jpg);
   background-size: cover;

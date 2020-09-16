@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
 import './App.scss';
 // import Header from '../Header/Header'
-import Home from '../Home/Home'
+import Landing from '../Landing/Landing'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -26,7 +26,7 @@ class App extends Component {
      <Route 
         exact path="/"
         render={() => {
-          return <Home />
+          return <Landing />
         }}
       />
      {/* <Route 

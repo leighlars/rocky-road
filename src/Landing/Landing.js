@@ -1,10 +1,10 @@
 import React from 'react'
-import './Home.scss'
+import './Landing.scss'
 import Header from '../Header/Header'
 
 const Home = () => {
   return (
-    <section className='home'>
+    <section className='landing'>
       <Header />
     </section>
   )
