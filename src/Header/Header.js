@@ -10,8 +10,8 @@ const Header = () => {
      <h1>Along the Rocky Road</h1>
     </span>
     <nav>
-     <Link to="/">Home</Link>
-     <Link to="/">About</Link>
+     <Link to="/" className='nav-btns'>Home</Link>
+     <Link to="/" className='nav-btns'>About</Link>
     </nav>
    </header>
   );
