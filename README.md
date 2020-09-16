@@ -1,68 +1,107 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Available Scripts
+  <h3 align="center">Rocky Road</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    <br />
+    <a href="https://github.com/leighlars/rocky-road"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/leighlars/rocky-road">View Demo</a>
+    ·
+    <a href="https://github.com/leighlars/rocky-road/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/leighlars/rocky-road/issues">Request Feature</a>
+  </p>
+</p>
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Rocky Road is a solo React app that enables users to plan for a road trip along the Rocky Mountain range in Colorado, Utah, Wyoming, and Montana. The data is sourced from Rec.gov. Users can search and favorite places, or customize a road trip, or travel along popular routes.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built With
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- React 
+- SCSS
+- TDD with Jest
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+Fork and clone down the repo. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once you have locally cloned down the repo, within that directory, run 
+`npm i`
+Once all dependencies are installed, run
+`npm start` to run on http://localhost:3000
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<!-- ![gif of home](../src/assets/homeload.gif)</br>
+*Home Page* -->
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- ![gif of location page](../src/assets/locationPage.gif)</br>
+*Location Page*
 
-## Learn More
+![gif of about page](../src/assets/about.gif)</br>
+*About Page*
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![gif of search functionality](../src/assets/search.gif)</br>
+*Search functionality of American cities*
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![gif of searching from Home](../src/assets/searchFromHome.gif)</br>
+*Searching from Home Page*
 
-### Code Splitting
+![gif of outside links](../src/assets/outsideLinks.gif)</br>
+*Clicking external links*
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![gif of loading screen](../src/assets/loading.gif)</br>
+*Loading Page* -->
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Roadmap
 
-### Making a Progressive Web App
+See the [open issues](https://github.com/leighlars/rocky-road/issues) for a list of proposed features (and known issues).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## License
 
-### Advanced Configuration
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Contact
 
-### Deployment
+- [Leigh Larson](https://github.com/leighlars)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- [Project Link](https://github.com/leighlars/rocky-road)
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Acknowledgements
+* [FlatIcon](https://www.flaticon.com/home)
+* [Giphy](https://giphy.com)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/leighlars/rocky-road.svg?style=flat-square
+[contributors-url]: https://github.com/leighlars/rocky-road/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/leighlars/rocky-road.svg?style=flat-square
+[forks-url]: https://github.com/leighlars/rocky-road/network/members
+[stars-shield]: https://img.shields.io/github/stars/leighlars/rocky-road.svg?style=flat-square
+[stars-url]: https://github.com/leighlars/rocky-road/stargazers
+[issues-shield]: https://img.shields.io/github/issues/leighlars/rocky-road.svg?style=flat-square
+[issues-url]: https://github.com/leighlars/rocky-road/issues
