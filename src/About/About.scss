@@ -23,8 +23,8 @@
   .about-boxes {
     @include rowDisplay();
     justify-content: space-around;
-    margin-top: 6em;
-    width: 70vw;
+    margin-top: 7em;
+    width: 90vw;
     .about-box {
       @include columnDisplay();
       justify-content: center;
