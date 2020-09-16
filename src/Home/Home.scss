@@ -1,0 +1,14 @@
+@import '../styles/variables';
+
+.home {
+  @include columnDisplay();
+  // background: url(../assets/coDriving.jpg);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+
+  .home-link {
+    display: none;
+  }
+}
