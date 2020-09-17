@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.scss'
 import Header from '../Header/Header'
-import Search from '../Search/Search'
+// import Search from '../Search/Search'
 import {Link} from 'react-router-dom'
 
 const Home = () => {

@@ -5,7 +5,6 @@ import About from '../About/About'
 import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
-import {getCOData} from '../apiCalls/apiCalls'
 import {cleanData} from '../apiCalls/dataCleaner'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
@@ -19,8 +18,8 @@ class App extends Component {
      favorites: [],
      colorado: [],
      idaho: [],
-     wyoming: [], 
      montana: [],
+     wyoming: [], 
     };
   }
 
