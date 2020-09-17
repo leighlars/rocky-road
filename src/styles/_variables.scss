@@ -10,8 +10,8 @@ $alabaster: #EEEDE8;
 $prussianBlue: #083248;
 $blueSapphire: #315B74;
 $khaki: #7F725C;
-$bronze: #676405;
 $pewterBlue: #799AAB;
+$pineGreen: #2C341C;
 
 @mixin rowDisplay {
   display: flex;
@@ -41,6 +41,3 @@ $pewterBlue: #799AAB;
   margin: 0;
 }
 
-@mixin header() {
-
-}

@@ -1,0 +1,30 @@
+@import '../styles/variables';
+
+form {
+  @include rowDisplay();
+  align-items: flex-end;
+  margin-top: 1.5em;
+  margin-right: 9.5em;
+  input {
+    background: rgba(238, 237, 232, 0.78);
+    border-radius: 6px;
+    border: 2px solid black;
+    box-shadow: 1px 1px 5px black;
+    @include textFont(1em);
+    color: black;
+    font-weight: bold;
+    padding: 2%;
+    width: 200px;
+  }
+  .search-icon {
+    box-shadow: none;
+    background: none;
+    border: none;
+    margin-left: 10px;
+    width: 25px;
+    &:hover {
+      box-shadow: 1px 1px white;
+    }
+  }
+
+}

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
 import './App.scss';
-// import Header from '../Header/Header'
 import About from '../About/About'
 import Landing from '../Landing/Landing'
+import Home from '../Home/Home'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -16,20 +16,27 @@ class App extends Component {
      favorites: []
     };
   }
-  
 
+  searchSites = (query) => {
+    console.log('hi')
+  }
 
   render() { 
   return (
    <div className="App">
-    {/* <Header /> */}
     <main>
      <Route 
         exact path="/"
         render={() => {
           return <Landing />
         }}
-      />
+        />
+        {<Route 
+        exact path="/home"
+        render={() => {
+          return <Home  searchSites={this.searchSites}/>
+        }}
+      />}
      <Route 
         exact path="/about"
         render={() => {
@@ -43,7 +50,7 @@ class App extends Component {
         }}
       /> */}
      {/* <Route 
-        exact path="/results/:id"
+        exact path="/results/:location"
         render={() => {
           return <Location />
         }}

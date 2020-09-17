@@ -1,0 +1,58 @@
+@import '../styles/variables.scss';
+
+.home {
+  @include columnDisplay();
+  align-items: flex-end;
+  justify-content: center;
+  background: url(../assets/coDrive.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 2%;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;  
+  header {
+    @include columnDisplay();
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 0;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+    h1 {
+      text-shadow: 3px 3px black;
+      font-size: 5em;
+      color: $alabaster;
+    }
+    nav {
+      padding: 0;
+      margin: 0;
+      margin-right: 12em;
+    }
+    .nav-btns {
+      color: $alabaster;
+      font-size: 1.5em;
+      text-shadow: 2px 2px black;
+    }
+  }
+  .home-link, .search-link {
+    display: none;
+  }
+
+  .state-box {
+    @include columnDisplay();
+    justify-content: space-between;
+    margin-right: 13em;
+    height: 350px;
+    .state-text {
+        background: rgba(238, 237, 232, 0.78);
+        border: 2px solid $pineGreen;
+        border-radius: 14px;
+        box-shadow: 2px 2px 5px black;
+        width: 150px;
+        text-decoration: none;
+        @include headerFont(2em);
+      }
+    }
+
+  }
