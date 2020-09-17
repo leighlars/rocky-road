@@ -1,4 +1,4 @@
-const npKey = '3IuZhy1koKFbG9gMCDtYZFA98bOYHzRHb5PcV4HB'
+const npKey = process.env.REACT_APP_NP_KEY
 
 export const getAllData = async () => {
   const states = ['co', 'wy', 'mt', 'id']
