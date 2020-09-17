@@ -51,7 +51,7 @@ class App extends Component {
         }}
       />
      {/* <Route 
-        exact path="/results/:location"
+        exact path="/:state/:location"
         render={() => {
           return <Location />
         }}
