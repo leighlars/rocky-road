@@ -1,0 +1,61 @@
+@import '../styles/variables';
+
+.state-section {
+  @include columnDisplay();
+  height: 100vh;
+  width: 100%; 
+  
+  header {
+    @include columnDisplay();
+    align-items: flex-start;
+    margin: 0;
+    margin-left: 4em;
+    width: 100%;
+    h1 {
+      color: $alabaster;
+      text-shadow: 3px 3px black;
+    }
+    nav {
+      margin: 0;
+      margin-left: 2em;
+    }
+    .nav-btns {
+      color: $alabaster;
+      text-shadow: 1.5px 2px black;
+      &:hover {
+        color: $blueSapphire;
+        text-shadow: none;
+      }
+    }
+  }
+}
+.colorado {
+  background: url(../assets/coSnowRoad.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+.idaho {
+  background: url(../assets/idSawtooth.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;  
+}
+  .montana {
+    background: url(../assets/mtFall.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .newMexico {
+    background: url(../assets/nmNight.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .utah {
+    background: url(../assets/utArches.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .wyoming {
+    background: url(../assets/wyPeak.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }

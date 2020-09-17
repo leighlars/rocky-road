@@ -4,6 +4,7 @@ import './App.scss';
 import About from '../About/About'
 import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
+import StatePage from '../StatePage/StatePage'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -31,24 +32,24 @@ class App extends Component {
           return <Landing />
         }}
         />
-        {<Route 
+        <Route 
         exact path="/home"
         render={() => {
           return <Home  searchSites={this.searchSites}/>
         }}
-      />}
+      />
+      <Route 
+          exact path="/about"
+          render={() => {
+            return <About />
+          }}
+        />
      <Route 
-        exact path="/about"
+        exact path="/:state"
         render={() => {
-          return <About />
+          return <StatePage />
         }}
       />
-     {/* <Route 
-        exact path="/results"
-        render={() => {
-          return <Results />
-        }}
-      /> */}
      {/* <Route 
         exact path="/results/:location"
         render={() => {

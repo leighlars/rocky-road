@@ -10,9 +10,7 @@ main {
   @include columnDisplay();
   padding: 0;
   width: 100%;
-  overflow-y: scroll;
-  // margin-top: 8em;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 
