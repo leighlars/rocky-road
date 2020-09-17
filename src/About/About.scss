@@ -9,9 +9,10 @@
   width: 100%;
   header {
     margin-right: 9.5em;
-    margin-top: 7em;
+    margin-top: 5.5em;
     h1, .nav-btns {
       color: $pewterBlue;
+      text-shadow: 3px 3px black;
     }
     .nav-btns  {
       &:hover {
@@ -40,7 +41,7 @@
       width: 300px;
         h2 {
           @include headerFont(2em);
-          margin-bottom: 8px;
+          margin-bottom: 6px;
         }
         p {
           @include textFont(1em);

@@ -18,11 +18,9 @@ class App extends Component {
   }
   
 
-
   render() { 
   return (
    <div className="App">
-    {/* <Header /> */}
     <main>
      <Route 
         exact path="/"
@@ -49,7 +47,7 @@ class App extends Component {
         }}
       /> */}
      {/* <Route 
-        exact path="/results/:id"
+        exact path="/results/:location"
         render={() => {
           return <Location />
         }}

@@ -3,15 +3,13 @@
 header {
   @include columnDisplay();
   width: 80%;
-  // justify-content: space-between;
   height: 2.5em;
   margin-top: 5em;
-  // margin-left: 22em;
-  // position: fixed;
   z-index: 3;
 
   h1 {
-    @include headerFont(3em);
+    @include headerFont(5em);
+    text-shadow: 1px 2px black;
   }
 
   nav {
