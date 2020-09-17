@@ -5,11 +5,14 @@ import {Link} from 'react-router-dom'
 
 
 const StatePage = () => {
+  
+
+
   const parks = [
-    { name: 'Black Canyon of the Gunnison National Park', town: 'Montrose', state: 'Colorado' }, 
-    { name: 'Great Sand Dunes National Park', town: 'Westcliff', state: 'Colorado' },
-    { name: 'Mesa Verde National Park', town: 'Durango', state: 'Colorado' },
-    { name: 'Rocky Mountain National Park', town: 'Estes Park', state: 'Colorado' }
+    { fullName: 'Black Canyon of the Gunnison National Park', city: 'Montrose', state: 'Colorado' }, 
+    { fullName: 'Great Sand Dunes National Park', city: 'Westcliff', state: 'Colorado' },
+    { fullName: 'Mesa Verde National Park', city: 'Durango', state: 'Colorado' },
+    { fullName: 'Rocky Mountain National Park', city: 'Estes Park', state: 'Colorado' }
   ]
 
   const jsxParks = parks.map(park => {

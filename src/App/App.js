@@ -14,12 +14,22 @@ class App extends Component {
     this.state = {
      parks: [],
      error: "",
-     favorites: []
+     favorites: [],
+     colorado: [],
+     utah: [], 
+     wyoming: [], 
+     montana: [],
     };
   }
 
-  searchSites = (query) => {
-    console.log('hi')
+  componentDidMount = async () => {
+    try {
+      const movies = await API.getData("movies");
+    } catch (error) {
+      this.setState({
+        error: "Oops, something went wrong! 🙁 Please try again.",
+      })
+    }
   }
 
   render() { 
