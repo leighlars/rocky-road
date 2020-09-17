@@ -6,6 +6,7 @@ import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
 import {getCOData} from '../apiCalls/apiCalls'
+import {cleanData} from '../apiCalls/dataCleaner'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -17,7 +18,7 @@ class App extends Component {
      error: "",
      favorites: [],
      colorado: [],
-     utah: [], 
+     idaho: [],
      wyoming: [], 
      montana: [],
     };
@@ -25,8 +26,9 @@ class App extends Component {
 
   componentDidMount = async () => {
     try {
-      const coData = await getCOData();
-      this.setState({colorado: coData})
+      const allData = await cleanData();
+      console.log('in app', allData)
+      // this.setState({colorado: coData})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
