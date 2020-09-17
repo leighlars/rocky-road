@@ -17,7 +17,7 @@ class App extends Component {
     };
   }
 
-  search = (query) => {
+  searchSites = (query) => {
     console.log('hi')
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
         {<Route 
         exact path="/home"
         render={() => {
-          return <Home  search={this.search}/>
+          return <Home  searchSites={this.searchSites}/>
         }}
       />}
      <Route 
