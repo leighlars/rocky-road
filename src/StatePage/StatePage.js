@@ -14,7 +14,7 @@ const StatePage = () => {
 
   const jsxParks = parks.map(park => {
     return <Link to={`/${park.state}/${park.name}`} className='park'>
-      <h2>{park.name}</h2>
+      <h3>{park.name}</h3>
       <p>{park.town}</p>
     </Link>
   })
@@ -23,70 +23,72 @@ const StatePage = () => {
 
 
   return(
-    <section className={'state-section colorado'}>
+    <section className={'state-section montana'}>
       <Header />
       <section className='state-info'>
+        <h2>National Parks</h2>
           <article className='national-parks'>
             {jsxParks}
           </article>
+        <h2>Areas of Interest</h2>
           <article className='non-np'>
             <Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-              <h3>Blue Reservoir</h3>
+              <h4>Blue Reservoir</h4>
               <p>Gunnison</p>
             </Link>
           <Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link><Link to={`/Colorado/BlueReservoir`} className='rec-area'>
-            <h3>Blue Reservoir</h3>
+            <h4>Blue Reservoir</h4>
             <p>Gunnison</p>
           </Link>
           </article>
