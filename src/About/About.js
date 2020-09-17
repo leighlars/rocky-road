@@ -10,8 +10,8 @@ const About = () => {
      <article className="about-box">
       <h2>Places</h2>
       <p>
-       Colorado, Idaho, Wyoming, <br />
-       New Mexico, Utah, & Montana. <br />
+       Colorado, Idaho, Wyoming, 
+       Utah, & Montana. <br />
        Anywhere the American Rockies go, <br />
        <b>we go.</b>
       </p>
