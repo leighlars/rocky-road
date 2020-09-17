@@ -4,6 +4,8 @@ const url = "https://developer.nps.gov/api/v1/parks?stateCode=co&api_key=3IuZhy1
 export const getCOData = async () => {
   try {
     const response = await fetch(`${url}`)
+    const data = response.json()
+    return data
   } catch (err) {
     return err
   }

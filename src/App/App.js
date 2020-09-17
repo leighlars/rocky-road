@@ -5,6 +5,7 @@ import About from '../About/About'
 import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
+import {getCOData} from '../apiCalls/apiCalls'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -24,7 +25,8 @@ class App extends Component {
 
   componentDidMount = async () => {
     try {
-      const movies = await API.getData("movies");
+      const coData = await getCOData();
+      this.setState({colorado: coData})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
