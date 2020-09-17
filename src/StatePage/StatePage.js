@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 const StatePage = ({allStatesInfo, getCurrentPage}) => {
   
   const getStateSites = () => {
+    console.log(allStatesInfo)
     const currentPage = getCurrentPage().split('/')[1]
     const stateSites = allStatesInfo.filter(state => {
      return state.state === currentPage
@@ -14,7 +15,6 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     const sites = stateSites.map(site => {
       return site.info
     })
-    console.log('get sites in State', sites)
     return sites
   }
 
@@ -32,31 +32,35 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     return sites
   }
   
+
   const jsxSites = () => {
     const sites = organizeStateSites()
-    console.log(sites)
-    if (sites.recAreas.length > 0) {
+    if (sites) {
       sites.natParks = sites.natParks.map(park => {
-         return (
+        return (
           <Link to={`/${park.state}/${park.name}`} className="park">
            <h3>{park.name}</h3>
-           <p>{park.city}</p>
+           <p>{park.town}</p>
           </Link>
          );
-      })
+        })
+      if (sites.natParks.length === 0) {
+        sites.natParks = [<div className='park-nf'><h3>No National Parks found</h3></div>];
+      }
       sites.recAreas = sites.recAreas.map(area => {
          return (
           <Link to={`/${area.state}/${area.name}`} className="rec-area">
            <h4>{area.name}</h4>
-           <p>{area.city}</p>
+           <p>{area.town}</p>
           </Link>
          );
       })
+      if (sites.natParks.length === 0) {
+        sites.natParks = [<div className='park-nf'><h3>No Recreation Areas found</h3></div>];
+      }
       return sites
     }
-    else {
-      return (<h3>Not available</h3>)
-    }
+
   }
 
  const stateName = getCurrentPage().split("/")[1];
