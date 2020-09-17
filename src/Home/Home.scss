@@ -52,6 +52,9 @@
         width: 150px;
         text-decoration: none;
         @include headerFont(2em);
+        &:hover {
+          text-shadow: 1px 1px 5px white;
+        }
       }
     }
 

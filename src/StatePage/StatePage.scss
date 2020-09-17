@@ -12,50 +12,57 @@
     margin-left: 4em;
     width: 100%;
     h1 {
+      font-size: 4em;
       color: $alabaster;
-      text-shadow: 3px 3px black;
+      text-shadow: 2px 2px black;
     }
     nav {
       margin: 0;
-      margin-left: 2em;
     }
     .nav-btns {
       color: $alabaster;
       text-shadow: 1.5px 2px black;
       &:hover {
-        color: $blueSapphire;
-        text-shadow: none;
+        color: $alabaster;
+        box-shadow: 1px 1px 5px white;
+        border-radius: 4px;
       }
     }
   }
 }
 .colorado {
-  background: url(../assets/coSnowRoad.jpg);
+  background: url(../assets/coBells.jpg);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 } 
 .idaho {
-  background: url(../assets/idSawtooth.jpg);
+  background: url(../assets/idMountains.jpg);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;  
 }
   .montana {
     background: url(../assets/mtFall.jpg);
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
   .newMexico {
     background: url(../assets/nmNight.jpg);
+    background-position: center bottom;
     background-size: cover;
     background-repeat: no-repeat;
   }
   .utah {
     background: url(../assets/utArches.jpg);
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
   .wyoming {
     background: url(../assets/wyPeak.jpg);
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }

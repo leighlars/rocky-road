@@ -4,13 +4,13 @@
   height: 100vh;
   background: #EEEDE805;
   text-align: center;
+  overflow: hidden;
 }
 
 main {
   @include columnDisplay();
   padding: 0;
   width: 100%;
-  overflow: hidden;
 }
 
 
