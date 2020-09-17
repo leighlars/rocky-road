@@ -6,7 +6,7 @@ export const formatAllData = async () => {
     const sites = place.data
     sites.forEach(site => {
       const location = {}
-      location.name = site.fullName
+      location.fullName = site.fullName
       location.description = site.description
       location.activities = site.activities
       location.states = site.states

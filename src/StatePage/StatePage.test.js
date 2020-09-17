@@ -64,6 +64,21 @@ describe('StatePage', () => {
       expect(recCity).toBeInTheDocument()
     })
 
+    xit('display default cards if no data is found for a rec area or park', ()=> {
+        const mockedAllStateSites = [];
+        mockGetCurrentPage = jest.fn();
+        render(
+         <MemoryRouter>
+          <StatePage
+           allStatesInfo={mockedAllStateSites}
+           getCurrentPage={mockGetCurrentPage}
+          />
+         </MemoryRouter>
+        );
+
+        const noParks = screen.getByRole('heading', {name: 'No National Parks Found'})
+    });
+
 
 
 })

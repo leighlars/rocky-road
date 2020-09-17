@@ -8,7 +8,7 @@ const Home = () => {
 
   const states = ['Colorado', 'Idaho', 'Montana', 'Wyoming']
   const jsxStates = states.map(state => {
-    return <Link className="state-text" to={`/${state}`}>{state}</Link>
+    return <Link className="state-text" to={`/${state}`} key={state}>{state}</Link>
   })
 
   return (

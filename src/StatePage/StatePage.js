@@ -6,8 +6,19 @@ import {Link} from 'react-router-dom'
 
 const StatePage = ({allStatesInfo, getCurrentPage}) => {
   
+  const setFullStateName = (stateAbbrev) => {
+    if (stateAbbrev === "CO") {
+     return "Colorado";
+    } else if (stateAbbrev === "ID") {
+     return "Idaho";
+    } else if (stateAbbrev === "MT") {
+     return "Montana";
+    } else if (stateAbbrev === "WY") {
+     return "Wyoming";
+    }
+  }
+
   const getStateSites = () => {
-    console.log(allStatesInfo)
     const currentPage = getCurrentPage().split('/')[1]
     const stateSites = allStatesInfo.filter(state => {
      return state.state === currentPage
@@ -37,26 +48,28 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     const sites = organizeStateSites()
     if (sites) {
       sites.natParks = sites.natParks.map(park => {
+        const stateName = setFullStateName(park.state)
         return (
-          <Link to={`/${park.state}/${park.name}`} className="park">
-           <h3>{park.name}</h3>
+          <Link to={`/${stateName}/${park.name}`} className="park" key={park.name}>
+           <h3>{park.fullName}</h3>
            <p>{park.town}</p>
           </Link>
          );
         })
       if (sites.natParks.length === 0) {
-        sites.natParks = [<div className='park-nf'><h3>No National Parks found</h3></div>];
+        sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>];
       }
       sites.recAreas = sites.recAreas.map(area => {
+        const stateName = setFullStateName(area.state);
          return (
-          <Link to={`/${area.state}/${area.name}`} className="rec-area">
-           <h4>{area.name}</h4>
+          <Link to={`/${stateName}/${area.name}`} className="rec-area" key={area.name}>
+           <h4>{area.fullName}</h4>
            <p>{area.town}</p>
           </Link>
          );
       })
-      if (sites.natParks.length === 0) {
-        sites.natParks = [<div className='park-nf'><h3>No Recreation Areas found</h3></div>];
+      if (sites.recAreas.length === 0) {
+        sites.recAreas = [<div className='park-nf' key='not-found'><h3>No Recreation Areas found</h3></div>];
       }
       return sites
     }

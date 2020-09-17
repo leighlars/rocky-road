@@ -41,11 +41,23 @@ describe('App', () => {
   })
 
   it('should render a page about Colorado when Colorado link is clicked', () => {
+    getCleanStatesInfo.mockResolvedValueOnce({
+     colorado: [{ name: "Mesa Verde", town: "Durango" }],
+     wyoming: [{ name: "Tetons", name: "Moose" }],
+     montana: [{ name: "Glacier", name: "Glacier" }],
+     idaho: [{ name: "Sawtooth", name: "Boise" }],
+    });
+
+    const { getByRole } = render(
+     <MemoryRouter>
+      <App />
+     </MemoryRouter>
+    );
       const coloradoLink = screen.getByRole('heading', {name: 'Colorado'})
       expect(coloradoLink).toBeInTheDocument()
 
       fireEvent.click(coloradoLink);
-      
+
       const rmnp = screen.getByRole("heading", { name: "RMNP" });
       expect(rmnp).toBeInTheDocument();
   })
