@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom'
+import {Route, withRouter} from 'react-router-dom'
 import './App.scss';
 import About from '../About/About'
 import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
-import {cleanData, statesInfo} from '../apiCalls/dataCleaner'
+import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -16,20 +16,24 @@ class App extends Component {
      parks: [],
      error: "",
      favorites: [],
-     stateInfo: []
+     allStatesInfo: []
     };
   }
 
   componentDidMount = async () => {
     try {
-      const allData = await statesInfo();
-      this.setState({stateInfo: allData})
+      const allData = await getCleanStatesInfo();
+      this.setState({allStatesInfo: allData})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
       })
     }
   }
+
+  getCurrentPage = () => {
+    return this.props.history.location.pathname
+  } 
 
   render() { 
   return (
@@ -56,7 +60,7 @@ class App extends Component {
      <Route 
         exact path="/:state"
         render={() => {
-          return <StatePage stateInfo={this.state.stateInfo} />
+          return <StatePage allStatesInfo={this.state.allStatesInfo} getCurrentPage={this.getCurrentPage} />
         }}
       />
      {/* <Route 
@@ -72,4 +76,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default withRouter(App);

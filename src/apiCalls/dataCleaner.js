@@ -1,6 +1,6 @@
 import { getAllData } from '../apiCalls/apiCalls'
 
-export const cleanData = async () => {
+export const formatAllData = async () => {
   const response = await getAllData()
   const prettyData = response.reduce((places, place) => {
     const sites = place.data
@@ -28,12 +28,16 @@ export const cleanData = async () => {
   return prettyData
 }
 
-export const statesInfo = async() => {
-  const allSites = await cleanData()
+export const getCleanStatesInfo = async() => {
+  const allSites = await formatAllData()
   const CO = allSites.filter(site => site.state === 'CO')
   const WY = allSites.filter((site) => site.state === "WY")
   const MT = allSites.filter((site) => site.state === "MT");
   const ID = allSites.filter((site) => site.state === "ID");
-  const states = [{Colorado: CO}, {Wyoming: WY}, {Montana: MT}, {Idaho: ID}]
+  const states = [
+    {state: "Colorado", info: CO}, 
+    {state: "Wyoming", info: WY}, 
+    {state:"Montana", info: MT}, 
+    {state: "Idaho", info: ID}]
   return states
 }
