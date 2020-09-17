@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 const StatePage = () => {
   
-
+  console.log()
 
   const parks = [
     { fullName: 'Black Canyon of the Gunnison National Park', city: 'Montrose', state: 'Colorado' }, 

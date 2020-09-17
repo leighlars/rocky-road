@@ -12,7 +12,7 @@ describe('Home', () => {
     </MemoryRouter>)
   })
 
-  it('should list 6 state links', () => {
+  it('should list 4 state links', () => {
     const co = screen.getByRole('link', {name: 'Colorado'})
     const id = screen.getByRole('link', { name: 'Idaho' })
     const mt = screen.getByRole('link', { name: 'Montana'})

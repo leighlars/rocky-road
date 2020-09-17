@@ -5,7 +5,7 @@ import About from '../About/About'
 import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
-import {cleanData} from '../apiCalls/dataCleaner'
+import {cleanData, statesInfo} from '../apiCalls/dataCleaner'
 // import Results from '../Results/Results'
 // import Location from '../Location/Location'
 
@@ -16,18 +16,14 @@ class App extends Component {
      parks: [],
      error: "",
      favorites: [],
-     colorado: [],
-     idaho: [],
-     montana: [],
-     wyoming: [], 
+     stateInfo: []
     };
   }
 
   componentDidMount = async () => {
     try {
-      const allData = await cleanData();
-      console.log('in app', allData)
-      // this.setState({colorado: coData})
+      const allData = await statesInfo();
+      this.setState({stateInfo: allData})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
@@ -48,7 +44,7 @@ class App extends Component {
         <Route 
         exact path="/home"
         render={() => {
-          return <Home  searchSites={this.searchSites}/>
+          return <Home />
         }}
       />
       <Route 
@@ -60,7 +56,7 @@ class App extends Component {
      <Route 
         exact path="/:state"
         render={() => {
-          return <StatePage />
+          return <StatePage stateInfo={this.state.stateInfo} />
         }}
       />
      {/* <Route 
