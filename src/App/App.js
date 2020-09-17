@@ -16,7 +16,10 @@ class App extends Component {
      favorites: []
     };
   }
-  
+
+  search = (query) => {
+    console.log('hi')
+  }
 
   render() { 
   return (
@@ -31,7 +34,7 @@ class App extends Component {
         {<Route 
         exact path="/home"
         render={() => {
-          return <Home />
+          return <Home  search={this.search}/>
         }}
       />}
      <Route 

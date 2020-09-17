@@ -1,0 +1,21 @@
+@import '../styles/variables';
+
+form {
+  @include rowDisplay();
+  align-items: flex-end;
+  margin-top: 1.5em;
+  margin-right: 11.5em;
+  input {
+    background: rgba(238, 237, 232, 0.78);
+    border-radius: 6px;
+    border: none;
+    box-shadow: 2px 2px black;
+    @include textFont(1em);
+    color: black;
+    font-weight: bold;
+    padding: 2%;
+    width: 200px;
+
+  }
+
+}

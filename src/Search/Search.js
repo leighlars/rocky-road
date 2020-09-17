@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './Search.css'
+import './Search.scss'
 
 class Search extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Search extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({ searchQuery: e.target.value });
+    this.setState({ query: e.target.value });
   }
 
   render() {
@@ -21,14 +21,12 @@ class Search extends Component {
           placeholder='Search the Range'
           aria-label='search-input'
           type='text'
-          value={this.state.query}
           onChange={this.handleChange}
+          value={this.state.query}
        />
       </form>
     )
   }
-
-
 }
 
 export default Search

@@ -1,4 +1,4 @@
-@import '../styles/variables';
+@import '../styles/variables.scss';
 
 .home {
   @include columnDisplay();
@@ -15,7 +15,6 @@
     @include columnDisplay();
     align-items: flex-end;
     justify-content: center;
-    padding: 2%;
     margin-top: 0;
     margin-right: 2em;
     width: 100%;
@@ -27,7 +26,7 @@
     nav {
       padding: 0;
       margin: 0;
-      margin-right: 8em;
+      margin-right: 12em;
     }
     .nav-btns {
       color: $alabaster;
@@ -35,26 +34,23 @@
       text-shadow: 2px 2px black;
     }
   }
-  .home-link, .searchlink {
+  .home-link, .search-link {
     display: none;
   }
 
   .state-box {
     @include columnDisplay();
     justify-content: space-between;
-    margin-top: 1em;
     margin-right: 13em;
+    height: 350px;
     .state-text {
         background: rgba(238, 237, 232, 0.78);
         border: 2px solid $pineGreen;
         border-radius: 14px;
-        justify-content: center;
-        margin: 10px;
+        box-shadow: 2px 2px 5px black;
         width: 150px;
         text-decoration: none;
-        h2 {
-          @include headerFont(2em);
-        }
+        @include headerFont(2em);
       }
     }
 
