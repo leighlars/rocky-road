@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 const Home = ({searchSites}) => {
 
-  const states = ['Colorado', 'Idaho', 'Montana', 'New Mexico', 'Utah', 'Wyoming']
+  const states = ['Colorado', 'Idaho', 'Montana', 'Utah', 'Wyoming']
   const jsxStates = states.map(state => {
     return <Link className="state-text" to={`/${state}`}>{state}</Link>
   })
