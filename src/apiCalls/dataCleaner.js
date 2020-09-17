@@ -20,7 +20,6 @@ export const cleanData = async () => {
     location.designation = place.designation
     location.weather = place.weatherInfo
     location.name = place.name
-    console.log(location)
     places.push(location)
     return places
   }, [])

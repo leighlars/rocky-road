@@ -11,7 +11,7 @@ const About = () => {
       <h2>Places</h2>
       <p>
        Colorado, Idaho, Wyoming, 
-       Utah, & Montana. <br />
+       & Montana. <br />
        Anywhere the American Rockies go, <br />
        <b>we go.</b>
       </p>
