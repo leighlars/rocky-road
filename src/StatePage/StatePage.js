@@ -23,7 +23,7 @@ const StatePage = () => {
 
 
   return(
-    <section className={'state-section utah'}>
+    <section className={'state-section colorado'}>
       <Header />
       <section className='state-info'>
         <h2 className='state-header'>Colorado</h2>
