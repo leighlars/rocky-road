@@ -4,7 +4,7 @@ header {
   @include columnDisplay();
   width: 80%;
   // justify-content: space-between;
-  height: 2em;
+  height: 2.5em;
   margin-top: 5em;
   // margin-left: 22em;
   // position: fixed;
@@ -22,7 +22,7 @@ header {
       text-decoration: none;
       margin: 20px;
       margin-top: 0;
-      font-weight: 500;
+      font-weight: 600;
       text-transform: uppercase;
       text-shadow: 1px 1px solid;
       &:hover {
