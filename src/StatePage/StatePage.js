@@ -23,9 +23,10 @@ const StatePage = () => {
 
 
   return(
-    <section className={'state-section montana'}>
+    <section className={'state-section utah'}>
       <Header />
       <section className='state-info'>
+        <h2 className='state-header'>Colorado</h2>
         <h2>National Parks</h2>
           <article className='national-parks'>
             {jsxParks}
