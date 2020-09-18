@@ -110,6 +110,70 @@ describe('App', () => {
       expect(stateHeader).toBeInTheDocument()
       expect(parkName).toBeInTheDocument()
   })
+
+  it("should render default messages about missing Colorado info when Colorado link is clicked", async () => {
+   getCleanStatesInfo.mockResolvedValueOnce([
+    {
+     state: "Colorado",
+     info: [],
+    },
+    {
+     state: "Wyoming",
+     info: [
+      {
+       fullName: "Wyoming NP",
+       name: "Tetons",
+       town: "Moose",
+       designation: "National Park",
+      },
+     ],
+    },
+    {
+     state: "Montana",
+     info: [
+      {
+       fullName: "Glacier NP",
+       name: "Glacier",
+       town: "Glacier",
+       designation: "National Park",
+      },
+     ],
+    },
+    {
+     state: "Idaho",
+     info: [
+      {
+       fullName: "Sawtooth Mtns",
+       name: "Sawtooth",
+       town: "Boise",
+       designation: "National Park",
+      },
+     ],
+    },
+   ]);
+
+   const { getByRole } = render(
+    <MemoryRouter>
+     <App />
+    </MemoryRouter>
+   );
+
+   const homeLink = screen.getByRole("link", { name: "Take A Drive" });
+   expect(homeLink).toBeInTheDocument();
+   fireEvent.click(homeLink);
+
+   const coloradoLink = screen.getByRole("link", { name: "Colorado" });
+   expect(coloradoLink).toBeInTheDocument();
+   fireEvent.click(coloradoLink);
+
+   const stateHeader = screen.getByRole("heading", { name: "Colorado" });
+   const notFoundPark = screen.getByRole("heading", { name: "No National Parks found" });
+   const notFoundRec = screen.getByRole("heading", { name: "No National Parks found" });
+
+   expect(stateHeader).toBeInTheDocument();
+   expect(notFoundPark).toBeInTheDocument();
+   expect(notFoundRec).toBeInTheDocument();
+  });
   
 
 
