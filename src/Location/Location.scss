@@ -58,55 +58,69 @@
      margin-top: 1em; 
      width: 90%;
    }
+   .images {
+     @include rowDisplay();
+     overflow-x: scroll;
+     overflow-y: hidden;
+     width: 80vw;
+     height: 200px;
+     margin-top: 1em;
+   }
+   .site-image {
+      margin: 10px;
+      width: 250px;
+      height: 200px;
+      border-radius: 14px;
+      box-shadow: 2px 2px 5px black;
+   }
 }
-  .rocky-mountain-national-park {
-    background: url(../assets/coRMNP.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  } 
-  .mesa-verde-national-park  {
-    background: url(../assets/coMVNP.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  } 
-  .black-canyon-of-the-gunnison-national-park  {
-    background: url(../assets/coBCGNP.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  } 
-  .great-sand-dunes-national-park-and-preserve {
-    background: url(../assets/coDunes.jpg);
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  } 
-  .glacier-national-park  {
-    background: url(../assets/mtGNP.jpg);
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  } 
-  .grand-teton-national-park  {
-    background: url(../assets/wyTetons.jpg);
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  } 
-  .yellowstone-national-park  {
-    background: url(../assets/wyYNP.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  } 
+  // .rocky-mountain-national-park {
+  //   background: url(../assets/coRMNP.jpg);
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  // } 
+  // .mesa-verde-national-park  {
+  //   background: url(../assets/coMVNP.jpg);
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  // } 
+  // .black-canyon-of-the-gunnison-national-park  {
+  //   background: url(../assets/coBCGNP.jpg);
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  // } 
+  // .great-sand-dunes-national-park-and-preserve {
+  //   background: url(../assets/coDunes.jpg);
+  //   background-size: cover;
+  //   background-position: center top;
+  //   background-repeat: no-repeat;
+  // } 
+  // .glacier-national-park  {
+  //   background: url(../assets/mtGNP.jpg);
+  //   background-size: cover;
+  //   background-position: center top;
+  //   background-repeat: no-repeat;
+  // } 
+  // .grand-teton-national-park  {
+  //   background: url(../assets/wyTetons.jpg);
+  //   background-size: cover;
+  //   background-position: center top;
+  //   background-repeat: no-repeat;
+  // } 
+  // .yellowstone-national-park  {
+  //   background: url(../assets/wyYNP.jpg);
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  // } 
 
   .location-info {
     @include rowDisplay();
     justify-content: center;
-     margin-top: 1em;
-     flex-wrap: wrap;
+    flex-wrap: wrap;
    
     .info-box {
       @include columnDisplay();
@@ -117,7 +131,7 @@
       text-decoration: none;
       padding: 1.5%;
       margin: 10px;
-      height: 300px;
+      max-height: 300px;
       width: 300px;
       overflow-y: scroll;
           h3 {
@@ -130,7 +144,6 @@
             margin: 5px;
             text-align: justify;
             width: 90%;
-            overflow: scroll;
           }
             .city-state {
               text-align: center;

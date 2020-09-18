@@ -7,13 +7,13 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   let locationName = getCurrentPage().split('/')[2].split('-').join(' ')
   
-  const setBackgroundImage = () => {
-    if (locationName === "Great Sand Dunes National Park & Preserve") {
-     locationName = "Great Sand Dunes National Park And Preserve";
-    } 
-    const backgroundImage = locationName.split(' ').join('-').toLowerCase()
-    return backgroundImage
-  }
+  // const setBackgroundImage = () => {
+  //   if (locationName === "Great Sand Dunes National Park & Preserve") {
+  //    locationName = "Great Sand Dunes National Park And Preserve";
+  //   } 
+  //   const backgroundImage = locationName.split(' ').join('-').toLowerCase()
+  //   return backgroundImage
+  // }
 
   const getLocationName = () => {
     if (locationName === "Grant Kohrs Ranch National Historic Site") {
@@ -37,6 +37,19 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   
   const siteData = getSiteInfo()
   
+  const images = () => {
+    if (siteData.fullName === locationName) {
+      const imageList = siteData.images.map(image => {
+        return <img src={image.url} alt={image.altText} className='site-image' key={image.title}/>
+      })
+      return(
+        <span className='images'>
+          {imageList}
+        </span>
+      )
+    }
+  }
+
   const weather = 
         <div className="info-box">
           <h3>Weather</h3>
@@ -44,22 +57,9 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
           {siteData.weather}
           </span>
         </div>
-    
-
-  const driving = 
-      <div className='info-box'>
-        <h3>Directions</h3>
-        <span className='city-state'>{siteData.town}, {siteData.state}</span>
-        <span><b>Directions:</b><br/>
-        {siteData.directions}<br/>
-        For specific directions, go <a href={siteData.directionsPage}>here.</a>
-        </span>
-      </div>
-
 
   const jsxActivities = () => {
     if (siteData.fullName === locationName) {
-      console.log(siteData.activities)
       const sortedActivities = siteData.activities.sort((a, b) => {
         if (a.name < b.name) {
             return -1;
@@ -70,7 +70,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
         return 0;
       })
       const jsxInfo = sortedActivities.map(activity => {
-        return <p>{activity.name}</p>
+        return <p key={activity.name}>{activity.name}</p>
       })
       return(
         <div className='info-box'>
@@ -84,8 +84,8 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   const jsxFees = () => {
     if (siteData.fullName === locationName) {
-      console.log(siteData.entranceFees)
-      const jsxInfo = siteData.entranceFees.map(type => {
+
+      let jsxInfo = siteData.entranceFees.map(type => {
         return(
            <div className='fees'>
             <span className='fee' key={type.title}><b>Title:</b> {type.title}</span> <br/>
@@ -93,7 +93,10 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
             <span className='fee' key={type.cost}><b>Cost:</b> ${Number(type.cost).toFixed(0)}</span>
         </div>
       )})
-
+      if (jsxInfo.length === 0 ) {
+        jsxInfo = <span className='fee'>No data provided</span>
+      }
+          
       return(
         <div className='info-box'>
           <h3>Entrance</h3>
@@ -105,13 +108,44 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
 
 
-  const operations =
-     <div className="info-box">
-        <h3>Operations</h3>
-        <span>{siteData.operationDesc}</span>
-        <span><b>Additional notes:</b><br/> 
-          {siteData.operationDesc}</span>
-     </div>;
+  const operations = () => {
+    if (siteData.fullName === locationName) {
+      const findHours = siteData.designation.includes("National Park") ? (
+       <p>24 hours / 7 days</p>
+      ) : (
+       <span>
+        <p>For complete hours, go</p> <a href={siteData.url}>here</a>
+       </span>
+      )
+
+      return (
+       <div className="info-box">
+        <h3>Operations & Directions</h3>
+        <span>
+         <b>Hours:</b> {findHours}
+        </span>
+        <span>
+         <b>Additional notes:</b>
+         <br />
+         {siteData.operationDesc}
+        </span>
+        <h3>Directions</h3>
+        <span className="city-state">
+         {siteData.town}, {siteData.state}
+        </span>
+        <span>
+         <b>Directions:</b>
+         <br />
+         {siteData.directions}
+         <br />
+         For specific directions, go <a href={siteData.directionsPage}>here.</a>
+        </span>
+       </div>
+      );
+
+    }
+
+  }
   
 
   
@@ -121,11 +155,11 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     <Header getCurrentPage={getCurrentPage} />
     <h2 className="location-header">{locationName}</h2>
     <span className="location-description">{siteData.description}</span>
+    {images()}
     <section className="location-info">
      {weather}
-     {driving}
      {jsxFees()}
-     {operations}
+     {operations()}
      {jsxActivities()}
     </section>
    </section>

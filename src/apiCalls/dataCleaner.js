@@ -21,6 +21,8 @@ export const formatAllData = async () => {
         location.state = site.addresses[0].stateCode
         location.designation = site.designation
         location.weather = site.weatherInfo
+        location.images = site.images
+        location.url = site.url
         location.name = site.name
         places.push(location)
       }
