@@ -23,12 +23,12 @@ describe('App', () => {
   
      const title = screen.getByRole("heading", {name: "Along the Rocky Road"});
      const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-     const searchLink = screen.getByRole("link", { name: "Search" });
+     const savedwLink = screen.getByRole("link", { name: "Saved" });
      const aboutLink = screen.getByRole("link", { name: "About" });
 
      expect(title).toBeInTheDocument();
      expect(homeLink).toBeInTheDocument();
-     expect(searchLink).toBeInTheDocument();
+     expect(savedwLink).toBeInTheDocument();
      expect(aboutLink).toBeInTheDocument();
 
       fireEvent.click(aboutLink)

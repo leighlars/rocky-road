@@ -6,14 +6,6 @@ import Header from '../Header/Header'
 const Location = ({getCurrentPage, allStatesInfo}) => {
 
   let locationName = getCurrentPage().split('/')[2].split('-').join(' ')
-  
-  // const setBackgroundImage = () => {
-  //   if (locationName === "Great Sand Dunes National Park & Preserve") {
-  //    locationName = "Great Sand Dunes National Park And Preserve";
-  //   } 
-  //   const backgroundImage = locationName.split(' ').join('-').toLowerCase()
-  //   return backgroundImage
-  // }
 
   const getLocationName = () => {
     if (locationName === "Grant Kohrs Ranch National Historic Site") {
@@ -40,7 +32,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   const images = () => {
     if (siteData.fullName === locationName) {
       const imageList = siteData.images.map(image => {
-        return <img src={image.url} alt={image.altText} className='site-image' key={image.title}/>
+        return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
       })
       return(
         <span className='images'>
@@ -79,7 +71,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
         </div>
       )
     }
-    }
+  }
 
 
   const jsxFees = () => {
@@ -104,7 +96,6 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
         </div>
       )
     }
-
   }
 
 
@@ -144,7 +135,6 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
       );
     }
   }
-  
 
   return (
    <section className={"location-section"}>
