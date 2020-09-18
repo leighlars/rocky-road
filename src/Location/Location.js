@@ -36,7 +36,6 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
   
   const siteData = getSiteInfo()
-  console.log(siteData)
   
   const weather = 
         <div className="info-box">
@@ -75,15 +74,14 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
 
   const jsxFees = () => {
-    console.log(siteData)
     if (siteData.fullName === locationName) {
+      console.log(siteData.entranceFees)
       const jsxInfo = siteData.entranceFees.map(type => {
-        console.log(type)
         return(
            <div className='fees'>
-            <span className='fee'><b>Title:</b> {type.title}</span> <br/>
-            <span className='fee'><b>Description:</b> {type.description}</span> <br/>
-            <span className='fee'><b>Cost:</b> ${Number(type.cost).toFixed(0)}</span>
+            <span className='fee' key={type.title}><b>Title:</b> {type.title}</span> <br/>
+            <span className='fee' key={type.description}><b>Description:</b> {type.description}</span> <br/>
+            <span className='fee' key={type.cost}><b>Cost:</b> ${Number(type.cost).toFixed(0)}</span>
         </div>
       )})
 
@@ -110,7 +108,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   
   
   return (
-    <section className={`location-section ${setBackgroundImage()}`}>
+    <section className={"location-section"}>
       <Header />
      <h2 className="location-header">{locationName}</h2>
      <span className='location-description'>{siteData.description}</span>

@@ -2,8 +2,10 @@
 
 .location-section {
   @include columnDisplay();
+  background: rgb(209,199,181);
+  background: linear-gradient(0deg, rgba(209,199,181,1) 16%, rgba(113,183,230,1) 57%, rgba(66,75,47,1) 96%);
   padding: 2%;
-   height: 100vh;
+   height: 100%;
    width: 100%; 
 
    header {
@@ -121,26 +123,28 @@
           h3 {
             @include headerFont(2em);
             color: $pewterBlue;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
           }
           span {
             @include textFont(1em);
-            margin-bottom: 5px;
+            margin: 5px;
             text-align: justify;
             width: 90%;
             overflow: scroll;
           }
             .city-state {
               text-align: center;
+              margin-bottom: 5px;
             }
             p { 
               @include textFont(1em);
             }
             .fees {
+              padding: 2%;
               margin-bottom: 3px;
               text-align: left;
+              
             }
-            
         }
     }
 
