@@ -1,7 +1,6 @@
 import React from 'react'
 import './Location.scss'
 import Header from '../Header/Header'
-// import InfoxBox from '../InfoBox/Infobox'
 
 const Location = ({getCurrentPage, allStatesInfo}) => {
 
@@ -12,16 +11,12 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
       locationName = 'Great Sand Dunes National Park And Preserve'
     }
     return locationName.split(' ').join('-').toLowerCase()
-
   }
 
   const getLocationName = () => {
     if (locationName === "Grant Kohrs Ranch National Historic Site") {
       locationName = "Grant-Kohrs Ranch National Historic Site"
     }
-    // if (locationName === "Great Sand Dunes National Park & Preserve") {
-    //  locationName = "Great Sand Dunes National Park And Preserve";
-    // }
     return locationName
   }
   
@@ -30,6 +25,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     const siteInfo= allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
         location = state.info.find(site => {
+          console.log(site.fullName, getLocationName())
           return site.fullName === getLocationName()
         })
       }
@@ -42,6 +38,9 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   console.log(siteData)
   
   const images = () => {
+    if (locationName === "Great Sand Dunes National Park & Preserve") {
+     locationName = "Great Sand Dunes National Park And Preserve";
+    }
     if (siteData.fullName === locationName) {
       const imageList = siteData.images.map(image => {
         return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
@@ -54,13 +53,17 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     }
   }
 
-  const weather = 
-        <div className="info-box">
+  const weather = () => {
+    if (siteData.fullName === locationName) {
+        return (<div className="info-box">
           <h3>Weather</h3>
           <span>
           {siteData.weather}
           </span>
-        </div>
+        </div>)
+    }
+  }
+
 
   const jsxActivities = () => {
     if (siteData.fullName === locationName) {
@@ -167,7 +170,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     {images()}
     <section className="location-info">
      {jsxActivities()}
-     {weather}
+     {weather()}
      {operations()}
      {jsxFees()}
     </section>
