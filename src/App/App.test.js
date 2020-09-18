@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
@@ -9,12 +9,12 @@ jest.mock("../apiCalls/dataCleaner.js");
 describe('App', () => {
 
   it('should fetch data, display a landing page with a title and nav links', () => {
-    getCleanStatesInfo.mockResolvedValueOnce({
-     colorado: [{ name: "Mesa Verde", town: 'Durango' }],
-     wyoming: [{ name: "Tetons", name: 'Moose' }],
-     montana: [{ name: "Glacier", name: 'Glacier' }],
-     idaho: [{ name: "Sawtooth", name: 'Boise' }],
-    });
+    getCleanStatesInfo.mockResolvedValue([
+     {state: "Colorado", info: [{ fullName: "Colorado NP", name: "Mesa Verde", town: "Durango", designation: 'National Park' }]},
+     {state: "Wyoming", info: [{ fullName: "Wyoming NP", name: "Tetons", town: "Moose", designation: 'National Park'  }]},
+     {state: "Montana",  info: [{ fullName: "Glacier NP", name: "Glacier", town: "Glacier", designation: 'National Park'  }]},
+     {state: "Idaho", info: [{ fullName: "Sawtooth Mtns", name: "Sawtooth", town: "Boise", designation: 'National Park'  }]},
+    ]);
 
     const {getByRole} = render(
     <MemoryRouter>
@@ -34,32 +34,84 @@ describe('App', () => {
       fireEvent.click(aboutLink)
       const aboutSec = screen.getByRole('heading', {name: 'Places'})
       expect(aboutSec).toBeInTheDocument()
-
-      fireEvent.click(homeLink)
-      const coloradoLink = screen.getByRole('heading', {name: 'Colorado'})
-      expect(coloradoLink).toBeInTheDocument()
+      
   })
 
-  it('should render a page about Colorado when Colorado link is clicked', () => {
-    getCleanStatesInfo.mockResolvedValueOnce({
-     colorado: [{ name: "Mesa Verde", town: "Durango" }],
-     wyoming: [{ name: "Tetons", name: "Moose" }],
-     montana: [{ name: "Glacier", name: "Glacier" }],
-     idaho: [{ name: "Sawtooth", name: "Boise" }],
-    });
+  // should go home when home link is clicked + test
+
+  it('should render a page about Colorado when Colorado link is clicked', async () => {
+   getCleanStatesInfo.mockResolvedValueOnce([
+    {
+     state: "Colorado",
+     info: [
+      {
+       fullName: "Colorado NP",
+       name: "Mesa Verde",
+       town: "Durango",
+       designation: "National Park",
+      },
+      {
+       fullName: "Dinosaur Valley",
+       name: "DV",
+       town: "Somewhere",
+       designation: "National Monument",
+      },
+     ],
+    },
+    {
+     state: "Wyoming",
+     info: [
+      {
+       fullName: "Wyoming NP",
+       name: "Tetons",
+       town: "Moose",
+       designation: "National Park",
+      },
+     ],
+    },
+    {
+     state: "Montana",
+     info: [
+      {
+       fullName: "Glacier NP",
+       name: "Glacier",
+       town: "Glacier",
+       designation: "National Park",
+      },
+     ],
+    },
+    {
+     state: "Idaho",
+     info: [
+      {
+       fullName: "Sawtooth Mtns",
+       name: "Sawtooth",
+       town: "Boise",
+       designation: "National Park",
+      },
+     ],
+    },
+   ]);
 
     const { getByRole } = render(
      <MemoryRouter>
       <App />
      </MemoryRouter>
     );
-      const coloradoLink = screen.getByRole('heading', {name: 'Colorado'})
+
+      const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+      expect(homeLink).toBeInTheDocument()
+      fireEvent.click(homeLink)
+
+      const coloradoLink = screen.getByRole('link', {name: 'Colorado'})
       expect(coloradoLink).toBeInTheDocument()
+      fireEvent.click(coloradoLink)
 
-      fireEvent.click(coloradoLink);
+      const stateHeader = screen.getByRole('heading', {name: "Colorado"})
+      const parkName = await waitFor(() => screen.getByRole("heading", { name: "Colorado NP" }))
+      expect(stateHeader).toBeInTheDocument()
+      expect(parkName).toBeInTheDocument()
 
-      const rmnp = screen.getByRole("heading", { name: "RMNP" });
-      expect(rmnp).toBeInTheDocument();
   })
   
 

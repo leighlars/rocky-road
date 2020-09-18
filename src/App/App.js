@@ -57,12 +57,12 @@ class App extends Component {
             return <About />
           }}
         />
-     <Route 
-        exact path="/:state"
-        render={() => {
-          return <StatePage allStatesInfo={this.state.allStatesInfo} getCurrentPage={this.getCurrentPage} />
-        }}
-      />
+      <Route 
+          exact path="/:state"
+          render={() => {
+            return <StatePage allStatesInfo={this.state.allStatesInfo} getCurrentPage={this.getCurrentPage} />
+          }}
+        />
      {/* <Route 
         exact path="/:state/:location"
         render={() => {

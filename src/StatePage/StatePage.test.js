@@ -19,12 +19,12 @@ describe('StatePage', () => {
      {
       state: "Colorado",
       info: [
-       { name: "RMNP", designation: "National Park", city: "Estes Park" },
-       { name: "Dinosaur Valley", designation: "National Monument", city: "Somewhere" },
+       { fullName: "RMNP", designation: "National Park", town: "Estes Park" },
+       { fullName: "Dinosaur Valley", designation: "National Monument", town: "Somewhere" },
       ],
      },
     ];
-    mockGetCurrentPage = jest.fn()
+    mockGetCurrentPage = jest.fn(() => '/Colorado')
     render(
     <MemoryRouter>
       <StatePage
@@ -35,7 +35,7 @@ describe('StatePage', () => {
   })
 
 
-    xit('should render a header', () => {
+    it('should render a header', () => {
      const homeLink = screen.getByRole("link", { name: "Take A Drive" });
      const searchLink = screen.getByRole("link", { name: "Search" });
      const aboutLink = screen.getByRole("link", { name: "About" });
@@ -46,7 +46,7 @@ describe('StatePage', () => {
      expect(aboutLink).toBeInTheDocument();
   })
 
-    xit("should render state sites' information", () => {
+    it("should render state sites' information", () => {
       const state = screen.getByRole('heading', {name:'Colorado'})
       const npSecHeader = screen.getByRole('heading', {name: 'National Parks'} )
       const recSecHeader = screen.getByRole('heading', {name: 'Areas of Interest'})
@@ -64,9 +64,9 @@ describe('StatePage', () => {
       expect(recCity).toBeInTheDocument()
     })
 
-    xit('display default cards if no data is found for a rec area or park', ()=> {
-        const mockedAllStateSites = [];
-        mockGetCurrentPage = jest.fn();
+    it('display default cards if no data is found for a rec area or park', ()=> {
+        const mockedAllStateSites = [{fullName: "John Smith"}];
+        mockGetCurrentPage = jest.fn(() => '/Colorado');
         render(
          <MemoryRouter>
           <StatePage
@@ -77,6 +77,7 @@ describe('StatePage', () => {
         );
 
         const noParks = screen.getByRole('heading', {name: 'No National Parks Found'})
+        expect(noParks).toBeInTheDocument()
     });
 
 

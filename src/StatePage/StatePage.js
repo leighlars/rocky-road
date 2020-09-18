@@ -21,11 +21,13 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
   const getStateSites = () => {
     const currentPage = getCurrentPage().split('/')[1]
     const stateSites = allStatesInfo.filter(state => {
-     return state.state === currentPage
+      return state.state === currentPage
+    
     })
     const sites = stateSites.map(site => {
       return site.info
     })
+    
     return sites
   }
 
