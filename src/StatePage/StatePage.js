@@ -6,11 +6,8 @@ import {Link} from 'react-router-dom'
 
 const StatePage = ({allStatesInfo, getCurrentPage}) => {
   
-  let stateName = ''
-
   const getAllStateSites = () => {
     const currentPage = getCurrentPage().split('/')[1]
-    stateName = currentPage
     const stateSites = allStatesInfo.filter(state => {
       return state.state === currentPage 
     })
@@ -24,19 +21,13 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     const stateSites = getAllStateSites()
     const sites = {natParks: [], recAreas: []}
     if (stateSites.length > 0) {
-      // let uniqueSites = [];
-      // stateSites.forEach((site) => {
-      //  site.forEach(place => {
-      //    if (!uniqueSites.includes(place.fullName)) {
-      //      uniqueSites.push(place)
-      //    }
-      //  });
-      // });
-      // console.log(uniqueSites) not working
-      sites.natParks = stateSites[0].filter(site => {
+      const uniqueSites = Array.from(new Set(stateSites[0].map(site => site.fullName))).map(fullName =>{
+        return stateSites[0].find(site => site.fullName === fullName)
+      })
+      sites.natParks = uniqueSites.filter(site => {
         return site.designation === 'National Park'
       })
-      sites.recAreas = stateSites[0].filter((site) => {
+      sites.recAreas = uniqueSites.filter((site) => {
        return site.designation !== "National Park"
       })
     } 
@@ -74,7 +65,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
 
   }
 
-//  const stateName = getCurrentPage().split("/")[1]
+ const stateName = getCurrentPage().split("/")[1]
  const sites = jsxSites()
  const natParks = sites.natParks
  const recAreas = sites.recAreas
