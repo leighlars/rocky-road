@@ -93,7 +93,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
             <span className='fee' key={type.cost}><b>Cost:</b> ${Number(type.cost).toFixed(0)}</span>
         </div>
       )})
-      if (jsxInfo.length === 0 ) {
+      if (jsxInfo.length === 0) {
         jsxInfo = <span className='fee'>No data provided</span>
       }
           
@@ -142,14 +142,10 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
         </span>
        </div>
       );
-
     }
-
   }
   
 
-  
-  
   return (
    <section className={"location-section"}>
     <Header getCurrentPage={getCurrentPage} />
