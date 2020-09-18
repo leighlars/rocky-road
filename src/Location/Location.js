@@ -59,7 +59,16 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   const jsxActivities = () => {
     if (siteData.fullName === locationName) {
-      const sortedActivities = siteData.activities.sort()
+      console.log(siteData.activities)
+      const sortedActivities = siteData.activities.sort((a, b) => {
+        if (a.name < b.name) {
+            return -1;
+        }
+        if (b.name < a.name) {
+            return 1;
+        }
+        return 0;
+      })
       const jsxInfo = sortedActivities.map(activity => {
         return <p>{activity.name}</p>
       })
