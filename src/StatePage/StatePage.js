@@ -43,10 +43,10 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
         return stateSites[0].find(site => site.fullName === fullName)
       })
       sites.natParks = uniqueSites.filter(site => {
-        return site.designation === 'National Park'
+        return site.designation.includes('National Park')
       })
       sites.recAreas = uniqueSites.filter((site) => {
-       return site.designation !== "National Park"
+       return !site.designation.includes("National Park")
       })
     } 
     return sites
@@ -57,7 +57,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     const sites = organizeStateSiteTypes()
       sites.natParks = sites.natParks.map(park => {
         const state = getFullStateName(park.state);
-        const location = getLocationName(park.name)
+        const location = getLocationName(park.fullName)
         return (
           <Link to={`/${state}/${location}`} className="park" key={`${park.name}`}>
            <h3>{park.fullName}</h3>
