@@ -122,7 +122,7 @@
         margin: 10px;
         height: 95px;
         width: 150px;
-        h3 {
+        h3, h4 {
           @include headerFont(1.5em);
         }
         p {
@@ -132,7 +132,7 @@
          &:hover {
         background: $blueSapphire;
         color: $alabaster;
-        h3, p {
+        h3, h4 p {
           color: $alabaster;
         }
       }
