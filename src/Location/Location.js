@@ -108,17 +108,17 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   
   
   return (
-    <section className={"location-section"}>
-      <Header />
-     <h2 className="location-header">{locationName}</h2>
-     <span className='location-description'>{siteData.description}</span>
-      <section className="location-info">
-        {weather}
-        {driving}
-        {jsxFees()}
-        {operations}
-        {jsxActivities()}
-      </section>
+   <section className={"location-section"}>
+    <Header getCurrentPage={getCurrentPage} />
+    <h2 className="location-header">{locationName}</h2>
+    <span className="location-description">{siteData.description}</span>
+    <section className="location-info">
+     {weather}
+     {driving}
+     {jsxFees()}
+     {operations}
+     {jsxActivities()}
+    </section>
    </section>
   );
 

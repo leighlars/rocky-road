@@ -91,21 +91,17 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
 
 
   return (
-    <section className={`state-section ${(stateName).toLowerCase()}`}>
-      <Header />
-      <section className="state-info">
-        <h2 className="state-header">{stateName}</h2>
-        <h2>National Parks</h2>
-      <article className="national-parks">
-        {natParks}
-        </article>
-      <h2>Areas of Interest</h2>
-        <article className="non-np">
-        {recAreas}
-        </article>
-      </section>
+   <section className={`state-section ${stateName.toLowerCase()}`}>
+    <Header getCurrentPage={getCurrentPage} />
+    <section className="state-info">
+     <h2 className="state-header">{stateName}</h2>
+     <h2>National Parks</h2>
+     <article className="national-parks">{natParks}</article>
+     <h2>Areas of Interest</h2>
+     <article className="non-np">{recAreas}</article>
     </section>
-  )
+   </section>
+  );
 } 
 
 export default StatePage

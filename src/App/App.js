@@ -41,19 +41,19 @@ class App extends Component {
      <Route 
         exact path="/"
         render={() => {
-          return <Landing />
+          return <Landing getCurrentPage={this.getCurrentPage} />;
         }}
         />
         <Route 
         exact path="/home"
         render={() => {
-          return <Home />
+          return <Home getCurrentPage={this.getCurrentPage} />;
         }}
       />
       <Route 
           exact path="/about"
           render={() => {
-            return <About />
+            return <About getCurrentPage={this.getCurrentPage} />;
           }}
       />
       <Route 
