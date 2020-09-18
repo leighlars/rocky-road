@@ -7,10 +7,21 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   let locationName = getCurrentPage().split('/')[2].split('-').join(' ')
 
+  const setBackgroundImage = () => {
+    if (locationName === 'Great Sand Dunes National Park & Preserve') {
+      locationName = 'Great Sand Dunes National Park And Preserve'
+    }
+    return locationName.split(' ').join('-').toLowerCase()
+
+  }
+
   const getLocationName = () => {
     if (locationName === "Grant Kohrs Ranch National Historic Site") {
       locationName = "Grant-Kohrs Ranch National Historic Site"
     }
+    // if (locationName === "Great Sand Dunes National Park & Preserve") {
+    //  locationName = "Great Sand Dunes National Park And Preserve";
+    // }
     return locationName
   }
   
@@ -28,6 +39,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
   
   const siteData = getSiteInfo()
+  console.log(siteData)
   
   const images = () => {
     if (siteData.fullName === locationName) {
@@ -148,7 +160,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
 
   return (
-   <section className={"location-section"}>
+   <section className={`location-section ${setBackgroundImage()}`}>
     <Header getCurrentPage={getCurrentPage} />
     <h2 className="location-header">{locationName}</h2>
     <span className="location-description">{siteData.description}</span>
