@@ -121,6 +121,9 @@
         
 }
 
+// backgrounds
+
+// colorado
 
  .rocky-mountain-national-park {
     background: url(../assets/coRMNP.jpg);
@@ -137,6 +140,12 @@
   .mesa-verde-national-park {
     background: url(../assets/coMVNP.jpg);
     background-position: center;
+    background-size: cover;
+  }
+
+  .great-sand-dunes-national-park-and-preserve {
+    background: url(../assets/coDunes.jpg);
+    background-position: center top;
     background-size: cover;
   }
 
@@ -170,12 +179,15 @@
     background-size: cover;
   } 
   
+
+  // montana
   .glacier-national-park {
     background: url(../assets/mtGNP.jpg);
     background-position: center top;
     background-size: cover;
   } 
 
+  // wyoming
   .grand-teton-national-park {
     background: url(../assets/wyTetons.jpg);
     background-position: center;
@@ -194,9 +206,32 @@
     background-size: cover;
   } 
   
-  .great-sand-dunes-national-park-and-preserve {
-    background: url(../assets/coDunes.jpg);
+  // idaho
+.craters-of-the-moon-national-monument-and-preserve {
+    background: url(../assets/idCOM.jpg);
     background-position: center top;
     background-size: cover;
-  }
+  } 
+  .city-of-rocks-national-preserve {
+    background: url(../assets/idCOR.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  
+  .nez-perce-national-historical-park {
+    background: url(../assets/idNPNHP.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
 
+  .minidoka-national-historic-site {
+    background: url(../assets/idMHS.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  
+  .hagerman-fossil-beds-national-monument {
+    background: url(../assets/idHFBNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 

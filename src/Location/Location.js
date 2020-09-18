@@ -10,6 +10,9 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     if (locationName === 'Great Sand Dunes National Park & Preserve') {
       locationName = 'Great Sand Dunes National Park And Preserve'
     }
+    if (locationName === "Craters Of The Moon National Monument & Preserve") {
+     locationName = "Craters Of The Moon National Monument and Preserve";
+    }
     return locationName.split(' ').join('-').toLowerCase()
   }
 
