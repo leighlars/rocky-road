@@ -93,8 +93,8 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     <section className={`state-section ${(stateName).toLowerCase()}`}>
       <Header />
       <section className="state-info">
-      <h2 className="state-header">{stateName}</h2>
-      <h2>National Parks</h2>
+        <h2 className="state-header">{stateName}</h2>
+        <h2>National Parks</h2>
       <article className="national-parks">
         {natParks}
         </article>

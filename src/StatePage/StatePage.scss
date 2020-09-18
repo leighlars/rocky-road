@@ -109,7 +109,7 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 90vw;
-    height: 150px;
+    height: 160px;
     overflow-y: scroll;
       .rec-area, .rec-nf {
         @include columnDisplay();

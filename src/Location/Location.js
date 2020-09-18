@@ -4,7 +4,13 @@ import Header from '../Header/Header'
 
 const Location = ({getCurrentPage, allStatesInfo}) => {
   return(
-    <Header />
+    <section className='location-section mesaverde'>
+      <Header />
+    <section className='location-info'>
+
+    </section>
+
+    </section>
   )
 
 }

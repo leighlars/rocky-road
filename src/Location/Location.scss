@@ -1,0 +1,75 @@
+@import '../styles/variables';
+
+.location-section {
+  @include columnDisplay();
+   height: 100vh;
+   width: 100%; 
+   header {
+    @include columnDisplay();
+    align-items: flex-start;
+    margin: 0;
+    margin-left: 3em;
+    width: 100%;
+    h1 {
+      font-size: 3em;
+      color: $alabaster;
+      text-shadow: 2px 2px black;
+    }
+
+    .nav-btns {
+      color: $alabaster;
+      text-shadow: 1.5px 2px black;
+      &:hover {
+        color: $alabaster;
+        box-shadow: 1px 1px 5px white;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+  .rockies {
+    background: url(../assets/coRMNP.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  } 
+  .mesaverde {
+    background: url(../assets/coMVNP.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  } 
+  .blackcanyon {
+    background: url(../assets/coBCGNP.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  } 
+  .dunes {
+    background: url(../assets/coGSDNP.jpg);
+    background-size: cover;
+    background-position: center;
+    // background-attachment: fixed;
+    background-repeat: no-repeat;
+  } 
+  .glacier {
+    background: url(../assets/mtGNP.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  } 
+  .tetons {
+    background: url(../assets/wyTetons.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  } 
+  .yellowstone {
+    background: url(../assets/wyYNP.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  } 
+
+
+
