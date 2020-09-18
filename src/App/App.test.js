@@ -37,8 +37,6 @@ describe('App', () => {
       
   })
 
-  // should go home when home link is clicked + test
-
   it('should render a page about Colorado when Colorado link is clicked', async () => {
    getCleanStatesInfo.mockResolvedValueOnce([
     {
@@ -111,7 +109,6 @@ describe('App', () => {
       const parkName = await waitFor(() => screen.getByRole("heading", { name: "Colorado NP" }))
       expect(stateHeader).toBeInTheDocument()
       expect(parkName).toBeInTheDocument()
-
   })
   
 

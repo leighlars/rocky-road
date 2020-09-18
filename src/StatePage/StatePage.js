@@ -52,7 +52,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
       sites.natParks = sites.natParks.map(park => {
         const stateName = setFullStateName(park.state)
         return (
-          <Link to={`/${stateName}/${park.name}`} className="park" key={park.name}>
+          <Link to={`/${stateName}/${park.name}`} className="park" key={`${park.name}`}>
            <h3>{park.fullName}</h3>
            <p>{park.town}</p>
           </Link>
@@ -64,7 +64,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
       sites.recAreas = sites.recAreas.map(area => {
         const stateName = setFullStateName(area.state);
          return (
-          <Link to={`/${stateName}/${area.name}`} className="rec-area" key={area.name}>
+          <Link to={`/${stateName}/${area.name}`} className="rec-area" key={`${area.name}`}>
            <h4>{area.fullName}</h4>
            <p>{area.town}</p>
           </Link>

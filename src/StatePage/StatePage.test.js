@@ -5,37 +5,42 @@ import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 
 describe('StatePage', () => {
-  let mockedAllStateSites
-  let mockGetCurrentPage
-  beforeEach(() => {
-    mockedAllStateSites = [
-     {
-      state: "Wyoming",
-      info: [
-       { name: "Tetons", designation: "National Park", city: "Moose" },
-       { name: "Bighorn", designation: "National Monument", city: "Somewhere" },
-      ],
-     },
-     {
-      state: "Colorado",
-      info: [
-       { fullName: "RMNP", designation: "National Park", town: "Estes Park" },
-       { fullName: "Dinosaur Valley", designation: "National Monument", town: "Somewhere" },
-      ],
-     },
-    ];
-    mockGetCurrentPage = jest.fn(() => '/Colorado')
-    render(
-    <MemoryRouter>
-      <StatePage
-        allStatesInfo={mockedAllStateSites}
-        getCurrentPage={mockGetCurrentPage}
-      />
-    </MemoryRouter>)
-  })
 
 
     it('should render a header', () => {
+      const mockedAllStateSites = [
+       {
+        state: "Wyoming",
+        info: [
+         { name: "Tetons", designation: "National Park", city: "Moose" },
+         {
+          name: "Bighorn",
+          designation: "National Monument",
+          city: "Somewhere",
+         },
+        ],
+       },
+       {
+        state: "Colorado",
+        info: [
+         { fullName: "RMNP", designation: "National Park", town: "Estes Park" },
+         {
+          fullName: "Dinosaur Valley",
+          designation: "National Monument",
+          town: "Somewhere",
+         },
+        ],
+       },
+      ];
+      const mockGetCurrentPage = jest.fn(() => "/Colorado");
+      const { getByRole } = render(
+       <MemoryRouter>
+        <StatePage
+         allStatesInfo={mockedAllStateSites}
+         getCurrentPage={mockGetCurrentPage}
+        />
+       </MemoryRouter>
+      );
      const homeLink = screen.getByRole("link", { name: "Take A Drive" });
      const searchLink = screen.getByRole("link", { name: "Search" });
      const aboutLink = screen.getByRole("link", { name: "About" });
@@ -47,6 +52,39 @@ describe('StatePage', () => {
   })
 
     it("should render state sites' information", () => {
+      const mockedAllStateSites = [
+       {
+        state: "Wyoming",
+        info: [
+         { name: "Tetons", designation: "National Park", city: "Moose" },
+         {
+          name: "Bighorn",
+          designation: "National Monument",
+          city: "Somewhere",
+         },
+        ],
+       },
+       {
+        state: "Colorado",
+        info: [
+         { fullName: "RMNP", designation: "National Park", town: "Estes Park" },
+         {
+          fullName: "Dinosaur Valley",
+          designation: "National Monument",
+          town: "Somewhere",
+         },
+        ],
+       },
+      ];
+      const mockGetCurrentPage = jest.fn(() => "/Colorado");
+      const {getByRole} = render(
+       <MemoryRouter>
+        <StatePage
+         allStatesInfo={mockedAllStateSites}
+         getCurrentPage={mockGetCurrentPage}
+        />
+       </MemoryRouter>
+      );
       const state = screen.getByRole('heading', {name:'Colorado'})
       const npSecHeader = screen.getByRole('heading', {name: 'National Parks'} )
       const recSecHeader = screen.getByRole('heading', {name: 'Areas of Interest'})
@@ -65,8 +103,13 @@ describe('StatePage', () => {
     })
 
     it('display default cards if no data is found for a rec area or park', ()=> {
-        const mockedAllStateSites = [{fullName: "John Smith"}];
-        mockGetCurrentPage = jest.fn(() => '/Colorado');
+        const mockedAllStateSites = [
+         {
+          state: "Colorado",
+          info: []
+         },
+        ];
+        const mockGetCurrentPage =  jest.fn(() => '/Colorado');
         render(
          <MemoryRouter>
           <StatePage
@@ -76,11 +119,10 @@ describe('StatePage', () => {
          </MemoryRouter>
         );
 
-        const noParks = screen.getByRole('heading', {name: 'No National Parks Found'})
+        const noParks = screen.getByRole('heading', {name: 'No National Parks found'})
         expect(noParks).toBeInTheDocument()
+        const noRecAreas = screen.getByRole('heading', {name: 'No Recreation Areas found'})
+        expect(noRecAreas).toBeInTheDocument()
     });
 
-
-
-})
-
+  })
