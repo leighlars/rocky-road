@@ -12,8 +12,9 @@ const About = () => {
       <p>
        Colorado, Idaho, Wyoming, 
        & Montana. <br />
-       Anywhere the American Rockies go, <br />
-       <b>we go.</b>
+       We track National Parks, Monuments, <br/>
+       Sites and Preserves in the <br/>
+       Rocky Mountain Range.
       </p>
      </article>
      <article className="about-box">
