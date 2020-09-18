@@ -36,44 +36,52 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
   
   const siteData = getSiteInfo()
+  console.log(siteData)
   
-  const jsxWeather = () => {
-    return (
+  const weather = 
         <div className="info-box">
           <h3>Weather</h3>
           <span><b>Weather:</b><br/>
           {siteData.weather}
           </span>
-          <span><b>Additional notes:</b><br/> 
-          {siteData.operationDesc}</span>
         </div>
-    );
-  }
+    
 
-  const jsxDriving = () => {
-    return(
+  const driving = 
       <div className='info-box'>
         <h3>Directions</h3>
-        <span>{siteData.town}, {siteData.state}</span>
+        <span className='city-state'>{siteData.town}, {siteData.state}</span>
         <span><b>Directions:</b><br/>
         {siteData.directions}<br/>
         For specific directions, go <a href={siteData.directionsPage}>here.</a>
         </span>
       </div>
+
+
+  const jsxActivities = () => {
+    const jsxInfo = siteData.activities.map(activity => {
+      return <p>{activity.name}</p>
+    })
+    return(
+      <div className='info-box'>
+        <h3>Activities</h3>
+        {jsxInfo}
+      </div>
     )
   }
-  
+
+  // const activities = jsxActivities()
+
   const jsxFees = () => {
-    // console.log(siteData)
-    // const jsxInfo = siteData.entranceFees.map(type => {
-    //   return(
-    //      <div className='fees'>
-    //       <span className='fee'><b>Title:</b> ${type.title}</span>
-    //       <span className='fee'><b>Description:</b> {type.description}</span>
-    //       <span className='fee'><b>Cost:</b>${type.cost.toFixed(2)}</span>
-    //   </div>
-    // )})
-   
+    const jsxInfo = siteData.entranceFees.map(type => {
+      return(
+         <div className='fees'>
+          <span className='fee'><b>Title:</b> ${type.title}</span>
+          <span className='fee'><b>Description:</b> {type.description}</span>
+          <span className='fee'><b>Cost:</b> ${type.cost.toFixed(2)}</span>
+      </div>
+    )})
+
     return(
       <div className='info-box'>
         <h3>Entrance</h3>
@@ -81,6 +89,17 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
       </div>
     )
   }
+
+  // const fees = jsxFees()
+
+  const operations =
+     <div className="info-box">
+        <h3>Operations</h3>
+        <span>{siteData.operationDesc}</span>
+        <span><b>Additional notes:</b><br/> 
+          {siteData.operationDesc}</span>
+     </div>;
+  
 
   
   
@@ -90,9 +109,11 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
      <h2 className="location-header">{locationName}</h2>
      <span class='location-description'>{siteData.description}</span>
       <section className="location-info">
-        {jsxWeather()}
-        {jsxDriving()}
-        {jsxFees()}
+        {weather}
+        {driving}
+        {/* {fees} */}
+        {operations}
+        {/* {activities} */}
       </section>
    </section>
   );

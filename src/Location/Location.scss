@@ -100,6 +100,7 @@
 
   .location-info {
     @include rowDisplay();
+      align-items: flex-start;
      margin-top: 1em;
    
     .info-box {
@@ -121,9 +122,13 @@
           span {
             @include textFont(1em);
             margin-bottom: 5px;
-            text-align: left;
+            text-align: justify;
+            width: 90%;
+            overflow: scroll;
           }
-    
+            .city-state {
+              text-align: center;
+            }
         }
     }
 

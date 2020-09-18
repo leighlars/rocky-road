@@ -4,8 +4,10 @@
   height: 100vh;
   background: #EEEDE805;
   text-align: center;
-  overflow: hidden;
+  // overflow: hidden;
 }
+
+
 
 main {
   @include columnDisplay();
