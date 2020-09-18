@@ -60,16 +60,20 @@ class App extends Component {
       <Route 
           exact path="/:state"
           render={() => {
-            return <StatePage allStatesInfo={this.state.allStatesInfo} getCurrentPage={this.getCurrentPage} />
+            return (
+            <StatePage 
+              allStatesInfo={this.state.allStatesInfo} 
+              getCurrentPage={this.getCurrentPage} 
+            />)
           }}
         />
      <Route 
         exact path="/:state/:location"
         render={() => {
           return (
-           <Location
-            allStatesInfo={this.state.allStatesInfo}
-            getCurrentPage={this.getCurrentPage}
+            <Location
+              allStatesInfo={this.state.allStatesInfo}
+              getCurrentPage={this.getCurrentPage}
            />
           );
         }}

@@ -9,7 +9,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
   const getFullStateName = (stateAbbrev) => {
     if (stateAbbrev === "CO") {
      return "Colorado";
-    } else if (stateAbbrev === "Idaho") {
+    } else if (stateAbbrev === "ID") {
      return "Idaho";
     } else if (stateAbbrev === "MT") {
      return "Montana";
@@ -70,8 +70,9 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
       }
       sites.recAreas = sites.recAreas.map(area => {
         const stateName = getFullStateName(area.state)
+        const location = getLocationName(area.fullName)
          return (
-          <Link to={`/${stateName}/${area.name}`} className="rec-area" key={`${area.name}`}>
+          <Link to={`/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
            <h4>{area.fullName}</h4>
            <p>{area.town}</p>
           </Link>
