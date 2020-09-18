@@ -100,7 +100,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
         {natParks}
         </article>
       <h2>Areas of Interest</h2>
-      <article className="non-np">
+        <article className="non-np">
         {recAreas}
         </article>
       </section>

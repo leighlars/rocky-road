@@ -17,9 +17,8 @@ class App extends Component {
      error: "",
      favorites: [],
      allStatesInfo: []
-    };
+    }
   }
-
   componentDidMount = async () => {
     try {
       const allData = await getCleanStatesInfo();

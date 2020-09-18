@@ -59,38 +59,44 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
 
   const jsxActivities = () => {
-    const jsxInfo = siteData.activities.map(activity => {
-      return <p>{activity.name}</p>
-    })
-    return(
-      <div className='info-box'>
-        <h3>Activities</h3>
-        {jsxInfo}
-      </div>
-    )
-  }
+    if (siteData.fullName === locationName) {
+      const sortedActivities = siteData.activities.sort()
+      const jsxInfo = sortedActivities.map(activity => {
+        return <p>{activity.name}</p>
+      })
+      return(
+        <div className='info-box'>
+          <h3>Activities</h3>
+          {jsxInfo}
+        </div>
+      )
+    }
+    }
 
-  // const activities = jsxActivities()
 
   const jsxFees = () => {
-    const jsxInfo = siteData.entranceFees.map(type => {
-      return(
-         <div className='fees'>
-          <span className='fee'><b>Title:</b> ${type.title}</span>
-          <span className='fee'><b>Description:</b> {type.description}</span>
-          <span className='fee'><b>Cost:</b> ${type.cost.toFixed(2)}</span>
-      </div>
-    )})
+    console.log(siteData)
+    if (siteData.fullName === locationName) {
+      const jsxInfo = siteData.entranceFees.map(type => {
+        console.log(type)
+        return(
+           <div className='fees'>
+            <span className='fee'><b>Title:</b> {type.title}</span> <br/>
+            <span className='fee'><b>Description:</b> {type.description}</span> <br/>
+            <span className='fee'><b>Cost:</b> ${Number(type.cost).toFixed(0)}</span>
+        </div>
+      )})
 
-    return(
-      <div className='info-box'>
-        <h3>Entrance</h3>
-        {/* {jsxInfo} */}
-      </div>
-    )
+      return(
+        <div className='info-box'>
+          <h3>Entrance</h3>
+          {jsxInfo}
+        </div>
+      )
+    }
+
   }
 
-  // const fees = jsxFees()
 
   const operations =
      <div className="info-box">
@@ -107,13 +113,13 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     <section className={`location-section ${setBackgroundImage()}`}>
       <Header />
      <h2 className="location-header">{locationName}</h2>
-     <span class='location-description'>{siteData.description}</span>
+     <span className='location-description'>{siteData.description}</span>
       <section className="location-info">
         {weather}
         {driving}
-        {/* {fees} */}
+        {jsxFees()}
         {operations}
-        {/* {activities} */}
+        {jsxActivities()}
       </section>
    </section>
   );
