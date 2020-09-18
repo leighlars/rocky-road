@@ -37,7 +37,6 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
 
   const jsxSites = () => {
     const sites = organizeStateSiteTypes()
-    if (sites) {
       sites.natParks = sites.natParks.map(park => {
         return (
           <Link to={`/${getCurrentPage()}/${park.name}`} className="park" key={`${park.name}`}>
@@ -58,11 +57,9 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
          )
       })
       if (sites.recAreas.length === 0) {
-        sites.recAreas = [<div className='park-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
+        sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
       }
       return sites
-    }
-
   }
 
  const stateName = getCurrentPage().split("/")[1]

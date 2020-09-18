@@ -111,7 +111,7 @@
     width: 90vw;
     height: 150px;
     overflow-y: scroll;
-      .rec-area, .park-nf {
+      .rec-area, .rec-nf {
         @include columnDisplay();
         justify-content: center;
         background: $mutedWhite;
@@ -122,16 +122,17 @@
         margin: 10px;
         height: 95px;
         width: 150px;
-        h4 {
+        h3 {
           @include headerFont(1.5em);
         }
         p {
           @include textFont(1em);
+          font-weight: bold;
         }
          &:hover {
         background: $blueSapphire;
         color: $alabaster;
-        h4, p {
+        h3, p {
           color: $alabaster;
         }
       }
