@@ -78,7 +78,7 @@
   .location-info {
     @include rowDisplay();
     justify-content: center;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
    
     .info-box {
       @include columnDisplay();
@@ -89,8 +89,8 @@
       text-decoration: none;
       padding: 1.5%;
       margin: 10px;
-      max-height: 300px;
-      width: 300px;
+      height: 200px;
+      width: 250px;
       overflow-y: scroll;
           h3 {
             @include headerFont(2em);
@@ -103,20 +103,20 @@
             text-align: justify;
             width: 90%;
           }
-            .city-state {
-              text-align: center;
-              margin-bottom: 5px;
-            }
-            p { 
-              @include textFont(1em);
-            }
-            .fees {
-              padding: 2%;
-              margin-bottom: 3px;
-              text-align: left;
-              
-            }
+          .city-state {
+            text-align: center;
+            margin-bottom: 5px;
+          }
+          p { 
+            @include textFont(1em);
+          }
+          .fees {
+            padding: 2%;
+            margin-bottom: 3px;
+            text-align: left;
+          }
         }
+        
     }
 
 

@@ -45,7 +45,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   const weather = 
         <div className="info-box">
           <h3>Weather</h3>
-          <span><b>Weather:</b><br/>
+          <span>
           {siteData.weather}
           </span>
         </div>
@@ -67,12 +67,13 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
       return(
         <div className='info-box'>
           <h3>Activities</h3>
+          <span className='activities'>
           {jsxInfo}
+          </span>
         </div>
       )
     }
   }
-
 
   const jsxFees = () => {
     if (siteData.fullName === locationName) {
@@ -105,9 +106,12 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
        <p>24 hours / 7 days</p>
       ) : (
        <span>
-        <p>For complete hours, go</p> <a href={siteData.url}>here</a>
+        <p>For complete hours, go</p>
+        <a href={siteData.url} target="_blank" rel="noopener noreferrer">
+         here
+        </a>
        </span>
-      )
+      );
 
       return (
        <div className="info-box">
@@ -129,7 +133,14 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
          <br />
          {siteData.directions}
          <br />
-         For specific directions, go <a href={siteData.directionsPage}>here.</a>
+         For specific directions, go
+         <a
+          href={siteData.directionsPage}
+          target="_blank"
+          rel="noopener noreferrer"
+         >
+          here.
+         </a>
         </span>
        </div>
       );
@@ -143,10 +154,10 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     <span className="location-description">{siteData.description}</span>
     {images()}
     <section className="location-info">
-     {weather}
-     {jsxFees()}
-     {operations()}
      {jsxActivities()}
+     {weather}
+     {operations()}
+     {jsxFees()}
     </section>
    </section>
   );
