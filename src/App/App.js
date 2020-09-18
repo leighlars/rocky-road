@@ -7,7 +7,7 @@ import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
 import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
 // import Results from '../Results/Results'
-// import Location from '../Location/Location'
+import Location from '../Location/Location'
 
 class App extends Component {
   constructor() {
@@ -63,12 +63,17 @@ class App extends Component {
             return <StatePage allStatesInfo={this.state.allStatesInfo} getCurrentPage={this.getCurrentPage} />
           }}
         />
-     {/* <Route 
+     <Route 
         exact path="/:state/:location"
         render={() => {
-          return <Location />
+          return (
+           <Location
+            allStatesInfo={this.state.allStatesInfo}
+            getCurrentPage={this.getCurrentPage}
+           />
+          );
         }}
-      /> */}
+      />
     </main>
    </div>
   );

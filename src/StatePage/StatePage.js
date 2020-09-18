@@ -5,6 +5,24 @@ import {Link} from 'react-router-dom'
 
 
 const StatePage = ({allStatesInfo, getCurrentPage}) => {
+
+  const getFullStateName = (stateAbbrev) => {
+    if (stateAbbrev === "CO") {
+     return "Colorado";
+    } else if (stateAbbrev === "Idaho") {
+     return "Idaho";
+    } else if (stateAbbrev === "MT") {
+     return "Montana";
+    } else if (stateAbbrev === "WY") {
+     return "Wyoming";
+    }
+  }
+
+  const getLocationName = (locationName) => {
+    const removeSpaces = locationName.split(' ').join('-') 
+    return removeSpaces
+  }
+
   
   const getAllStateSites = () => {
     const currentPage = getCurrentPage().split('/')[1]
@@ -38,8 +56,10 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
   const jsxSites = () => {
     const sites = organizeStateSiteTypes()
       sites.natParks = sites.natParks.map(park => {
+        const state = getFullStateName(park.state);
+        const location = getLocationName(park.name)
         return (
-          <Link to={`/${getCurrentPage()}/${park.name}`} className="park" key={`${park.name}`}>
+          <Link to={`/${state}/${location}`} className="park" key={`${park.name}`}>
            <h3>{park.fullName}</h3>
            <p>{park.town}</p>
           </Link>
@@ -49,8 +69,9 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
       }
       sites.recAreas = sites.recAreas.map(area => {
+        const stateName = getFullStateName(area.state)
          return (
-          <Link to={`/${getCurrentPage()}/${area.name}`} className="rec-area" key={`${area.name}`}>
+          <Link to={`/${stateName}/${area.name}`} className="rec-area" key={`${area.name}`}>
            <h4>{area.fullName}</h4>
            <p>{area.town}</p>
           </Link>
@@ -66,6 +87,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
  const sites = jsxSites()
  const natParks = sites.natParks
  const recAreas = sites.recAreas
+
 
   return (
     <section className={`state-section ${(stateName).toLowerCase()}`}>
