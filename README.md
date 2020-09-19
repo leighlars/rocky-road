@@ -33,7 +33,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Rocky Road is a solo React app that enables users to plan for a road trip along the Rocky Mountain range in Colorado, Utah, Wyoming, and Montana. The data is sourced from Rec.gov. Users can search and favorite places, or customize a road trip, or travel along popular routes.
+Rocky Road is a solo React app that enables users to plan ideas for a road trip along the Rocky Mountain range in Colorado, Utah, Wyoming, and Montana. The data is sourced from Rec.gov's API. Users can search places along the Rocky Mountain Range, explore the photo gallery, and learn information about a selected site. The site gives a 95% or higher Accessibility rating, passes all tests in Jest and includes testing for edge cases. 
 
 
 ### Built With
