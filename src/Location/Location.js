@@ -8,10 +8,12 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   const setBackgroundImage = () => {
     if (locationName === 'Great Sand Dunes National Park & Preserve') {
-      locationName = 'Great Sand Dunes National Park And Preserve'
+      let title = 'Great Sand Dunes National Park And Preserve'
+      return title.split(' ').join('-').toLowerCase()
     }
     if (locationName === "Craters Of The Moon National Monument & Preserve") {
-     locationName = "Craters Of The Moon National Monument and Preserve";
+     let title = "Craters Of The Moon National Monument and Preserve";
+     return title.split(" ").join("-").toLowerCase();
     }
     return locationName.split(' ').join('-').toLowerCase()
   }
@@ -20,6 +22,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     if (locationName === "Grant Kohrs Ranch National Historic Site") {
       locationName = "Grant-Kohrs Ranch National Historic Site"
     }
+    
     return locationName
   }
   
@@ -34,8 +37,11 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
       }
       return location
     }, {})
+
     return siteInfo
   }
+
+  
   
   const siteData = getSiteInfo()
   console.log(siteData)
@@ -168,7 +174,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   return (
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header getCurrentPage={getCurrentPage} />
-    <h2 className="location-header">{locationName}</h2>
+    <h2 className="location-header">{getLocationName()}</h2>
     <span className="location-description">{siteData.description}</span>
     {images()}
     <section className="location-info">
