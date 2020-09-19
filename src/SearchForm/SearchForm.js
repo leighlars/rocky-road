@@ -17,7 +17,6 @@ class SearchForm extends Component {
   }
 
   search = (e) => {
-    // e.preventDefault()
     this.props.searchSites(this.state.query)
     this.setState({query: ''})
   }

@@ -41,10 +41,18 @@ export const getCleanStatesInfo = async() => {
   const MT = allSites.filter((site) => site.stateCode === "MT");
   const ID = allSites.filter((site) => site.stateCode === "ID");
   const states = [
-    {state: "Colorado", info: CO}, 
-    {state: "Wyoming", info: WY}, 
-    {state:"Montana", info: MT}, 
-    {state: "Idaho", info: ID}]
+    {state: "Colorado", info: {
+      natParks: [CO.filter(site => site.designation.includes('National Park'))], 
+      recAreas: [CO.filter(site => !site.designation.includes('National Park'))]}}, 
+    {state: "Wyoming", info: {
+      natParks: [WY.filter(site => site.designation.includes('National Park'))], 
+      recAreas: [WY.filter(site => !site.designation.includes('National Park'))]}}, 
+    {state:"Montana", info: {
+      natParks: [MT.filter(site => site.designation.includes('National Park'))], 
+      recAreas: [MT.filter(site => !site.designation.includes('National Park'))]}}, 
+    {state: "Idaho", info: {
+      natParks: [ID.filter(site => site.designation.includes('National Park'))], 
+      recAreas: [ID.filter(site => !site.designation.includes('National Park'))]}}]
   return states
 }
 

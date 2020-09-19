@@ -12,64 +12,50 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
     return removeSpaces
   }
   
-  const getAllStateSites = () => {
+  const getStateSites = () => {
     const currentPage = getCurrentPage().split('/')[2]
-    const stateSites = allStatesInfo.filter(state => {
+    const stateSites = allStatesInfo.find(state => {
       return state.state === currentPage 
     })
-    const sites = stateSites.map(site => {
-      return site.info
-    })
-    return sites
+    if (stateSites) {
+      return stateSites.info
+    } else {
+      return {natParks: [], recAreas: []}
+    }
   }
-  
-  const organizeStateSiteTypes = () => {
-    const stateSites = getAllStateSites()
-    const sites = {natParks: [], recAreas: []}
-    if (stateSites.length > 0) {
-      const uniqueSites = Array.from(new Set(stateSites[0].map(site => site.fullName))).map(fullName =>{
-        return stateSites[0].find(site => site.fullName === fullName)
-      })
-      sites.natParks = uniqueSites.filter(site => {
-        return site.designation.includes('National Park')
-      })
-      sites.recAreas = uniqueSites.filter((site) => {
-       return !site.designation.includes("National Park")
-      })
-    } 
-    return sites
-  }
-  
+ 
 
   const jsxSites = () => {
-    const sites = organizeStateSiteTypes()
-      sites.natParks = sites.natParks.map(park => {
-        const state = park.state
-        const location = getLocationName(park.fullName)
-        return (
-          <Link to={`/place/${state}/${location}`} className="park" key={`${park.name}`}>
-           <h3>{park.fullName}</h3>
-           <p>{park.town}</p>
-          </Link>
-         )
+      const sites = getStateSites()
+      console.log(sites)
+        sites.natParks = sites.natParks.map(park => {
+          const state = park.state
+          const location = getLocationName(park.fullName)
+          return (
+            <Link to={`/place/${state}/${location}`} className="park" key={`${park.name}`}>
+             <h3>{park.fullName}</h3>
+             <p>{park.town}</p>
+            </Link>
+           )
+          })
+        if (sites.natParks.length === 0) {
+          sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
+        }
+        sites.recAreas = sites.recAreas.map(area => {
+          const stateName = area.state
+          const location = getLocationName(area.fullName)
+           return (
+            <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
+             <h4>{area.fullName}</h4>
+             <p>{area.town}</p>
+            </Link>
+           )
         })
-      if (sites.natParks.length === 0) {
-        sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
-      }
-      sites.recAreas = sites.recAreas.map(area => {
-        const stateName = area.state
-        const location = getLocationName(area.fullName)
-         return (
-          <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
-           <h4>{area.fullName}</h4>
-           <p>{area.town}</p>
-          </Link>
-         )
-      })
-      if (sites.recAreas.length === 0) {
-        sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
-      }
-      return sites
+        if (sites.recAreas.length === 0) {
+          sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
+        }
+        return sites
+
   }
 
   const stateName = getCurrentPage().split("/")[2]
