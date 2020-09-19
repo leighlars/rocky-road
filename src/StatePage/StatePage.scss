@@ -17,7 +17,7 @@
     }
     .state-header {
       font-size: 4em;
-      margin-left: .5em;
+      margin-left: .6em;
     }
   }
   
@@ -30,18 +30,20 @@
     h1 {
       font-size: 4em;
       color: $alabaster;
-      text-shadow: 2px 2px black;
+      text-shadow: 2px 3px black;
     }
     nav {
       margin: 0;
+      padding: 0;
     }
     .nav-btns {
       color: $alabaster;
       text-shadow: 1.5px 2px black;
       &:hover {
-        color: $alabaster;
-        box-shadow: 1px 1px 5px white;
+        color: $prussianBlue;
+        background: $alabaster;
         border-radius: 4px;
+        text-shadow: none;
       }
     }
       .state-link, .search-link {
@@ -92,7 +94,6 @@
       text-decoration: none;
       height: 100px;
       width: 275px;
-
       h3 {
         @include headerFont(2em);
         color: $pineGreen;
@@ -100,15 +101,15 @@
       p {
         @include textFont(1em);
       }
-        &:hover {
-        background: $blueSapphire;
+      &:hover {
+      background: $blueSapphire;
+      color: $alabaster;
+      h3, p {
         color: $alabaster;
-        h3, p {
-          color: $alabaster;
-        }
-       }
       }
+     }
     }
+  }
   
 
   .non-np {
@@ -141,6 +142,11 @@
         color: $alabaster;
         h3, h4 p {
           color: $alabaster;
+        }
+      }
+      .rec-nf {
+        &:hover {
+          background: $mutedWhite;
         }
       }
       }
