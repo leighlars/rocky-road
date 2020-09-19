@@ -5,40 +5,44 @@ import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class SearchForm extends Component {
-  constructor({searchSites}) {
-    super({searchSites});
+  constructor(props) {
+    super(props);
     this.state = {
       query: ''
     }
   }
 
   handleChange = (e) => {
-    this.setState({ query: e.target.value });
+    this.setState({ query: e.target.value })
   }
 
   search = (e) => {
     e.preventDefault()
-    console.log('hello')
-    // searchSites(this.state.query)
+    this.props.searchSites(this.state.query)
     this.setState({query: ''})
   }
 
   render() {
-    return(
-      <form onSubmit={this.search}>
-        <input 
-          name='query'
-          placeholder='Search the Range'
-          aria-label='search-input'
-          type='text'
-          onChange={this.handleChange}
-          value={this.state.query}
+    return (
+     <form>
+      <input
+       name="query"
+       placeholder="Search the Range"
+       aria-label="search-input"
+       type="text"
+       onChange={this.handleChange}
+       value={this.state.query}
+      />
+      <Link to="/results" className="search-form-link" onClick={this.search}>
+       <img
+        src={next}
+        alt="submit search"
+        className="search-icon"
+        // onClick={this.search}
        />
-        <Link to="/results" className='search-form-link'>
-          <img src={next} alt="submit search" className="search-icon" />
-        </Link>
-      </form>
-    )
+      </Link>
+     </form>
+    );
   }
 }
 

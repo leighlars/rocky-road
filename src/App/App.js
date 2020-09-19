@@ -36,21 +36,10 @@ class App extends Component {
 
   searchSites = (query) => {
     // let searchableQuery = query.toLowerCase()
-    const allPlaces = this.state.allStatesInfo.reduce((allNames, state) => {
-      console.log(state)
-      if (!allNames.includes(state.state)) {
-        allNames.push(allNames)
-      }
-      state.forEach(site => {
-        if (!allNames.includes(site.fullName)) {
-          allNames.push(site.fullName)
-        }
-      })
-      return allNames
-    }, [])
-    console.log(allPlaces)
-  }
+    console.log(query)
+    // const allPlacesNames = this.state.allStatesInfo.
 
+  }
 
 
   render() { 
