@@ -8,6 +8,7 @@ import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
 import Location from '../Location/Location'
 import Results from '../Results/Results'
+import Gallery from '../Gallery/Gallery'
 
 class App extends Component {
   constructor() {
@@ -60,7 +61,12 @@ class App extends Component {
         exact
         path="/"
         render={() => {
-         return <Landing getCurrentPage={this.getCurrentPage} searchSites={this.searchSites} />;
+         return (
+          <Landing
+           getCurrentPage={this.getCurrentPage}
+           searchSites={this.searchSites}
+          />
+         );
         }}
        />
        <Route
@@ -68,7 +74,10 @@ class App extends Component {
         path="/home"
         render={() => {
          return (
-          <Home getCurrentPage={this.getCurrentPage} searchSites={this.searchSites} />
+          <Home
+           getCurrentPage={this.getCurrentPage}
+           searchSites={this.searchSites}
+          />
          );
         }}
        />
@@ -77,13 +86,17 @@ class App extends Component {
         path="/about"
         render={() => {
          return (
-          <About getCurrentPage={this.getCurrentPage} searchSites={this.searchSites} />
+          <About
+           getCurrentPage={this.getCurrentPage}
+           searchSites={this.searchSites}
+          />
          );
         }}
        />
-       <Route 
-       exact path ='/place/:state'
-       render={() => {
+       <Route
+        exact
+        path="/place/:state"
+        render={() => {
          return (
           <StatePage
            allStatesInfo={this.state.allStatesInfo}
@@ -91,7 +104,7 @@ class App extends Component {
            searchSites={this.searchSites}
           />
          );
-       }}
+        }}
        />
        <Route
         exact
@@ -112,7 +125,18 @@ class App extends Component {
         render={() => {
          return (
           <Results
-          //  allStatesInfo={this.state.allStatesInfo}
+           getCurrentPage={this.getCurrentPage}
+           searchSites={this.searchSites}
+          />
+         );
+        }}
+       />
+       <Route
+        exact
+        path="/gallery"
+        render={() => {
+         return (
+          <Gallery
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />

@@ -1,0 +1,18 @@
+@import '../styles/variables';
+
+.gallery-section {
+  @include columnDisplay();
+  background: $mutedWhite;
+  width: 100%;
+  height: 100%;
+  header {
+    margin: 0;
+    h1, .nav-btns {
+      color: $prussianBlue;
+    }
+  }
+  .photos {
+    margin-top: 10em;
+    width: 90%;
+  }
+}
