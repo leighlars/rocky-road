@@ -11,8 +11,18 @@
       color: $prussianBlue;
     }
   }
+  .state-link, .gallery-link {
+    display: none;
+  }
   .photos {
     margin-top: 10em;
     width: 90%;
+  }
+  span {
+    @include textFont(1em);
+    a {
+      margin-left: 3px;
+      margin-right: 3px;
+    }
   }
 }

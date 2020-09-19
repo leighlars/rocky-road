@@ -25,7 +25,6 @@ import wyPeak from '../assets/wyPeak.jpg'
 import wyAfternoon from "../assets/wyAfternoon.jpg";
 import wyFarm from "../assets/wyFarm.jpg";
 import wyBCNRA2 from '../assets/wyBHCNRA2.jpg'
-import wySunrise from '../assets/wySunrise.jpg'
 import wyTetons from '../assets/wyTetons.jpg'
 import wyYNP from '../assets/wyYNP.jpg'
 
@@ -178,11 +177,6 @@ export const photos = [
   src: wyPeak,
   width: 4,
   height: 3,
- },
- {
-  src: wySunrise,
-  width: 4,
-  height: 4,
  },
  {
   src: wyYNP,

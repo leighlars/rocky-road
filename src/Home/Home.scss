@@ -28,7 +28,8 @@
     nav {
       padding: 0;
       margin: 0;
-      margin-right: 10em;
+      margin-right: 9em;
+      margin-bottom: .5em;
     }
     .nav-btns {
       color: $alabaster;
@@ -37,6 +38,7 @@
     }
     form {
       margin-right: 7em;
+      margin-bottom: 1em;
     }
   }
   .home-link, .state-link, .search-link {

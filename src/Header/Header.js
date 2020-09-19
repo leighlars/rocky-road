@@ -11,9 +11,9 @@ const Header = ({getCurrentPage, searchSites}) => {
    <header>
     <h1>Along the Rocky Road</h1>
     <nav>
-     {/* <Link to="/search" className="nav-btns search-link">
-      Search
-     </Link> */}
+     <Link to="/gallery" className="nav-btns gallery-link">
+      Gallery
+     </Link>
      <Link to="/about" className="nav-btns about-link">
       About
      </Link>
