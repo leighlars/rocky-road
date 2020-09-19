@@ -40,7 +40,7 @@ const About = (props) => {
       <p>
        <br />
        <a
-        href="https://github.leighlars"
+        href="https://github.com/leighlars"
         target="_blank"
         rel="noopener noreferrer"
        >

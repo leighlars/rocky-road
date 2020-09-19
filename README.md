@@ -88,6 +88,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Leigh Larson](https://github.com/leighlars)
 
 - [Project Link](https://github.com/leighlars/rocky-road)
+ 
+- [Project Spec](https://frontend.turing.io/projects/module-3/binary-challenge.html)
 
 
 ## Acknowledgements
