@@ -31,7 +31,6 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     const siteInfo= allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
         location = state.info.find(site => {
-          console.log(site.fullName, getLocationName())
           return site.fullName === getLocationName()
         })
       }
@@ -42,9 +41,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
 
   
-  
   const siteData = getSiteInfo()
-  console.log(siteData)
 
 
   const description = () => {
@@ -66,7 +63,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
     }
     if (siteData.fullName === locationName) {
       const imageList = siteData.images.map(image => {
-        return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
+        return <img src={image.url} alt={image.altText} className='site-image' key={image.title}/>
       })
       return(
         <span className='images'>
@@ -115,7 +112,6 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   const jsxFees = () => {
     if (siteData.fullName === locationName) {
-
       let jsxInfo = siteData.entranceFees.map(type => {
         return(
            <div className='fees'>

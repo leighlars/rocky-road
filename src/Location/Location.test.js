@@ -138,6 +138,23 @@ describe('Location', () => {
       expect(image).toBeInTheDocument();
   })
 
-  // it('should')
+  it('should render a default message if no data is provided', () => {
+    const mockedAllStateSites = [];
+    const mockGetCurrentPage = jest.fn(
+     () => "/Colorado/Rocky-Mountain-National-Park"
+    );
+    const { getByRole } = render(
+     <MemoryRouter>
+      <Location
+       allStatesInfo={mockedAllStateSites}
+       getCurrentPage={mockGetCurrentPage}
+      />
+     </MemoryRouter>
+    )
+    
+     const defaultMsg = screen.getByText('No data provided. Check back soon!') 
+      expect(defaultMsg).toBeInTheDocument()
+
+  })
 
 })
