@@ -2,6 +2,7 @@ import React from 'react'
 import './StatePage.scss'
 import Header from '../Header/Header'
 import {Link} from 'react-router-dom'
+import PropTypes from "prop-types";
 
 
 const StatePage = ({allStatesInfo, getCurrentPage}) => {
@@ -105,3 +106,8 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
 } 
 
 export default StatePage
+
+StatePage.propTypes = {
+ allStatesInfo: PropTypes.array,
+ getCurrentPage: PropTypes.func,
+};

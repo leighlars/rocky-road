@@ -1,6 +1,7 @@
 import React from 'react'
 import './Location.scss'
 import Header from '../Header/Header'
+import PropTypes from "prop-types";
 
 const Location = ({getCurrentPage, allStatesInfo}) => {
 
@@ -201,3 +202,8 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
 }
 export default Location
+
+Location.propTypes = {
+ allStatesInfo: PropTypes.array,
+ getCurrentPage: PropTypes.func,
+};

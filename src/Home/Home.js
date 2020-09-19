@@ -2,6 +2,7 @@ import React from 'react'
 import './Home.scss'
 import Header from '../Header/Header'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const Home = ({getCurrentPage}) => {
 
@@ -19,3 +20,7 @@ const Home = ({getCurrentPage}) => {
 }
 
 export default Home
+
+Home.propTypes = {
+ getCurrentPage: PropTypes.func,
+};

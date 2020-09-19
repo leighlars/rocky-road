@@ -1,6 +1,7 @@
 import React from 'react'
 import './Header.scss'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 
 const Header = ({getCurrentPage}) => {
@@ -23,9 +24,11 @@ const Header = ({getCurrentPage}) => {
      </Link>
     </nav>
    </header>
-  );
-
-
+  )
 }
 
 export default Header
+
+Header.propTypes = {
+ getCurrentPage: PropTypes.func,
+};

@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Header/Header'
 import './About.scss'
+import PropTypes from 'prop-types'
 
 const About = (props) => {
   return (
@@ -35,7 +36,7 @@ const About = (props) => {
        <br />
        <a href="ridb.recreation.gov" target="_blank" rel="noopener noreferrer">
         Contact the developer
-       </a>{" "}
+       </a>
        for any concerns regarding the site.
       </p>
      </article>
@@ -43,9 +44,9 @@ const About = (props) => {
    </section>
   );
 
-
-
-
 }
 
 export default About
+About.propTypes = {
+ getCurrentPage: PropTypes.func,
+};
