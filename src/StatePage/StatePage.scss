@@ -2,6 +2,7 @@
 
 .state-section {
   @include columnDisplay();
+  background: $blueSapphire;
   height: 100vh;
   width: 100%; 
   .state-info {

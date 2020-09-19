@@ -28,7 +28,8 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   
   const getSiteInfo = () => {
     const stateName = getCurrentPage().split('/')[1]
-    const siteInfo= allStatesInfo.reduce((location, state) => {
+    const defaultSite = {description: 'No data provided. Please modify your search.'}
+    const siteInfo = allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
         location = state.info.find(site => {
           return site.fullName === getLocationName()
@@ -36,8 +37,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
       }
       return location
     }, {})
-
-    return siteInfo
+      return siteInfo || defaultSite
   }
 
   
@@ -187,6 +187,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header getCurrentPage={getCurrentPage} />
     <h2 className="location-header">{getLocationName()}</h2>
+
     {description()}
     {images()}
     <section className="location-info">
