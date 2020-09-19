@@ -1,6 +1,6 @@
 @import '../styles/variables.scss';
 
-.home {
+.home-section {
   @include columnDisplay();
   align-items: flex-end;
   justify-content: center;
@@ -11,6 +11,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100%;  
+  
   header {
     @include columnDisplay();
     align-items: flex-end;

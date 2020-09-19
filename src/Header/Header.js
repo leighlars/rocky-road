@@ -10,8 +10,8 @@ const Header = ({getCurrentPage}) => {
    <header>
     <h1>Along the Rocky Road</h1>
     <nav>
-     <Link to="/saved" className="nav-btns saved-link">
-      Saved
+     <Link to="/search" className="nav-btns search-link">
+      Search
      </Link>
      <Link to="/about" className="nav-btns about-link">
       About

@@ -12,7 +12,7 @@ const Home = ({getCurrentPage}) => {
   })
 
   return (
-   <section className="home">
+   <section className="home-section">
     <Header getCurrentPage={getCurrentPage} />
     <article className="state-box">{jsxStates}</article>
    </section>

@@ -23,7 +23,6 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
     const removeSpaces = locationName.split(' ').join('-') 
     return removeSpaces
   }
-
   
   const getAllStateSites = () => {
     const currentPage = getCurrentPage().split('/')[1]

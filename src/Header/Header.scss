@@ -6,19 +6,17 @@ header {
   height: 2.5em;
   margin-top: 5em;
   z-index: 3;
-
   h1 {
     @include headerFont(5em);
     text-shadow: 1px 2px black;
   }
-
   nav {
     @include rowDisplay();
     justify-content: space-around;
     .nav-btns {
       @include textFont(1em);
       text-decoration: none;
-      margin: 20px;
+      margin-right: 20px;
       margin-top: 0;
       font-weight: 600;
       text-transform: uppercase;

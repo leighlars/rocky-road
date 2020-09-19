@@ -3,13 +3,12 @@
 form {
   @include rowDisplay();
   align-items: flex-end;
-  margin-top: 1.5em;
-  margin-right: 9.5em;
+  margin: 0;
   input {
     background: rgba(238, 237, 232, 0.78);
     border-radius: 6px;
-    border: 2px solid black;
-    box-shadow: 1px 1px 5px black;
+    border: 1px solid $pineGreen;
+    box-shadow: 1px 1px 5px $pineGreen;
     @include textFont(1em);
     color: black;
     font-weight: bold;

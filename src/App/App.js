@@ -6,7 +6,7 @@ import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
 import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
-// import Results from '../Results/Results'
+import Results from '../SearchPage/SearchPage'
 import Location from '../Location/Location'
 
 class App extends Component {
@@ -16,7 +16,8 @@ class App extends Component {
      parks: [],
      error: "",
      favorites: [],
-     allStatesInfo: []
+     allStatesInfo: [], 
+     favorites: []
     }
   }
   componentDidMount = async () => {
@@ -35,51 +36,68 @@ class App extends Component {
   } 
 
   render() { 
-  return (
-   <div className="App">
-    <main>
-     <Route 
-        exact path="/"
+    return (
+     <div className="App">
+      <main>
+       <Route
+        exact
+        path="/"
         render={() => {
-          return <Landing getCurrentPage={this.getCurrentPage} />;
+         return <Landing getCurrentPage={this.getCurrentPage} />;
         }}
-        />
-        <Route 
-        exact path="/home"
+       />
+       <Route
+        exact
+        path="/home"
         render={() => {
-          return <Home getCurrentPage={this.getCurrentPage} />;
+         return <Home getCurrentPage={this.getCurrentPage} />;
         }}
-      />
-      <Route 
-          exact path="/about"
-          render={() => {
-            return <About getCurrentPage={this.getCurrentPage} />;
-          }}
-      />
-      <Route 
-          exact path="/:state"
-          render={() => {
-            return (
-            <StatePage 
-              allStatesInfo={this.state.allStatesInfo} 
-              getCurrentPage={this.getCurrentPage} 
-            />)
-          }}
-        />
-     <Route 
-        exact path="/:state/:location"
+       />
+       <Route
+        exact
+        path="/about"
         render={() => {
-          return (
-            <Location
-              allStatesInfo={this.state.allStatesInfo}
-              getCurrentPage={this.getCurrentPage}
+         return <About getCurrentPage={this.getCurrentPage} />;
+        }}
+       />
+       <Route 
+       exact path ='/:state'
+       render={() => {
+         return (
+           <StatePage
+           allStatesInfo={this.state.allStatesInfo}
+           getCurrentPage={this.getCurrentPage}
            />
-          );
+         )
+       }}
+       />
+       <Route
+        exact
+        path="/:state/:location"
+        render={() => {
+         return (
+          <Location
+           allStatesInfo={this.state.allStatesInfo}
+           getCurrentPage={this.getCurrentPage}
+          />
+         );
         }}
-      />
-    </main>
-   </div>
-  );
+       />
+       <Route
+        exact
+        path="/search"
+        render={() => {
+         return (
+          <Results
+            allStatesInfo={this.state.allStatesInfo}
+            getCurrentPage={this.getCurrentPage}
+          />
+         );
+        }}
+       />
+      </main>
+     </div>
+    );
   }
 
 }

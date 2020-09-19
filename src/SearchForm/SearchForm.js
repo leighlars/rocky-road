@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import './Search.scss'
+import './SearchForm.scss'
 import next from '../assets/next.png'
 import {Link} from 'react-router-dom'
-class Search extends Component {
+
+class SearchForm extends Component {
   constructor(props) {
     super()
     this.state = {
@@ -30,7 +31,7 @@ class Search extends Component {
           onChange={this.handleChange}
           value={this.state.query}
        />
-        <Link to="/results">
+        <Link to="/results" className='search-form-link'>
           <input
             type="image"
             src={next}
@@ -44,4 +45,4 @@ class Search extends Component {
   }
 }
 
-export default Search
+export default SearchForm

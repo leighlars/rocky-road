@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const About = (props) => {
   return (
-   <section className="about">
+   <section className="about-section">
     <Header getCurrentPage={props.getCurrentPage} />
     <section className="about-boxes">
      <article className="about-box">
