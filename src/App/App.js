@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       allStatesInfo: [],
       error: "",
+      results: []
     }
   }
 
@@ -35,10 +36,20 @@ class App extends Component {
   } 
 
   searchSites = (query) => {
-    // let searchableQuery = query.toLowerCase()
-    console.log(query)
-    // const allPlacesNames = this.state.allStatesInfo.
-
+    const q = query.toLowerCase()
+    const allSites = this.state.allStatesInfo.reduce((sites, state) => {
+        state.info.forEach(site => {
+          sites.push(site)
+        })
+        return sites
+    }, []) 
+    const foundSites = allSites.filter(site => {
+      const siteName = site.fullName.toLowerCase()
+      const siteState = site.state.toLowerCase()
+      const siteTown = site.town.toLowerCase()
+      return siteName.includes(q) || site.description.includes(q) || siteState.includes(q) || siteTown.includes(q)
+    })
+    this.setState({results: foundSites})
   }
 
 
@@ -116,6 +127,7 @@ class App extends Component {
           <Results
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
+           results={this.state.results}
           />
          );
         }}

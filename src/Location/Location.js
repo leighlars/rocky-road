@@ -59,9 +59,6 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
   }
   
   const images = () => {
-    if (locationName === "Great Sand Dunes National Park And Preserve") {
-     locationName = "Great Sand Dunes National Park & Preserve";
-    }
     if (siteData.fullName === locationName) {
       const imageList = siteData.images.map(image => {
         return <img src={image.url} alt={image.altText} className='site-image' key={image.title}/>
@@ -88,26 +85,22 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
 
   const jsxActivities = () => {
     if (siteData.fullName === locationName) {
-      const sortedActivities = siteData.activities.sort((a, b) => {
-        if (a.name < b.name) {
-            return -1;
-        }
-        if (b.name < a.name) {
-            return 1;
-        }
-        return 0;
-      })
+      const sortedActivities = siteData.activities.sort()
       const jsxInfo = sortedActivities.map(activity => {
-        return <p key={activity.name}>{activity.name}</p>
+        return <p key={activity}>{activity}</p>
       })
-      return(
-        <div className='info-box'>
-          <h3>Activities</h3>
-          <span className='activities'>
-          {jsxInfo}
-          </span>
-        </div>
-      )
+      return (
+       <div className="info-box">
+        <h3>Activities</h3>
+        <span className="info">
+         For information about camping and tours, go{" "}
+        <a href={siteData.url} target="_blank" rel="noopener noreferrer">
+         here
+        </a>.
+        </span>
+        <span className="activities">{jsxInfo}</span>
+       </div>
+      );
     }
   }
 

@@ -17,7 +17,7 @@ class SearchForm extends Component {
   }
 
   search = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     this.props.searchSites(this.state.query)
     this.setState({query: ''})
   }
@@ -38,7 +38,6 @@ class SearchForm extends Component {
         src={next}
         alt="submit search"
         className="search-icon"
-        // onClick={this.search}
        />
       </Link>
      </form>

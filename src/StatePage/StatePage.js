@@ -7,18 +7,6 @@ import PropTypes from "prop-types";
 
 const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
 
-  const getFullStateName = (stateAbbrev) => {
-    if (stateAbbrev === "CO") {
-     return "Colorado";
-    } else if (stateAbbrev === "ID") {
-     return "Idaho";
-    } else if (stateAbbrev === "MT") {
-     return "Montana";
-    } else if (stateAbbrev === "WY") {
-     return "Wyoming";
-    }
-  }
-
   const getLocationName = (locationName) => {
     const removeSpaces = locationName.split(' ').join('-') 
     return removeSpaces
@@ -56,7 +44,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
   const jsxSites = () => {
     const sites = organizeStateSiteTypes()
       sites.natParks = sites.natParks.map(park => {
-        const state = getFullStateName(park.state);
+        const state = park.state
         const location = getLocationName(park.fullName)
         return (
           <Link to={`/place/${state}/${location}`} className="park" key={`${park.name}`}>
@@ -69,7 +57,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
       }
       sites.recAreas = sites.recAreas.map(area => {
-        const stateName = getFullStateName(area.state)
+        const stateName = area.state
         const location = getLocationName(area.fullName)
          return (
           <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
