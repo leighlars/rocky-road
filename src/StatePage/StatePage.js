@@ -26,7 +26,6 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
   
   const getAllStateSites = () => {
     const currentPage = getCurrentPage().split('/')[2]
-    console.log(currentPage)
     const stateSites = allStatesInfo.filter(state => {
       return state.state === currentPage 
     })

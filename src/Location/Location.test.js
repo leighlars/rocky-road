@@ -41,8 +41,8 @@ describe('Location', () => {
        },
       ],
      },
-    ];
-    const mockGetCurrentPage = jest.fn(() => "/Colorado/Rocky-Mountain-National-Park");
+    ] 
+    const mockGetCurrentPage = jest.fn(() => "/place/Colorado/Rocky-Mountain-National-Park") 
     const { getByRole } = render(
      <MemoryRouter>
       <Location
@@ -50,17 +50,21 @@ describe('Location', () => {
        getCurrentPage={mockGetCurrentPage}
       />
      </MemoryRouter>
-    );
-    const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-    const savedLink = screen.getByRole("link", { name: "Saved" });
-    const aboutLink = screen.getByRole("link", { name: "About" });
-    const backLink = screen.getByRole("link", { name: "Back" });
-    const title = screen.getByRole("heading", { name: "Along the Rocky Road" });
-    expect(title).toBeInTheDocument();
-    expect(homeLink).toBeInTheDocument();
-    expect(savedLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
+    ) 
+    const homeLink = screen.getByRole("link", { name: "Home" }) 
+    const galleryLink = screen.getByRole("link", { name: "Gallery" }) 
+    const aboutLink = screen.getByRole("link", { name: "About" }) 
+    const backLink = screen.getByRole("link", { name: "Back" }) 
+    const title = screen.getByRole("heading", { name: "Along the Rocky Road" }) 
+    const input = screen.getByPlaceholderText("Search the Range");
+    const inputBtn = screen.getByAltText("submit search");
+    expect(title).toBeInTheDocument() 
+    expect(homeLink).toBeInTheDocument() 
+    expect(galleryLink).toBeInTheDocument() 
+    expect(aboutLink).toBeInTheDocument() 
     expect(backLink).toBeInTheDocument()
+    expect(input).toBeInTheDocument();
+    expect(inputBtn).toBeInTheDocument();
   })
 
 
@@ -98,10 +102,10 @@ describe('Location', () => {
        },
       ],
      },
-    ];
+    ] 
     const mockGetCurrentPage = jest.fn(
-     () => "/Colorado/Rocky-Mountain-National-Park"
-    );
+     () => "/place/Colorado/Rocky-Mountain-National-Park"
+    ) 
     const { getByRole } = render(
      <MemoryRouter>
       <Location
@@ -110,12 +114,12 @@ describe('Location', () => {
       />
      </MemoryRouter>
 
-    );
+    ) 
       const title = screen.getByRole('heading', {name: 'Rocky Mountain National Park'})
       const description = screen.getByText('Jagged peaks and alpine lakes')
       const weather = screen.getByText('Cold in winter')
-      const townState = screen.getByText("Estes Park, CO", {exact: false});
-      const directions = screen.getByText("Drive on 36 to Estes Park", {exact: false});
+      const townState = screen.getByText("Estes Park, CO", {exact: false}) 
+      const directions = screen.getByText("Drive on 36 to Estes Park", {exact: false}) 
       const entranceFee = screen.getByText('$25')
       const feeDesc = screen.getByText('day pass')
       const hours = screen.getByText('24 hours / 7 days')
@@ -125,24 +129,24 @@ describe('Location', () => {
       const image = screen.getByAltText('Mountains')
 
       expect(title).toBeInTheDocument()
-      expect(description).toBeInTheDocument();
-      expect(weather).toBeInTheDocument();
-      expect(townState).toBeInTheDocument();
-      expect(directions).toBeInTheDocument();
-      expect(entranceFee).toBeInTheDocument();
+      expect(description).toBeInTheDocument() 
+      expect(weather).toBeInTheDocument() 
+      expect(townState).toBeInTheDocument() 
+      expect(directions).toBeInTheDocument() 
+      expect(entranceFee).toBeInTheDocument() 
       expect(feeDesc).toBeInTheDocument()
-      expect(hours).toBeInTheDocument();
-      expect(rockClimbing).toBeInTheDocument();
-      expect(hiking).toBeInTheDocument();
-      expect(opDesc).toBeInTheDocument();
-      expect(image).toBeInTheDocument();
+      expect(hours).toBeInTheDocument() 
+      expect(rockClimbing).toBeInTheDocument() 
+      expect(hiking).toBeInTheDocument() 
+      expect(opDesc).toBeInTheDocument() 
+      expect(image).toBeInTheDocument() 
   })
 
   it('should render a default message if no data is provided', () => {
-    const mockedAllStateSites = [];
+    const mockedAllStateSites = [] 
     const mockGetCurrentPage = jest.fn(
-     () => "/Colorado/Rocky-Mountain-National-Park"
-    );
+     () => "/place/Colorado/Rocky-Mountain-National-Park"
+    ) 
     const { getByRole } = render(
      <MemoryRouter>
       <Location
