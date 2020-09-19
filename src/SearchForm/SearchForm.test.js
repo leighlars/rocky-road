@@ -6,13 +6,15 @@ import { MemoryRouter } from "react-router-dom";
 
 describe('SearchForm', () => {
   let mockGetCurrentPage
+  let mockSearchSites
   beforeEach(() => {  
     mockGetCurrentPage = jest.fn(() => ":/")
+    mockSearchSites = jest.fn()
     render(
       <MemoryRouter>
         <SearchForm 
         getCurrentPage={mockGetCurrentPage}
-        searchSites={jest.fn()}
+        searchSites={mockSearchSites}
         />
       </MemoryRouter>
     )
@@ -31,6 +33,12 @@ describe('SearchForm', () => {
     expect(input.value).toBe('')
     fireEvent.change(input, { target: { value: "Colorado" } });
     expect(input.value).toBe("Colorado");
+  })
+
+  xit('should fire an event when search button is clicked', () => {
+     const inputBtn = screen.getByAltText("submit search");
+     fireEvent.click(inputBtn)
+      expect(mockSearchSites).toBeCalledTimes(1)
 
   })
 
