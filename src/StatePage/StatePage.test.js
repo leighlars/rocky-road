@@ -42,12 +42,12 @@ describe('StatePage', () => {
        </MemoryRouter>
       );
      const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-     const searchLink = screen.getByRole("link", { name: "Search" });
+     const savedLink = screen.getByRole("link", { name: "Saved" });
      const aboutLink = screen.getByRole("link", { name: "About" });
      const title = screen.getByRole("heading", {name: "Along the Rocky Road"});
      expect(title).toBeInTheDocument();
      expect(homeLink).toBeInTheDocument();
-     expect(searchLink).toBeInTheDocument();
+     expect(savedLink).toBeInTheDocument();
      expect(aboutLink).toBeInTheDocument();
   })
 

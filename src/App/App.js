@@ -7,7 +7,7 @@ import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
 import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
 // import Results from '../Results/Results'
-// import Location from '../Location/Location'
+import Location from '../Location/Location'
 
 class App extends Component {
   constructor() {
@@ -17,9 +17,8 @@ class App extends Component {
      error: "",
      favorites: [],
      allStatesInfo: []
-    };
+    }
   }
-
   componentDidMount = async () => {
     try {
       const allData = await getCleanStatesInfo();
@@ -42,33 +41,42 @@ class App extends Component {
      <Route 
         exact path="/"
         render={() => {
-          return <Landing />
+          return <Landing getCurrentPage={this.getCurrentPage} />;
         }}
         />
         <Route 
         exact path="/home"
         render={() => {
-          return <Home />
+          return <Home getCurrentPage={this.getCurrentPage} />;
         }}
       />
       <Route 
           exact path="/about"
           render={() => {
-            return <About />
+            return <About getCurrentPage={this.getCurrentPage} />;
           }}
       />
       <Route 
           exact path="/:state"
           render={() => {
-            return <StatePage allStatesInfo={this.state.allStatesInfo} getCurrentPage={this.getCurrentPage} />
+            return (
+            <StatePage 
+              allStatesInfo={this.state.allStatesInfo} 
+              getCurrentPage={this.getCurrentPage} 
+            />)
           }}
         />
-     {/* <Route 
+     <Route 
         exact path="/:state/:location"
         render={() => {
-          return <Location />
+          return (
+            <Location
+              allStatesInfo={this.state.allStatesInfo}
+              getCurrentPage={this.getCurrentPage}
+           />
+          );
         }}
-      /> */}
+      />
     </main>
    </div>
   );

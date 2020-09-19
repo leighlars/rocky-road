@@ -2,12 +2,13 @@ import React from 'react'
 import './Landing.scss'
 import Header from '../Header/Header'
 
-const Home = () => {
+const Home = (props) => {
+
   return (
-    <section className='landing'>
-      <Header />
-    </section>
-  )
+   <section className="landing">
+    <Header getCurrentPage={props.getCurrentPage} />
+   </section>
+  );
 
 
 }

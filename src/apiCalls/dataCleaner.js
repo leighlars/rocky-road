@@ -5,23 +5,27 @@ export const formatAllData = async () => {
   const prettyData = response.reduce((places, place) => {
     const sites = place.data
     sites.forEach(site => {
-      const location = {}
-      location.fullName = site.fullName
-      location.description = site.description
-      location.activities = site.activities
-      location.states = site.states
-      location.contactInfo = site.contacts
-      location.entranceFees = site.entranceFees
-      location.operationDesc = site.operatingHours[0].description
-      location.operationHours = site.operatingHours[0].standardHours
-      location.directions = site.directionsInfo
-      location.directionsPage = site.directionsUrl
-      location.town = site.addresses[0].city
-      location.state = site.addresses[0].stateCode
-      location.designation = site.designation
-      location.weather = site.weatherInfo
-      location.name = site.name
-      places.push(location)
+      if (site.longitude < -105) {
+        const location = {}
+        location.fullName = site.fullName
+        location.description = site.description
+        location.activities = site.activities
+        location.states = site.states
+        location.contactInfo = site.contacts
+        location.entranceFees = site.entranceFees
+        location.operationDesc = site.operatingHours[0].description
+        location.operationHours = site.operatingHours[0].standardHours
+        location.directions = site.directionsInfo
+        location.directionsPage = site.directionsUrl
+        location.town = site.addresses[0].city
+        location.state = site.addresses[0].stateCode
+        location.designation = site.designation
+        location.weather = site.weatherInfo
+        location.images = site.images
+        location.url = site.url
+        location.name = site.name
+        places.push(location)
+      }
     })
       return places
   }, [])

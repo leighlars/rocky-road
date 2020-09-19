@@ -1,11 +1,13 @@
 @import '../styles/variables';
 
 .App {
+  // display: block;
   height: 100vh;
   background: #EEEDE805;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
 }
+
 
 main {
   @include columnDisplay();

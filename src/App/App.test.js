@@ -23,12 +23,12 @@ describe('App', () => {
   
      const title = screen.getByRole("heading", {name: "Along the Rocky Road"});
      const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-     const searchLink = screen.getByRole("link", { name: "Search" });
+     const savedwLink = screen.getByRole("link", { name: "Saved" });
      const aboutLink = screen.getByRole("link", { name: "About" });
 
      expect(title).toBeInTheDocument();
      expect(homeLink).toBeInTheDocument();
-     expect(searchLink).toBeInTheDocument();
+     expect(savedwLink).toBeInTheDocument();
      expect(aboutLink).toBeInTheDocument();
 
       fireEvent.click(aboutLink)
@@ -38,7 +38,7 @@ describe('App', () => {
   })
 
   it('should render a page about Colorado when Colorado link is clicked', async () => {
-   getCleanStatesInfo.mockResolvedValueOnce([
+   getCleanStatesInfo.mockResolvedValue([
     {
      state: "Colorado",
      info: [
@@ -174,6 +174,92 @@ describe('App', () => {
    expect(notFoundPark).toBeInTheDocument();
    expect(notFoundRec).toBeInTheDocument();
   });
+
+  it('should go to Location page when Location link is clicked', async () => {
+    getCleanStatesInfo.mockResolvedValue([
+     {
+      state: "Wyoming",
+      info: [{ name: "Tetons", designation: "National Park", city: "Moose" }],
+     },
+     {
+      state: "Colorado",
+      info: [
+       {
+        fullName: "Rocky Mountain National Park",
+        name: "Rocky Mountain",
+        description: "Jagged peaks and alpine lake",
+        designation: "National Park",
+        town: "Estes Park",
+        state: "CO",
+        images: [{ alt: "Mountains", url: "someUrl" }],
+        entranceFees: [
+         { title: "day pass", description: "one day", cost: "25.0000" },
+        ],
+        activities: [{ name: "Hiking" }, { name: "Rock climbing" }],
+        weather: "Cold in winter",
+        directions: "Drive on 36 to Estes Park",
+        directionsPage: "someDriving.url",
+        url: "someMainUrl",
+        operationDesc: "Open year round, Trail Ridge Road closed in winter",
+       },
+       {
+        fullName: "Dinosaur Valley",
+        designation: "National Monument",
+        town: "Somewhere",
+       },
+      ],
+     },
+    ])
+
+
+    const { getByRole } = render(
+     <MemoryRouter>
+      <App />
+     </MemoryRouter>
+    );
+    
+    const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+      expect(homeLink).toBeInTheDocument()
+      fireEvent.click(homeLink)
+
+      const coloradoLink = screen.getByRole('link', {name: 'Colorado'})
+      expect(coloradoLink).toBeInTheDocument()
+      fireEvent.click(coloradoLink)
+
+      const stateHeader = await waitFor(() => screen.getByRole('heading', {name: "Dinosaur Valley"}))
+      const parkName = await waitFor(() => screen.getByRole("heading", { name: "Rocky Mountain National Park" }))
+      expect(stateHeader).toBeInTheDocument()
+      expect(parkName).toBeInTheDocument()
+      fireEvent.click(parkName)
+
+      const locationDesc = screen.getByText("Jagged peaks and alpine lake")
+      expect(locationDesc).toBeInTheDocument()
+  })
+
+  it('should provide default display on Location page if no data provided', async () => {
+    getCleanStatesInfo.mockResolvedValue([{state: 'Colorado', info: [{fullName: "Rocky Mountain National Park", designation: 'National Park'}]}])
+    const { getByRole } = render(
+     <MemoryRouter>
+      <App />
+     </MemoryRouter>
+    );
+    
+
+    const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+      expect(homeLink).toBeInTheDocument()
+      fireEvent.click(homeLink)
+
+      const coloradoLink = screen.getByRole('link', {name: 'Colorado'})
+      expect(coloradoLink).toBeInTheDocument()
+      fireEvent.click(coloradoLink)
+
+      const parkName = await waitFor(() => screen.getByRole("heading", { name: "Rocky Mountain National Park" }))
+      expect(parkName).toBeInTheDocument()
+      fireEvent.click(parkName)
+
+      const defaultMsg = screen.getByText("No data provided. Check back soon!");
+      expect(defaultMsg).toBeInTheDocument()
+  })
   
 
 

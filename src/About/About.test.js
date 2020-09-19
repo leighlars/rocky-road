@@ -5,10 +5,14 @@ import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 
 describe('About', () => {
+  let mockGetByCurrentPage
   beforeEach(() => {
+    mockGetByCurrentPage = jest.fn(() => "/about")
     render(
     <MemoryRouter>
-      <About/>
+      <About
+      getCurrentPage={mockGetByCurrentPage}
+      />
     </MemoryRouter>
     )
   })
@@ -26,7 +30,7 @@ describe('About', () => {
     const information = screen.getByRole('heading', {name: 'Information'})
     const text1 = screen.getByText(/colorado/i) 
     const text2 = screen.getByText(/itinerary/i) 
-    const text3 = screen.getByText(/monument/i) 
+    const text3 = screen.getByText(/national park and monument/i) 
     const link1 = screen.getByRole('link', {name: 'US Recreation API'})
     const link2 = screen.getByRole("link", { name: "Contact the developer" })
 

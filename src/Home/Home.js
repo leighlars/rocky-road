@@ -1,10 +1,9 @@
 import React from 'react'
 import './Home.scss'
 import Header from '../Header/Header'
-// import Search from '../Search/Search'
 import {Link} from 'react-router-dom'
 
-const Home = () => {
+const Home = ({getCurrentPage}) => {
 
   const states = ['Colorado', 'Idaho', 'Montana', 'Wyoming']
   const jsxStates = states.map(state => {
@@ -13,10 +12,8 @@ const Home = () => {
 
   return (
    <section className="home">
-    <Header />
-    <section className="state-box">
-      {jsxStates}
-    </section>
+    <Header getCurrentPage={getCurrentPage} />
+    <article className="state-box">{jsxStates}</article>
    </section>
   );
 }

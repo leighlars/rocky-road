@@ -1,0 +1,268 @@
+@import '../styles/variables';
+
+.location-section {
+  @include columnDisplay();
+  background: rgb(209,199,181);
+  background: linear-gradient(0deg, rgba(209,199,181,1) 16%, rgba(113,183,230,1) 57%, rgba(66,75,47,1) 96%);
+  background-repeat: no-repeat;
+  padding: 2%;
+  height: 100vh;
+  width: 100%; 
+  
+
+   header {
+    @include columnDisplay();
+    align-items: flex-end;
+    margin: 0;
+    width: 100%;
+    h1 {
+      margin-right: 1.5em;
+      font-size: 2.5em;
+      color: white;
+      text-shadow: 2px 2px black;
+    }
+    nav {
+      margin-right: 2.75em;
+    }
+    .nav-btns {
+      font-size: 1em;
+      margin: 0;
+      margin-right: 10px;
+      color: $alabaster;
+      text-shadow: 1.5px 2px black;
+      &:hover {
+        color: $blueSapphire;
+        background: $alabaster;
+        text-shadow: none;
+        border-radius: 4px;
+      }
+    }
+  }
+  h2 {
+     @include headerFont(4em);
+     color: $alabaster;
+     text-align: left;
+     margin-left: 1.5em;
+     text-shadow: 2px 2px black;
+     width: 100%;
+   }
+   .location-description {
+     background: $mutedWhite;
+     border: 2px solid $khaki;
+     border-radius: 14px;
+     box-shadow: 2px 2px 5px black;
+     @include textFont(1em);
+     font-style: italic;
+     font-weight: bold;
+     text-align: left;
+     padding: 1%;
+    //  margin-right: 3em;
+     margin-top: 1em; 
+     width: 90%;
+    }
+    .missing {
+        text-align: center;
+      }
+   .images {
+     @include rowDisplay();
+     justify-content: flex-start;
+     overflow-x: scroll;
+     overflow-y: hidden;
+     max-width: 80vw;
+     height: 250px;
+     margin-top: 1em;
+    }
+    .site-image {
+      margin: 10px;
+      width: 250px;
+      height: 200px;
+      border-radius: 6px;
+      box-shadow: 2px 2px 5px black;
+    }
+}
+
+  .location-info {
+    @include rowDisplay();
+    justify-content: center;
+   
+    .info-box {
+      @include columnDisplay();
+      background: $mutedWhite;
+      border: 2px solid $khaki;
+      border-radius: 14px;
+      box-shadow: 2px 2px 10px black;
+      text-decoration: none;
+      padding: 1.5%;
+      margin: 10px;
+      height: 200px;
+      width: 300px;
+      overflow-y: scroll;
+          h3 {
+            @include headerFont(2em);
+            color: $pewterBlue;
+            margin-bottom: 8px;
+          }
+          span {
+            @include textFont(1em);
+            margin: 5px;
+            text-align: justify;
+            width: 90%;
+          }
+            a {
+              margin-left: 2px;
+            }
+          p { 
+            @include textFont(1em);
+          }
+          .city-state {
+            text-align: center;
+            margin-bottom: 5px;
+          }
+          .fees {
+            padding: 2%;
+            margin-bottom: 3px;
+            text-align: left;
+          }
+        }
+            
+        
+      }
+
+// backgrounds
+
+// colorado
+
+ .rocky-mountain-national-park {
+    background: url(../assets/coRMNP.jpg);
+    background-size: cover;
+    background-position: center;
+  } 
+
+  .black-canyon-of-the-gunnison-national-park {
+  background: url(../assets/coBCGNP.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+  .mesa-verde-national-park {
+    background: url(../assets/coMVNP.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .great-sand-dunes-national-park-and-preserve {
+    background: url(../assets/coDunes.jpg);
+    background-position: center top;
+    background-size: cover;
+  }
+
+  .hovenweep-national-monument {
+    background: url(../assets/coHNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .florissant-fossil-beds-national-monument {
+    background: url(../assets/coFFBNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .curecanti-national-recreation-area {
+    background: url(../assets/coCNRA.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .colorado-national-monument {
+    background: url(../assets/coCNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .yucca-house-national-monument {
+    background: url(../assets/coYHNM.jpeg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  
+
+  // montana
+  .glacier-national-park {
+    background: url(../assets/mtGNP.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+   .little-bighorn-battlefield-national-monument {
+    background: url(../assets/mtLBBNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  }  
+  
+  .grant-kohrs-ranch-national-historic-site {
+    background: url(../assets/mtGKRNHS2.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  
+  .big-hole-national-battlefield {
+    background: url(../assets/mtBHNB.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  // wyoming
+  .grand-teton-national-park {
+    background: url(../assets/wyTetons.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .yellowstone-national-park {
+    background: url(../assets/wyYNP.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+   .bighorn-canyon-national-recreation-area {
+    background: url(../assets/wyBHCNRA2.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .fossil-butte-national-monument {
+    background: url(../assets/wyFBNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  
+  // idaho
+.craters-of-the-moon-national-monument-and-preserve {
+    background: url(../assets/idCOM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  .city-of-rocks-national-preserve {
+    background: url(../assets/idCOR.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .nez-perce-national-historical-park {
+    background: url(../assets/idNPNHP.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+
+  .minidoka-national-historic-site {
+    background: url(../assets/idMHS.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 
+  
+  .hagerman-fossil-beds-national-monument {
+    background: url(../assets/idHFBNM.jpg);
+    background-position: center top;
+    background-size: cover;
+  } 

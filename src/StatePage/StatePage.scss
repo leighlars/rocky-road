@@ -2,6 +2,7 @@
 
 .state-section {
   @include columnDisplay();
+  background: $blueSapphire;
   height: 100vh;
   width: 100%; 
   .state-info {
@@ -43,6 +44,9 @@
         border-radius: 4px;
       }
     }
+      .state-link {
+        display: none;
+      }
   }
 }
 .colorado {
@@ -109,7 +113,7 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 90vw;
-    height: 150px;
+    height: 160px;
     overflow-y: scroll;
       .rec-area, .rec-nf {
         @include columnDisplay();
@@ -121,7 +125,7 @@
         text-decoration: none;
         margin: 10px;
         height: 95px;
-        width: 150px;
+        width: 200px;
         h3, h4 {
           @include headerFont(1.5em);
         }
