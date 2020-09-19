@@ -58,19 +58,19 @@ describe('Results', () => {
 
     it('should display a message if no results are found', () => {
       const mockGetCurrentPage = jest.fn(() => "/results");
-    const mockSearchSites = jest.fn()
+      const mockSearchSites = jest.fn()
     
-    const { getByText, getByPlaceholderText, getByAltText } = render(
-     <MemoryRouter>
-      <Results getCurrentPage={mockGetCurrentPage} searchSites={mockSearchSites} />
-     </MemoryRouter>
-    );
+      const { getByText, getByPlaceholderText, getByAltText } = render(
+      <MemoryRouter>
+        <Results getCurrentPage={mockGetCurrentPage} searchSites={mockSearchSites} />
+      </MemoryRouter>
+      );
 
     
       const input = getByPlaceholderText("Search the Range");
       fireEvent.change(input, { target: { value: "Florida" } })
-      expect(input.value).toBe("Colorado")
-      const inputBtn = getByAltText("submit search");
+      expect(input.value).toBe("Florida")
+      const inputBtn = getByAltText("submit search")
       fireEvent.click(inputBtn);
       expect(mockSearchSites).toBeCalledTimes(1);
       const msg = getByText('No results match your search. Please modify your search and try again.')
