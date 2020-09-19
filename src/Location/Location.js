@@ -47,8 +47,8 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   console.log(siteData)
   
   const images = () => {
-    if (locationName === "Great Sand Dunes National Park & Preserve") {
-     locationName = "Great Sand Dunes National Park And Preserve";
+    if (locationName === "Great Sand Dunes National Park And Preserve") {
+     locationName = "Great Sand Dunes National Park & Preserve";
     }
     if (siteData.fullName === locationName) {
       const imageList = siteData.images.map(image => {
@@ -63,14 +63,14 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
 
   const weather = () => {
-    if (siteData.fullName === locationName) {
+    if (siteData.fullName === locationName ) {
         return (<div className="info-box">
           <h3>Weather</h3>
           <span>
           {siteData.weather}
           </span>
         </div>)
-    }
+    } 
   }
 
 
