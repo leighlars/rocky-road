@@ -148,6 +148,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
         <a href={siteData.url} target="_blank" rel="noopener noreferrer">
          here
         </a>
+        .
        </span>
       );
 
@@ -171,14 +172,15 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
          <br />
          {siteData.directions}
          <br />
-         For specific directions, go
+         For specific directions, go 
          <a
           href={siteData.directionsPage}
           target="_blank"
           rel="noopener noreferrer"
          >
-          here.
+          here
          </a>
+         .
         </span>
        </div>
       );

@@ -108,6 +108,9 @@
             text-align: justify;
             width: 90%;
           }
+            a {
+              margin-left: 2px;
+            }
           p { 
             @include textFont(1em);
           }
@@ -120,8 +123,8 @@
             margin-bottom: 3px;
             text-align: left;
           }
-      
         }
+            
         
       }
 
