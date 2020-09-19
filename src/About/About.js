@@ -49,4 +49,5 @@ const About = (props) => {
 export default About
 About.propTypes = {
  getCurrentPage: PropTypes.func,
+ searchSites: PropTypes.func
 };

@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import {Route, withRouter} from 'react-router-dom'
+import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
 import './App.scss';
 import About from '../About/About'
 import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
-import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
-import Results from '../Results/Results'
 import Location from '../Location/Location'
+import Results from '../Results/Results'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-     parks: [],
-     error: "",
-     favorites: [],
-     allStatesInfo: [], 
-     favorites: []
+      allStatesInfo: [],
+      error: "",
     }
   }
+
   componentDidMount = async () => {
     try {
       const allData = await getCleanStatesInfo();
@@ -36,10 +34,10 @@ class App extends Component {
   } 
 
   searchSites = (query) => {
-    console.log('made it to app')
-    let searchableQuery = query.toLowerCase()
+    // let searchableQuery = query.toLowerCase()
     const allPlaces = this.state.allStatesInfo.reduce((allNames, state) => {
-      if (!allNames.includes(state.name)) {
+      console.log(state)
+      if (!allNames.includes(state.state)) {
         allNames.push(allNames)
       }
       state.forEach(site => {
@@ -114,7 +112,7 @@ class App extends Component {
         render={() => {
          return (
           <Results
-           allStatesInfo={this.state.allStatesInfo}
+          //  allStatesInfo={this.state.allStatesInfo}
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />

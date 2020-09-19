@@ -93,7 +93,6 @@
     @include rowDisplay();
     padding: 0;
     justify-content: center;
-    // margin-top: 2em;
     .info-box {
       @include columnDisplay();
       background: $mutedWhite;

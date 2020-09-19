@@ -2,12 +2,12 @@
 
 form {
   @include rowDisplay();
-  align-items: flex-end;
   margin: 0;
+  padding: 0;
   input {
     background: rgba(238, 237, 232, 0.78);
-    border-radius: 6px;
-    border: 1px solid $pineGreen;
+    border-radius: 6px 0 0 6px;
+    border: 2px solid $pineGreen;
     box-shadow: 1px 1px 5px $pineGreen;
     @include textFont(1em);
     color: black;
@@ -17,13 +17,17 @@ form {
   }
   .search-icon {
     box-shadow: none;
-    background: none;
-    border: none;
-    margin-left: 10px;
-    width: 25px;
+    background: $prussianBlue;
+    border: 1px solid $pineGreen;
+    border-radius: 0 4px 4px 0;
+    margin-top: 4px;
+    padding: 1%;
+    width: 30px;
     &:hover {
-      box-shadow: 1px 1px white;
+      background: $alabaster;
+
     }
   }
+  
 
 }

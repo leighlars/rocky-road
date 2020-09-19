@@ -18,7 +18,7 @@ const Header = ({getCurrentPage, searchSites}) => {
       About
      </Link>
      <Link to="/home" className="nav-btns home-link">
-      Take A Drive
+      Home
      </Link>
      <Link to={`/place/${stateName}`} className="nav-btns state-link">
       Back
@@ -33,4 +33,5 @@ export default Header
 
 Header.propTypes = {
  getCurrentPage: PropTypes.func,
+ searchSites: PropTypes.func
 };

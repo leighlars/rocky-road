@@ -1,10 +1,10 @@
 @import '../styles/variables';
 
 .App {
-  // display: block;
   height: 100vh;
   background: #EEEDE805;
   text-align: center;
+  overflow-x: hidden;
   overflow-x: hidden;
 }
 
@@ -13,6 +13,7 @@ main {
   @include columnDisplay();
   padding: 0;
   width: 100%;
+  overflow-y: scroll;
 }
 
 

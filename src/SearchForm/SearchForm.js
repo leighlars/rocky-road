@@ -2,10 +2,11 @@ import React, {Component} from 'react'
 import './SearchForm.scss'
 import next from '../assets/next.png'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class SearchForm extends Component {
-  constructor(props) {
-    super()
+  constructor({searchSites}) {
+    super({searchSites});
     this.state = {
       query: ''
     }
@@ -18,7 +19,7 @@ class SearchForm extends Component {
   search = (e) => {
     e.preventDefault()
     console.log('hello')
-    this.props.searchSites(this.state.query)
+    // searchSites(this.state.query)
     this.setState({query: ''})
   }
 
@@ -42,3 +43,7 @@ class SearchForm extends Component {
 }
 
 export default SearchForm
+
+SearchForm.propTypes = {
+  searchSites: PropTypes.func
+}

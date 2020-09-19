@@ -3,16 +3,22 @@ import './Results.scss'
 import Header from '../Header/Header'
 import PropTypes from 'prop-types'
 
-const SearchPage = ({getCurrentPage, searchSites}) => {
+const Results = ({getCurrentPage, searchSites}) => {
+
+  
   return(
     <section className='search-section'>
       <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+      <section className='results-section'>
+
+      </section>
     </section>
   )
 }
 
-export default SearchPage
+export default Results
 
-SearchPage.propTypes = {
-  getCurrentPage: PropTypes.func
+Results.propTypes = {
+  getCurrentPage: PropTypes.func,
+  searchSites: PropTypes.func
 } 

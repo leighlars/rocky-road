@@ -85,10 +85,10 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
       return sites
   }
 
- const stateName = getCurrentPage().split("/")[2]
- const sites = jsxSites()
- const natParks = sites.natParks
- const recAreas = sites.recAreas
+  const stateName = getCurrentPage().split("/")[2]
+  const sites = jsxSites()
+  const natParks = sites.natParks
+  const recAreas = sites.recAreas
 
 
   return (
