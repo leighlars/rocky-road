@@ -29,7 +29,7 @@
       padding: 0;
       margin: 0;
       margin-right: 9em;
-      margin-bottom: .5em;
+      margin-bottom: 1em;
     }
     .nav-btns {
       color: $alabaster;
@@ -38,7 +38,19 @@
     }
     form {
       margin-right: 7em;
-      margin-bottom: 1em;
+      margin-bottom: 2em;
+      input {
+        box-shadow: 1px 1px 5px black;
+      }
+      .search-icon {
+        background: transparent;
+        border: 1px solid $pineGreen;
+        box-shadow: 1px 1px 5px black;
+        &:hover {
+          background: $prussianBlue;
+          box-shadow: 1px 1px 5px white;
+        }
+      }
     }
   }
   .home-link, .state-link, .search-link {
