@@ -1,0 +1,35 @@
+@import '../styles/variables';
+
+.search-section {
+  @include columnDisplay();
+  width: 100%;
+  height: 100vh;
+  background: url(../assets/wyAfternoon.jpg);
+  background-position: center;
+  background-size: cover;
+
+  form {
+    display: hidden;
+  }
+  header {
+    margin: 0;
+    h1, .nav-btns {
+      color: $alabaster;
+    }
+    .nav-btns {
+      text-shadow: 1px 1px black;
+      &:hover {
+        color: $prussianBlue;
+        text-shadow: 1px 1px 2px white;
+      }
+    }
+    .state-link {
+      display: none;
+    }
+  }
+  .results-section {
+    @include rowDisplay();
+    width: 80vw;
+    flex-wrap: wrap;
+  }
+}

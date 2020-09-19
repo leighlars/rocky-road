@@ -1,6 +1,6 @@
 @import '../styles/variables';
 
-.about {
+.about-section {
   @include columnDisplay();
   background: url(../assets/coDriving.jpg);
   background-size: cover;
@@ -20,6 +20,9 @@
       }
     }
     .about-link, .state-link {
+      display: none;
+    }
+    form {
       display: none;
     }
   }

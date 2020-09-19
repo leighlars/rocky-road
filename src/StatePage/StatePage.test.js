@@ -32,8 +32,8 @@ describe('StatePage', () => {
         ],
        },
       ];
-      const mockGetCurrentPage = jest.fn(() => "/Colorado");
-      const { getByRole } = render(
+      const mockGetCurrentPage = jest.fn(() => "/place/Colorado");
+      const { getByRole, getByPlaceholderText, getByAltText } = render(
        <MemoryRouter>
         <StatePage
          allStatesInfo={mockedAllStateSites}
@@ -41,14 +41,20 @@ describe('StatePage', () => {
         />
        </MemoryRouter>
       );
-     const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-     const savedLink = screen.getByRole("link", { name: "Saved" });
-     const aboutLink = screen.getByRole("link", { name: "About" });
-     const title = screen.getByRole("heading", {name: "Along the Rocky Road"});
+     const homeLink = getByRole("link", { name: "Home" });
+     const galleryLink = getByRole("link", { name: "Gallery" });
+     const aboutLink = getByRole("link", { name: "About" });
+     const backLink = getByRole("link", { name: "Back" });
+     const title = getByRole("heading", { name: "Along the Rocky Road" });
+     const input = getByPlaceholderText("Search the Range");
+     const inputBtn = getByAltText("submit search");
      expect(title).toBeInTheDocument();
      expect(homeLink).toBeInTheDocument();
-     expect(savedLink).toBeInTheDocument();
+     expect(galleryLink).toBeInTheDocument();
      expect(aboutLink).toBeInTheDocument();
+     expect(backLink).toBeInTheDocument();
+     expect(input).toBeInTheDocument();
+     expect(inputBtn).toBeInTheDocument();
   })
 
     it("should render state sites' information", () => {
@@ -76,7 +82,7 @@ describe('StatePage', () => {
         ],
        },
       ];
-      const mockGetCurrentPage = jest.fn(() => "/Colorado");
+      const mockGetCurrentPage = jest.fn(() => "/place/Colorado");
       const {getByRole} = render(
        <MemoryRouter>
         <StatePage
@@ -109,7 +115,7 @@ describe('StatePage', () => {
           info: []
          },
         ];
-        const mockGetCurrentPage =  jest.fn(() => '/Colorado');
+        const mockGetCurrentPage =  jest.fn(() => '/place/Colorado');
         render(
          <MemoryRouter>
           <StatePage

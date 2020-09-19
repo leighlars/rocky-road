@@ -12,6 +12,7 @@ describe('Home', () => {
       <MemoryRouter>
       <Home 
         getCurrentPage={mockGetCurrentPage}
+        searchSites={jest.fn}
       />
      </MemoryRouter>
     );
@@ -19,18 +20,22 @@ describe('Home', () => {
 
   it('should list 4 state links and a header', () => {
     const title = screen.getByRole("heading", { name: "Along the Rocky Road" });
-    const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-    const savedLink = screen.getByRole("link", { name: "Saved" });
-    const aboutLink = screen.getByRole("link", { name: "About" });
+    const homeLink = screen.getByRole("link", { name: "Home" });
+    const galleryLink = screen.getByRole("link", { name: "Gallery" });
+    const aboutLink = screen.getByRole("link", { name: "About" })
+    const input = screen.getByPlaceholderText("Search the Range");
+    const inputBtn = screen.getByAltText("submit search");
     const co = screen.getByRole('link', {name: 'Colorado'})
     const id = screen.getByRole('link', { name: 'Idaho' })
     const mt = screen.getByRole('link', { name: 'Montana'})
     const wy = screen.getByRole('link', { name: 'Wyoming'})
 
-    expect(title).toBeInTheDocument();
-    expect(homeLink).toBeInTheDocument();
-    expect(savedLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
+    expect(title).toBeInTheDocument()
+    expect(homeLink).not.toBeInTheDocument()
+    expect(galleryLink).toBeInTheDocument()
+    expect(aboutLink).toBeInTheDocument()
+    expect(input).toBeInTheDocument()
+    expect(inputBtn).toBeInTheDocument()
     expect(co).toBeInTheDocument()
     expect(id).toBeInTheDocument()
     expect(mt).toBeInTheDocument()

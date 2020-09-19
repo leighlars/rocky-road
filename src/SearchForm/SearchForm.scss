@@ -1,0 +1,33 @@
+@import '../styles/variables';
+
+form {
+  @include rowDisplay();
+  margin: 0;
+  padding: 0;
+  input {
+    background: rgba(238, 237, 232, 0.78);
+    border-radius: 6px 0 0 6px;
+    border: 2px solid $pineGreen;
+    box-shadow: 1px 1px 5px $pineGreen;
+    @include textFont(1em);
+    color: black;
+    font-weight: bold;
+    padding: 2%;
+    width: 200px;
+  }
+  .search-icon {
+    box-shadow: none;
+    background: $prussianBlue;
+    border: 1px solid $pineGreen;
+    border-radius: 0 4px 4px 0;
+    margin-top: 4px;
+    padding: 1%;
+    width: 30px;
+    &:hover {
+      background: $alabaster;
+
+    }
+  }
+  
+
+}

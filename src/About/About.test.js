@@ -12,6 +12,7 @@ describe('About', () => {
     <MemoryRouter>
       <About
       getCurrentPage={mockGetByCurrentPage}
+      searchSites={jest.fn()}
       />
     </MemoryRouter>
     )
@@ -19,9 +20,11 @@ describe('About', () => {
 
   it('should render a header', () => {
     const title = screen.getByRole('heading', {name: 'Along the Rocky Road'})
-    const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+    const homeLink = screen.getByRole('link', {name: 'Home'})
+    const galleryLink = screen.getByRole("link", { name: "Gallery" });
     expect(title).toBeInTheDocument()
     expect(homeLink).toBeInTheDocument()
+    expect(galleryLink).toBeInTheDocument()
   })
 
   it('should render 3 information boxes', () => {
@@ -29,7 +32,7 @@ describe('About', () => {
     const activities = screen.getByRole("heading", { name: "Activities" })
     const information = screen.getByRole('heading', {name: 'Information'})
     const text1 = screen.getByText(/colorado/i) 
-    const text2 = screen.getByText(/itinerary/i) 
+    const text2 = screen.getByText(/pictures/i) 
     const text3 = screen.getByText(/national park and monument/i) 
     const link1 = screen.getByRole('link', {name: 'US Recreation API'})
     const link2 = screen.getByRole("link", { name: "Contact the developer" })

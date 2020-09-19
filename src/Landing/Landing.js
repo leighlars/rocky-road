@@ -1,16 +1,20 @@
 import React from 'react'
 import './Landing.scss'
 import Header from '../Header/Header'
+import PropTypes from 'prop-types'
 
-const Home = (props) => {
 
+const Landing = ({getCurrentPage, searchSites}) => {
   return (
    <section className="landing">
-    <Header getCurrentPage={props.getCurrentPage} />
+    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
    </section>
-  );
-
-
+  )
 }
 
-export default Home
+export default Landing
+
+Landing.propTypes = {
+ getCurrentPage: PropTypes.func,
+ searchSites: PropTypes.func
+};

@@ -16,23 +16,27 @@ describe('App', () => {
      {state: "Idaho", info: [{ fullName: "Sawtooth Mtns", name: "Sawtooth", town: "Boise", designation: 'National Park'  }]},
     ]);
 
-    const {getByRole} = render(
+    const {getByRole, getByPlaceholderText, getByAltText} = render(
     <MemoryRouter>
       <App/>
     </MemoryRouter>)
   
-     const title = screen.getByRole("heading", {name: "Along the Rocky Road"});
-     const homeLink = screen.getByRole("link", { name: "Take A Drive" });
-     const savedwLink = screen.getByRole("link", { name: "Saved" });
-     const aboutLink = screen.getByRole("link", { name: "About" });
+     const title = getByRole("heading", {name: "Along the Rocky Road"});
+     const homeLink = getByRole("link", { name: "Home" });
+     const galleryLink = getByRole("link", { name: "Gallery" });
+     const aboutLink = getByRole("link", { name: "About" });
+     const input = getByPlaceholderText("Search the Range");
+     const inputBtn = getByAltText("submit search");
 
      expect(title).toBeInTheDocument();
      expect(homeLink).toBeInTheDocument();
-     expect(savedwLink).toBeInTheDocument();
+     expect(galleryLink).toBeInTheDocument();
      expect(aboutLink).toBeInTheDocument();
+     expect(input).toBeInTheDocument();
+     expect(inputBtn).toBeInTheDocument();
 
       fireEvent.click(aboutLink)
-      const aboutSec = screen.getByRole('heading', {name: 'Places'})
+      const aboutSec = getByRole('heading', {name: 'Places'})
       expect(aboutSec).toBeInTheDocument()
       
   })
@@ -97,16 +101,16 @@ describe('App', () => {
      </MemoryRouter>
     );
 
-      const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+      const homeLink = getByRole('link', {name: 'Home'})
       expect(homeLink).toBeInTheDocument()
       fireEvent.click(homeLink)
 
-      const coloradoLink = screen.getByRole('link', {name: 'Colorado'})
+      const coloradoLink = getByRole('link', {name: 'Colorado'})
       expect(coloradoLink).toBeInTheDocument()
       fireEvent.click(coloradoLink)
 
-      const stateHeader = screen.getByRole('heading', {name: "Colorado"})
-      const parkName = await waitFor(() => screen.getByRole("heading", { name: "Colorado NP" }))
+      const stateHeader = getByRole('heading', {name: "Colorado"})
+      const parkName = await waitFor(() => getByRole("heading", { name: "Colorado NP" }))
       expect(stateHeader).toBeInTheDocument()
       expect(parkName).toBeInTheDocument()
   })
@@ -158,17 +162,17 @@ describe('App', () => {
     </MemoryRouter>
    );
 
-   const homeLink = screen.getByRole("link", { name: "Take A Drive" });
+   const homeLink = getByRole("link", { name: "Home" });
    expect(homeLink).toBeInTheDocument();
    fireEvent.click(homeLink);
 
-   const coloradoLink = screen.getByRole("link", { name: "Colorado" });
+   const coloradoLink = getByRole("link", { name: "Colorado" });
    expect(coloradoLink).toBeInTheDocument();
    fireEvent.click(coloradoLink);
 
-   const stateHeader = screen.getByRole("heading", { name: "Colorado" });
-   const notFoundPark = screen.getByRole("heading", { name: "No National Parks found" });
-   const notFoundRec = screen.getByRole("heading", { name: "No National Parks found" });
+   const stateHeader = getByRole("heading", { name: "Colorado" });
+   const notFoundPark = getByRole("heading", { name: "No National Parks found" });
+   const notFoundRec = getByRole("heading", { name: "No National Parks found" });
 
    expect(stateHeader).toBeInTheDocument();
    expect(notFoundPark).toBeInTheDocument();
@@ -212,52 +216,52 @@ describe('App', () => {
     ])
 
 
-    const { getByRole } = render(
+    const { getByRole, getByText } = render(
      <MemoryRouter>
       <App />
      </MemoryRouter>
     );
     
-    const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+    const homeLink = getByRole('link', {name: 'Home'})
       expect(homeLink).toBeInTheDocument()
       fireEvent.click(homeLink)
 
-      const coloradoLink = screen.getByRole('link', {name: 'Colorado'})
+      const coloradoLink = getByRole('link', {name: 'Colorado'})
       expect(coloradoLink).toBeInTheDocument()
       fireEvent.click(coloradoLink)
 
-      const stateHeader = await waitFor(() => screen.getByRole('heading', {name: "Dinosaur Valley"}))
-      const parkName = await waitFor(() => screen.getByRole("heading", { name: "Rocky Mountain National Park" }))
+      const stateHeader = await waitFor(() => getByRole('heading', {name: "Dinosaur Valley"}))
+      const parkName = await waitFor(() => getByRole("heading", { name: "Rocky Mountain National Park" }))
       expect(stateHeader).toBeInTheDocument()
       expect(parkName).toBeInTheDocument()
       fireEvent.click(parkName)
 
-      const locationDesc = screen.getByText("Jagged peaks and alpine lake")
+      const locationDesc = getByText("Jagged peaks and alpine lake")
       expect(locationDesc).toBeInTheDocument()
   })
 
   it('should provide default display on Location page if no data provided', async () => {
+
     getCleanStatesInfo.mockResolvedValue([{state: 'Colorado', info: [{fullName: "Rocky Mountain National Park", designation: 'National Park'}]}])
-    const { getByRole } = render(
+    const { getByRole, getByText } = render(
      <MemoryRouter>
       <App />
      </MemoryRouter>
     );
     
-
-    const homeLink = screen.getByRole('link', {name: 'Take A Drive'})
+    const homeLink = getByRole('link', {name: 'Home'})
       expect(homeLink).toBeInTheDocument()
       fireEvent.click(homeLink)
 
-      const coloradoLink = screen.getByRole('link', {name: 'Colorado'})
+      const coloradoLink = getByRole('link', {name: 'Colorado'})
       expect(coloradoLink).toBeInTheDocument()
       fireEvent.click(coloradoLink)
 
-      const parkName = await waitFor(() => screen.getByRole("heading", { name: "Rocky Mountain National Park" }))
+      const parkName = await waitFor(() => getByRole("heading", { name: "Rocky Mountain National Park" }))
       expect(parkName).toBeInTheDocument()
       fireEvent.click(parkName)
 
-      const defaultMsg = screen.getByText("No data provided. Check back soon!");
+      const defaultMsg = getByText("No data provided. Check back soon!");
       expect(defaultMsg).toBeInTheDocument()
   })
   

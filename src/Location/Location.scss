@@ -5,16 +5,16 @@
   background: rgb(209,199,181);
   background: linear-gradient(0deg, rgba(209,199,181,1) 16%, rgba(113,183,230,1) 57%, rgba(66,75,47,1) 96%);
   background-repeat: no-repeat;
-  padding: 2%;
+  padding: 3%;
   height: 100vh;
   width: 100%; 
-  
-
+    
    header {
     @include columnDisplay();
     align-items: flex-end;
-    margin: 0;
+    padding: 0;
     width: 100%;
+    margin: 0;
     h1 {
       margin-right: 1.5em;
       font-size: 2.5em;
@@ -22,7 +22,12 @@
       text-shadow: 2px 2px black;
     }
     nav {
-      margin-right: 2.75em;
+      margin-right: 3em;
+      padding: 0;
+    }
+    form {
+      margin-right: 3em;
+      padding: .5%;
     }
     .nav-btns {
       font-size: 1em;
@@ -37,11 +42,14 @@
         border-radius: 4px;
       }
     }
+   
+    
   }
   h2 {
-     @include headerFont(4em);
+     @include headerFont(5em);
      color: $alabaster;
      text-align: left;
+    //  margin-top: 1em;
      margin-left: 1.5em;
      text-shadow: 2px 2px black;
      width: 100%;
@@ -69,13 +77,13 @@
      overflow-x: scroll;
      overflow-y: hidden;
      max-width: 80vw;
-     height: 250px;
+     min-height: 175px;
      margin-top: 1em;
     }
     .site-image {
-      margin: 10px;
+      margin-right: 10px;
       width: 250px;
-      height: 200px;
+      height: 175px;
       border-radius: 6px;
       box-shadow: 2px 2px 5px black;
     }
@@ -83,8 +91,8 @@
 
   .location-info {
     @include rowDisplay();
+    padding: 0;
     justify-content: center;
-   
     .info-box {
       @include columnDisplay();
       background: $mutedWhite;
@@ -170,7 +178,7 @@
 
   .curecanti-national-recreation-area {
     background: url(../assets/coCNRA.jpg);
-    background-position: center top;
+    background-position: center;
     background-size: cover;
   } 
 
@@ -243,7 +251,7 @@
     background-position: center top;
     background-size: cover;
   } 
-  .city-of-rocks-national-preserve {
+  .city-of-rocks-national-reserve {
     background: url(../assets/idCOR.jpg);
     background-position: center top;
     background-size: cover;

@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
-import './Search.scss'
+import './SearchForm.scss'
 import next from '../assets/next.png'
 import {Link} from 'react-router-dom'
-class Search extends Component {
-  constructor(props) {
-    super()
+import PropTypes from 'prop-types'
+
+class SearchForm extends Component {
+  constructor({searchSites}) {
+    super({searchSites});
     this.state = {
       query: ''
     }
@@ -16,12 +18,14 @@ class Search extends Component {
 
   search = (e) => {
     e.preventDefault()
-    this.props.searchSites(this.state.query)
+    console.log('hello')
+    // searchSites(this.state.query)
+    this.setState({query: ''})
   }
 
   render() {
     return(
-      <form>
+      <form onSubmit={this.search}>
         <input 
           name='query'
           placeholder='Search the Range'
@@ -30,18 +34,16 @@ class Search extends Component {
           onChange={this.handleChange}
           value={this.state.query}
        />
-        <Link to="/results">
-          <input
-            type="image"
-            src={next}
-            alt="submit search"
-            className="search-icon"
-            onClick={(e) => this.search}
-          />
+        <Link to="/results" className='search-form-link'>
+          <img src={next} alt="submit search" className="search-icon" />
         </Link>
       </form>
     )
   }
 }
 
-export default Search
+export default SearchForm
+
+SearchForm.propTypes = {
+  searchSites: PropTypes.func
+}
