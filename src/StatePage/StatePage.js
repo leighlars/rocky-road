@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import PropTypes from "prop-types";
 
 
-const StatePage = ({allStatesInfo, getCurrentPage}) => {
+const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
 
   const getFullStateName = (stateAbbrev) => {
     if (stateAbbrev === "CO") {
@@ -25,7 +25,8 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
   }
   
   const getAllStateSites = () => {
-    const currentPage = getCurrentPage().split('/')[1]
+    const currentPage = getCurrentPage().split('/')[2]
+    console.log(currentPage)
     const stateSites = allStatesInfo.filter(state => {
       return state.state === currentPage 
     })
@@ -59,7 +60,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
         const state = getFullStateName(park.state);
         const location = getLocationName(park.fullName)
         return (
-          <Link to={`/${state}/${location}`} className="park" key={`${park.name}`}>
+          <Link to={`/place/${state}/${location}`} className="park" key={`${park.name}`}>
            <h3>{park.fullName}</h3>
            <p>{park.town}</p>
           </Link>
@@ -72,7 +73,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
         const stateName = getFullStateName(area.state)
         const location = getLocationName(area.fullName)
          return (
-          <Link to={`/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
+          <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
            <h4>{area.fullName}</h4>
            <p>{area.town}</p>
           </Link>
@@ -84,7 +85,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
       return sites
   }
 
- const stateName = getCurrentPage().split("/")[1]
+ const stateName = getCurrentPage().split("/")[2]
  const sites = jsxSites()
  const natParks = sites.natParks
  const recAreas = sites.recAreas
@@ -92,7 +93,7 @@ const StatePage = ({allStatesInfo, getCurrentPage}) => {
 
   return (
    <section className={`state-section ${stateName.toLowerCase()}`}>
-    <Header getCurrentPage={getCurrentPage} />
+    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
     <section className="state-info">
      <h2 className="state-header">{stateName}</h2>
      <h2>National Parks</h2>

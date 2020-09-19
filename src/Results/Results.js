@@ -1,14 +1,12 @@
 import React from 'react'
-import './SearchPage.scss'
+import './Results.scss'
 import Header from '../Header/Header'
-import SearchForm from '../SearchForm/SearchForm'
 import PropTypes from 'prop-types'
 
-const SearchPage = ({getCurrentPage}) => {
+const SearchPage = ({getCurrentPage, searchSites}) => {
   return(
     <section className='search-section'>
-      <Header getCurrentPage={getCurrentPage}/>
-      <SearchForm />
+      <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
     </section>
   )
 }

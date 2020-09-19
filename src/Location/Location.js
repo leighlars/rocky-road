@@ -3,9 +3,9 @@ import './Location.scss'
 import Header from '../Header/Header'
 import PropTypes from "prop-types";
 
-const Location = ({getCurrentPage, allStatesInfo}) => {
+const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
 
-  let locationName = getCurrentPage().split('/')[2].split('-').join(' ')
+  let locationName = getCurrentPage().split('/')[3].split('-').join(' ')
 
   const setBackgroundImage = () => {
     if (locationName === 'Great Sand Dunes National Park & Preserve') {
@@ -28,7 +28,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   }
   
   const getSiteInfo = () => {
-    const stateName = getCurrentPage().split('/')[1]
+    const stateName = getCurrentPage().split('/')[2]
     const defaultSite = {description: 'No data provided. Please modify your search.'}
     const siteInfo = allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
@@ -186,9 +186,8 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
 
   return (
    <section className={`location-section ${setBackgroundImage()}`}>
-    <Header getCurrentPage={getCurrentPage} />
+    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
     <h2 className="location-header">{getLocationName()}</h2>
-
     {description()}
     {images()}
     <section className="location-info">

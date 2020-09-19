@@ -6,7 +6,7 @@ import Landing from '../Landing/Landing'
 import Home from '../Home/Home'
 import StatePage from '../StatePage/StatePage'
 import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
-import Results from '../SearchPage/SearchPage'
+import Results from '../Results/Results'
 import Location from '../Location/Location'
 
 class App extends Component {
@@ -35,6 +35,25 @@ class App extends Component {
     return this.props.history.location.pathname
   } 
 
+  searchSites = (query) => {
+    console.log('made it to app')
+    let searchableQuery = query.toLowerCase()
+    const allPlaces = this.state.allStatesInfo.reduce((allNames, state) => {
+      if (!allNames.includes(state.name)) {
+        allNames.push(allNames)
+      }
+      state.forEach(site => {
+        if (!allNames.includes(site.fullName)) {
+          allNames.push(site.fullName)
+        }
+      })
+      return allNames
+    }, [])
+    console.log(allPlaces)
+  }
+
+
+
   render() { 
     return (
      <div className="App">
@@ -43,54 +62,61 @@ class App extends Component {
         exact
         path="/"
         render={() => {
-         return <Landing getCurrentPage={this.getCurrentPage} />;
+         return <Landing getCurrentPage={this.getCurrentPage} searchSites={this.searchSites} />;
         }}
        />
        <Route
         exact
         path="/home"
         render={() => {
-         return <Home getCurrentPage={this.getCurrentPage} />;
+         return (
+          <Home getCurrentPage={this.getCurrentPage} searchSites={this.searchSites} />
+         );
         }}
        />
        <Route
         exact
         path="/about"
         render={() => {
-         return <About getCurrentPage={this.getCurrentPage} />;
+         return (
+          <About getCurrentPage={this.getCurrentPage} searchSites={this.searchSites} />
+         );
         }}
        />
        <Route 
-       exact path ='/:state'
+       exact path ='/place/:state'
        render={() => {
          return (
-           <StatePage
+          <StatePage
            allStatesInfo={this.state.allStatesInfo}
            getCurrentPage={this.getCurrentPage}
-           />
-         )
+           searchSites={this.searchSites}
+          />
+         );
        }}
        />
        <Route
         exact
-        path="/:state/:location"
+        path="/place/:state/:location"
         render={() => {
          return (
           <Location
            allStatesInfo={this.state.allStatesInfo}
            getCurrentPage={this.getCurrentPage}
+           searchSites={this.searchSites}
           />
          );
         }}
        />
        <Route
         exact
-        path="/search"
+        path="/results"
         render={() => {
          return (
           <Results
-            allStatesInfo={this.state.allStatesInfo}
-            getCurrentPage={this.getCurrentPage}
+           allStatesInfo={this.state.allStatesInfo}
+           getCurrentPage={this.getCurrentPage}
+           searchSites={this.searchSites}
           />
          );
         }}

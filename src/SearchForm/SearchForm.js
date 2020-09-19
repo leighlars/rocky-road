@@ -17,12 +17,14 @@ class SearchForm extends Component {
 
   search = (e) => {
     e.preventDefault()
+    console.log('hello')
     this.props.searchSites(this.state.query)
+    this.setState({query: ''})
   }
 
   render() {
     return(
-      <form>
+      <form onSubmit={this.search}>
         <input 
           name='query'
           placeholder='Search the Range'
@@ -32,13 +34,7 @@ class SearchForm extends Component {
           value={this.state.query}
        />
         <Link to="/results" className='search-form-link'>
-          <input
-            type="image"
-            src={next}
-            alt="submit search"
-            className="search-icon"
-            onClick={(e) => this.search}
-          />
+          <img src={next} alt="submit search" className="search-icon" />
         </Link>
       </form>
     )

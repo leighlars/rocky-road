@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 const About = (props) => {
   return (
    <section className="about-section">
-    <Header getCurrentPage={props.getCurrentPage} />
+    <Header getCurrentPage={props.getCurrentPage} searchSites={props.searchSites} />
     <section className="about-boxes">
      <article className="about-box">
       <h2>Places</h2>

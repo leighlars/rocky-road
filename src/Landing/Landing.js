@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 const Landing = (props) => {
   return (
    <section className="landing">
-    <Header getCurrentPage={props.getCurrentPage} />
+    <Header getCurrentPage={props.getCurrentPage} searchSites={props.searchSites} />
    </section>
   )
 }
