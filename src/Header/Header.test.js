@@ -8,15 +8,15 @@ describe('Header', () => {
   
   it('should render a title, and 3 nav buttons', () => {
     let mockGetByCurrentPage = jest.fn(() => "/:page")
-    const {getByRole} = render(<MemoryRouter>
+    const {getByRole, getByPlaceholderText, getByAltText} = render(<MemoryRouter>
       <Header getCurrentPage={mockGetByCurrentPage}/>
       </MemoryRouter>)
-    const title = screen.getByRole('heading', {name: 'Along the Rocky Road'})
-    const homeLink = screen.getByRole('link', {name: 'Home'})
-    const galleryLink = screen.getByRole("link", { name: "Gallery" });
-    const aboutLink = screen.getByRole("link", { name: "About" });
-    const input = screen.getByPlaceholderText('Search the Range')
-    const inputBtn = screen.getByAltText('submit search')
+    const title = getByRole('heading', {name: 'Along the Rocky Road'})
+    const homeLink = getByRole('link', {name: 'Home'})
+    const galleryLink = getByRole("link", { name: "Gallery" });
+    const aboutLink = getByRole("link", { name: "About" });
+    const input = getByPlaceholderText('Search the Range')
+    const inputBtn = getByAltText('submit search')
 
     expect(title).toBeInTheDocument()
     expect(homeLink).toBeInTheDocument();
