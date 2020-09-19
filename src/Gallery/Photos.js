@@ -10,7 +10,6 @@ import coSnowRoad from "../assets/coSnowRoad.jpg";
 import idCOM from '../assets/idCOM.jpg'
 import idMHS from "../assets/idMHS.jpg";
 import idSawtooth from "../assets/idSawtooth.jpg";
-import idSky from "../assets/idSky.jpg";
 import idSunset from "../assets/idSunset.jpg";
 import idSunset2 from "../assets/idSunset2.jpg";
 import idSUP from "../assets/idSUP.jpg";
@@ -39,7 +38,7 @@ export const photos = [
   src: maroonBells,
   width: 1,
   height: 1,
-  alt: "mountain image from colorado",
+  alt: "mountains from colorado",
  },
  {
   src: coNatMon,
@@ -63,7 +62,7 @@ export const photos = [
   src: coHNM,
   width: 3,
   height: 4,
-  alt: "mountain image from colorado",
+  alt: "ruins from colorado",
  },
  {
   src: coMVNP,
@@ -81,111 +80,121 @@ export const photos = [
   src: coSnowRoad,
   width: 4,
   height: 3,
-  alt: "mountain image from colorado",
- },
- {
-  src: idCOM,
-  width: 4,
-  height: 3,
+  alt: "snowy mountains from colorado",
  },
  {
   src: idMHS,
   width: 4,
   height: 3,
+  alt: "minidoka historic site idaho",
  },
  {
   src: idSawtooth,
   width: 4,
   height: 3,
+  alt: "mountains from idaho",
  },
- {
-  src: idSky,
-  width: 4,
-  height: 3,
- },
+
  {
   src: idSUP,
   width: 4,
   height: 3,
+  alt: "stand up paddle board on lake from idaho",
  },
  {
   src: idSunset,
   width: 4,
   height: 3,
+  alt: "sunset mountain from idaho",
  },
  {
   src: idSunset2,
   width: 4,
   height: 3,
+  alt: "sunset mountain from idaho",
  },
  {
   src: idCOM,
   width: 4,
   height: 3,
+  alt: "mountain image from idaho",
  },
  {
   src: mtBHNB,
   width: 4,
   height: 3,
+  alt: "bighorn national historic battlefield from montana",
  },
  {
   src: mtFall,
   width: 4,
   height: 3,
+  alt: "mountain fall colors from montana",
  },
  {
   src: mtHighway,
   width: 3,
   height: 3,
+  alt: "mountain roadway from montana",
  },
  {
   src: mtGNP,
   width: 4,
   height: 3,
+  alt: "glacier national park from montana",
  },
  {
   src: mtGKRNHS2,
   width: 4,
   height: 3,
+  alt: "grant-kohrs ranch national historic site from montana",
  },
  {
   src: mtRoad,
   width: 4,
   height: 3,
+  alt: "mountain highway with flowers from montana",
  },
  {
   src: snowyPeak,
   width: 4,
   height: 3,
+  alt: "snowy peak from montana",
  },
  {
   src: wyAfternoon,
   width: 4,
   height: 3,
+  alt: "mountain image from wyoming",
  },
  {
   src: wyBCNRA2,
   width: 4,
   height: 4,
+  alt: "bighorn canyon national recreation site",
  },
  {
   src: wyFarm,
   width: 3,
   height: 3,
+  alt: "farm with grand tetons behind it from wyoming",
  },
  {
   src: wyPeak,
   width: 4,
   height: 3,
+  alt: "snowy peak from wyoming",
  },
  {
   src: wyYNP,
   width: 4,
   height: 3,
+  alt: "myellowstone national park geyser from wyoming",
  },
  {
   src: wyTetons,
   width: 4,
   height: 3,
+  alt: "grant tetons national park from wyoming",
  },
 ];
