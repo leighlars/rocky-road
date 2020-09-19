@@ -45,6 +45,20 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
   
   const siteData = getSiteInfo()
   console.log(siteData)
+
+
+  const description = () => {
+    if (siteData.description) {
+      return (
+       <span className="location-description">{siteData.description}</span>
+      )
+    } else {
+      return (
+       <span className="location-description missing">No data provided. Check back soon!</span>
+      );
+    }
+
+  }
   
   const images = () => {
     if (locationName === "Great Sand Dunes National Park And Preserve") {
@@ -175,7 +189,7 @@ const Location = ({getCurrentPage, allStatesInfo}) => {
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header getCurrentPage={getCurrentPage} />
     <h2 className="location-header">{getLocationName()}</h2>
-    <span className="location-description">{siteData.description}</span>
+    {description()}
     {images()}
     <section className="location-info">
      {jsxActivities()}

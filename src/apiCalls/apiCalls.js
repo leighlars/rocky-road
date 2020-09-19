@@ -6,7 +6,7 @@ export const getAllData = async () => {
     return getStateData(state)
   })
   const data = Promise.all(allStatesData)
-  return data
+  // return data
 }
 
 const getStateData = async (state) => {

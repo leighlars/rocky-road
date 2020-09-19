@@ -59,7 +59,10 @@
     //  margin-right: 3em;
      margin-top: 1em; 
      width: 90%;
-   }
+    }
+    .missing {
+        text-align: center;
+      }
    .images {
      @include rowDisplay();
      justify-content: flex-start;
@@ -105,21 +108,22 @@
             text-align: justify;
             width: 90%;
           }
+          p { 
+            @include textFont(1em);
+          }
           .city-state {
             text-align: center;
             margin-bottom: 5px;
-          }
-          p { 
-            @include textFont(1em);
           }
           .fees {
             padding: 2%;
             margin-bottom: 3px;
             text-align: left;
           }
+      
         }
         
-}
+      }
 
 // backgrounds
 
