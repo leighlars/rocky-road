@@ -32,10 +32,8 @@
 
 .existing-itineraries {
   @include columnDisplay();
-  justify-content: space-evenly;
   @include textFont(1.5em);
   color: $alabaster;
-  height: 20%;
   margin-top: 2em;
 
 }

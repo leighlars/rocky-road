@@ -3,6 +3,9 @@
 .add-button {
   border: none;
   padding: 0;
+  @include headerFont(1.25em);
+  width: 5em;
+  text-shadow: none;
   color: $prussianBlue;
   background: $alabaster;
   margin-left: 10px;

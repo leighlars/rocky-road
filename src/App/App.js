@@ -43,6 +43,8 @@ class App extends Component {
     try {
       const allData = await getCleanStatesInfo();
       this.setState({allStatesInfo: allData})
+      const trips = JSON.parse(localStorage.getItem('savedTrips'))
+      this.setState({itineraries: trips})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
@@ -82,6 +84,15 @@ class App extends Component {
     itinerariesCopy.push(newTrip)
     this.setState({itineraries: itinerariesCopy})
     localStorage.setItem('savedTrips', JSON.stringify(this.state.itineraries))
+  }
+
+  addToExistingTrip = (siteData, tripName) => {
+    const itinerariesCopy = this.state.itineraries;
+    const foundExistingTrip = itinerariesCopy.find(trip => {
+      return trip.name === tripName
+    })
+    foundExistingTrip.places.push(siteData)
+    this.setState({itineraries: itinerariesCopy})
   }
 
 
@@ -149,6 +160,7 @@ class App extends Component {
            searchSites={this.searchSites}
            itineraries={this.state.itineraries}
            addNewTrip={this.addNewTrip}
+           addToExistingTrip={this.addToExistingTrip}
           />
          );
         }}

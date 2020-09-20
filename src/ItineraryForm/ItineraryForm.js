@@ -9,71 +9,90 @@ class ItineraryForm extends Component {
    startDate: "",
    endDate: "",
    tripName: "",
-   places: [],
    display: 'itinerary-modal'
   };
  }
 
- handleChange = (event) => {
+handleChange = (event) => {
   this.setState({ [event.target.name]: event.target.value });
- };
+}
+
+addToExistingTrip = (e) => {
+  e.preventDefault()
+  const existingTrip = e.target.value
+  
+}
+
+showItineraries = () => {
+  const tripDetails = this.props.itineraries.map(trip => {
+    return(
+    <option value={trip.name}>{trip.name}</option>
+    )
+  })
+  return (
+   <select id="trips">
+    {tripDetails}
+   </select>
+  );
+}
 
 addToTrips = (e) => {
   e.preventDefault();
-  this.props.addsNewTrip(this.state, this.props.siteData)
+  this.props.addNewTrip(this.state, this.props.siteData)
+  this.hideModal()
 }
 
-hideModal = () => {
-  this.setState({display: 'itinerary-modal-hidden'})
-}
-
-
+  hideModal = () => {
+    this.setState({display: 'itinerary-modal-hidden'})
+  }
 
  render() {
   return (
    <section className={this.state.display}>
-     <button 
-     className='exit-button' 
-     onClick={this.hideModal} 
-     >
-    <img src={exitIcon} alt='exit-icon'/></button>
-      <span className="existing-itineraries">
-       Add to existing trip:
-    </span>
-    
+    <button className="exit-button" onClick={this.hideModal}>
+     <img src={exitIcon} alt="exit-icon" />
+    </button>
+    <span className="existing-itineraries">Add to existing trip:</span>
+      {this.showItineraries()}
     <form className="itinerary-form">
-      <span className='form-prompt'>
-        Or Start A New Trip:
-      </span>
+     <span className="form-prompt">Or Start A New Trip:</span>
      <input
       aria-label="name-input"
       type="text"
-      nameName="tripName"
+      name="tripName"
       placeholder="Trip Name"
       onChange={this.handleChange}
+      value={this.state.tripName}
      />
      <label for="dates" class="date-label">
       Type or select calendar date:
      </label>
-     <div className='date-inputs'>
+     <div className="date-inputs">
       <input
-        type="date"
-        className="date-input"
-        min="2020-09-20"
-        max="2021-08-30"
-        name="startDate"
-        required
+       type="date"
+       className="date-input"
+       min="2020-09-20"
+       max="2021-08-30"
+       name="startDate"
+       onChange={this.handleChange}
+      //  value={this.state.startDate}
+       required
       />
       <input
-        type="date"
-        className="date-input"
-        min="2020-09-20"
-        max="2021-08-30"
-        name="endDate"
-        required
+       type="date"
+       className="date-input"
+       min="2020-09-20"
+       max="2021-08-30"
+       name="endDate"
+       onChange={this.handleChange}
+       value={this.state.endDate}
+       required
       />
      </div>
-    <button className='add-trip-button' onClick={this.addToTrips}> Add {this.props.siteData.fullName}</button>
+     <button className="add-trip-button" onClick={this.addToTrips}>
+      {" "}
+      Add {this.props.siteData.fullName}
+     </button>
     </form>
    </section>
   );

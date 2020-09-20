@@ -22,7 +22,11 @@ class AddButton extends Component {
           Add To Trips
         </button>
         {this.state.showModal === true &&
-          <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} addNewTrip={this.props.addNewTrip} />
+          <ItineraryForm 
+          itineraries={this.props.itineraries} 
+          siteData={this.props.siteData} 
+          addNewTrip={this.props.addNewTrip} 
+          addToExistingTrip={this.props.addToExistingTrip} />
         }
       </span>
     )
@@ -35,5 +39,6 @@ export default AddButton
 AddButton.propTypes = {
   itineraries: PropTypes.array,
   siteData: PropTypes.object,
-
+  addToExistingTrip: PropTypes.func,
+  addNewTrip: PropTypes.func
 }

@@ -48,7 +48,7 @@
     @include columnDisplay();
     width: 90%;
     align-items: baseline;
-    // justify-content: flex-start;
+    padding: 0;
     h2 {
        @include headerFont(4em);
        color: $alabaster;
