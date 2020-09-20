@@ -127,7 +127,7 @@ addToTrips = (e) => {
 export default ItineraryForm
 
 ItineraryForm.propTypes = {
- siteName: PropTypes.object, 
+ siteName: PropTypes.string, 
  itineraries: PropTypes.array,
  addNewTrip: PropTypes.func,
  addToExistingTrip: PropTypes.func,

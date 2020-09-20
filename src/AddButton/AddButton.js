@@ -38,7 +38,7 @@ export default AddButton
 
 AddButton.propTypes = {
   itineraries: PropTypes.array,
-  siteName: PropTypes.object,
+  siteName: PropTypes.string,
   addToExistingTrip: PropTypes.func,
   addNewTrip: PropTypes.func
 }
