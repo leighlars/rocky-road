@@ -44,7 +44,7 @@ showItineraries = () => {
        );
      })
     } else {
-    return([<p className='default-msg-existing'>Start planning your next adventure by adding trips below!</p>]) 
+    return([<p className='default-msg-existing' key={'default-msg'}>Start planning your next adventure by adding trips below!</p>]) 
     }
   }
   return (
@@ -71,7 +71,7 @@ addToTrips = (e) => {
     <button className="exit-button" onClick={this.hideModal}>
      <img src={exitIcon} alt="exit-icon" />
     </button>
-    <span className="existing-itineraries">Add to existing trip:</span>
+    <span className="existing-itineraries">Add to Existing Trip:</span>
     {this.showItineraries()}
     <form className="itinerary-form">
      <span className="form-prompt">Or Start A New Trip:</span>
@@ -86,6 +86,7 @@ addToTrips = (e) => {
      <label className="date-label">Type or select calendar date:</label>
      <div className="date-inputs">
       <input
+       aria-label='start-date-input'
        type="date"
        className="date-input"
        min="2020-09-20"
@@ -107,9 +108,9 @@ addToTrips = (e) => {
       />
      </div>
       <textarea
-       type="date"
+       type="text"
        className="comment-input"
-       placeholder="Comment"
+       placeholder="Add Comment"
        max="120"
        name="comment"
        onChange={this.handleChange}
