@@ -39,7 +39,6 @@ describe('SearchForm', () => {
      const inputBtn = screen.getByAltText("submit search");
      fireEvent.click(inputBtn)
       expect(mockSearchSites).toBeCalledTimes(1)
-
   })
 
 
