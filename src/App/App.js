@@ -53,7 +53,6 @@ class App extends Component {
     this.setState({results: foundSites})
   }
 
-
   render() { 
     return (
      <div className="App">

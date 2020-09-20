@@ -9,7 +9,7 @@
   width: 100%;
   header {
     margin-right: 9.5em;
-    margin-top: 5.5em;
+    margin-top: 4.5em;
     h1, .nav-btns {
       color: $pewterBlue;
       text-shadow: 3px 3px black;
@@ -22,8 +22,11 @@
     .about-link, .state-link {
       display: none;
     }
+    nav {
+      padding: 0;
+    }
     form {
-      display: none;
+      // display: none;
     }
   }
 
