@@ -16,8 +16,9 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
     })
     if (stateSites !== undefined) {
       stateSites = stateSites.info
-    } else {
-      stateSites = {natParks: [], recAreas: []}
+    }
+    else {
+      stateSites = {}
     }
     return stateSites
   }
@@ -25,34 +26,41 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
  
   const jsxSites = () => {
     const sites = getStateSites()
-    if (sites.natParks.length === 0 && sites.recAreas.length === 0) {
-         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
-         sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
-    } 
-    else if (sites.recAreas.length !== 0) {
-      if (sites.natParks.length === 0) {
-        sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
-      } else {
-          sites.natParks = sites.natParks.map(park => {
-            const location = park.fullName.split(" ").join("-"); 
-            return (
-              <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>
-               <h3>{park.fullName}</h3>
-               <p>{park.town}</p>
-              </Link>
-             )
-            })
-         sites.recAreas = sites.recAreas.map(area => {
-          const location = area.fullName.split(" ").join("-"); 
-           return (
-            <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
-             <h4>{area.fullName}</h4>
-             <p>{area.town}</p>
-            </Link>
-           )
+    if (sites.natParks && sites.natParks.length > 0) {
+      sites.natParks = sites.natParks.map(park => {
+        const location = park.fullName.split(" ").join("-"); 
+        return (
+          <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>
+            <h3>{park.fullName}</h3>
+            <p>{park.town}</p>
+          </Link>
+          )
         })
-      }
-    }    
+    } else {
+      sites.natParks = [
+        <div className="park-nf" key="not-found">
+         <h3>No National Parks found</h3>
+        </div>
+       ]
+    }
+    if (sites.recAreas && sites.recAreas.length > 0) {
+      sites.recAreas = sites.recAreas.map(area => {
+      const location = area.fullName.split(" ").join("-"); 
+        return (
+        <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
+          <h4>{area.fullName}</h4>
+          <p>{area.town}</p>
+        </Link>
+        )
+      }) 
+    } else {
+      sites.recAreas = [
+        <div className="rec-nf" key="not-found">
+         <h3>No Recreation Areas found</h3>
+        </div>
+       ]
+      };
+     
     return sites    
   }
 
@@ -60,6 +68,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
   const sites = jsxSites()
   const natParks = sites.natParks
   const recAreas = sites.recAreas
+  // console.log(recAreas)
 
 
   return (

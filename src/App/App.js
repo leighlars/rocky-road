@@ -34,7 +34,9 @@ class App extends Component {
          name: "Mesa Verde",
          town: "Durango",
         },
+      
        ],
+       comment: 'Super excited!'
       },
      ],
     };
@@ -43,9 +45,8 @@ class App extends Component {
   componentDidMount = async () => {
     try {
       const allData = await getCleanStatesInfo();
-      this.setState({allStatesInfo: allData})
       const trips = JSON.parse(localStorage.getItem('savedTrips'))
-      this.setState({itineraries: trips})
+      this.setState({allStatesInfo: allData, itineraries: trips})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
@@ -92,14 +93,14 @@ class App extends Component {
   addToExistingTrip = (siteData, tripName) => {
     const itinerariesCopy = this.state.itineraries;
     const foundExistingTrip = itinerariesCopy.find(trip => {
-        console.log(trip.name, tripName)
       return trip.name === tripName
     })
+    console.log(foundExistingTrip)
     if (!foundExistingTrip.places.includes(siteData)) {
       foundExistingTrip.places.push(siteData)
     }
+    localStorage.setItem("savedTrips", JSON.stringify(itinerariesCopy));
     this.setState({itineraries: itinerariesCopy})
-    localStorage.setItem("savedTrips", JSON.stringify(this.state.itineraries));
   }
 
 

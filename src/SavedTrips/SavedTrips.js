@@ -8,13 +8,12 @@ const SavedTrips = ({searchSites, itineraries}) => {
 
   const placeNames = (trip) => {
     return trip.places.map(place => {
-      console.log(place)
      return(<p>{place.fullName}</p>)
     })
   } 
 
   const jsxTrips = () => {
-    if (itineraries.length !== 0) {
+    if (itineraries && itineraries.length !== 0) {
       return itineraries.map(trip => {
         return (
         <div className="trip" key={trip.name}>

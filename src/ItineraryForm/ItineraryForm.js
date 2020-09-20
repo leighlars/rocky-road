@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './ItineraryForm.scss'
 import exitIcon from '../assets/cancel.png'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class ItineraryForm extends Component {
  constructor(props) {
@@ -12,7 +13,7 @@ class ItineraryForm extends Component {
    tripName: "",
    display: 'itinerary-modal',
    comment: '',
-   existingTrip: {}
+   existingTrip: ''
   };
  }
 
@@ -21,9 +22,8 @@ handleChange = (event) => {
 }
 
 addToExistingTrip = (e, tripName) => {
+  this.props.addToExistingTrip(this.props.siteData.fullName, e.target.name)
   this.setState({existingTrip: e.target.name})
-  console.log(this.state.existingTrip)
-  this.props.addToExistingTrip(this.props.siteData, this.state.existingTrip)
 }
 
 
@@ -118,3 +118,9 @@ addToTrips = (e) => {
 }
 
 export default ItineraryForm
+
+ItineraryForm.propTypes = {
+ itineraries: PropTypes.array,
+ addNewTrip: PropTypes.func,
+ addToExistingTrip: PropTypes.func,
+};

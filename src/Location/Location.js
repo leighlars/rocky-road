@@ -39,7 +39,8 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
       }
       return location
     }, {})
-      return siteInfo || defaultSite
+    console.log(siteInfo)
+    return siteInfo || defaultSite
   }
 
   
@@ -47,20 +48,12 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
 
 
   const description = () => {
-    if (siteData.description) {
       return (
        <span className="location-description">{siteData.description}</span>
       )
-    } else {
-      return (
-       <span className="location-description missing">No data provided. Check back soon!</span>
-      );
-    }
-
   }
   
   const images = () => {
-    if (siteData.fullName === locationName) {
       const imageList = siteData.images.map(image => {
         return <img src={image.url} alt={image.altText} className='site-image' key={image.title}/>
       })
@@ -69,68 +62,70 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
           {imageList}
         </span>
       )
-    }
   }
 
   const weather = () => {
-    if (siteData.fullName === locationName ) {
         return (<div className="info-box">
           <h3>Weather</h3>
           <span>
           {siteData.weather}
           </span>
         </div>)
-    } 
   }
 
 
   const jsxActivities = () => {
-    if (siteData.fullName === locationName) {
-      const sortedActivities = siteData.activities.sort()
-      const jsxInfo = sortedActivities.map(activity => {
-        return <p key={activity}>{activity}</p>
-      })
-      return (
-       <div className="info-box">
-        <h3>Activities</h3>
-        <span className="info">
-         For information about camping and tours, go{" "}
+     const sortedActivities = siteData.activities.sort();
+     const jsxInfo = sortedActivities.map((activity) => {
+      return <p key={activity}>{activity}</p>;
+     });
+     return (
+      <div className="info-box">
+       <h3>Activities</h3>
+       <span className="info">
+        For information about camping and tours, go{" "}
         <a href={siteData.url} target="_blank" rel="noopener noreferrer">
          here
-        </a>.
-        </span>
-        <span className="activities">{jsxInfo}</span>
-       </div>
-      );
-    }
+        </a>
+        .
+       </span>
+       <span className="activities">{jsxInfo}</span>
+      </div>
+     );
   }
 
   const jsxFees = () => {
-    if (siteData.fullName === locationName) {
-      let jsxInfo = siteData.entranceFees.map(type => {
-        return(
-           <div className='fees'>
-            <span className='fee' key={type.title}><b>Title:</b> {type.title}</span> <br/>
-            <span className='fee' key={type.description}><b>Description:</b> {type.description}</span> <br/>
-            <span className='fee' key={type.cost}><b>Cost:</b> ${Number(type.cost).toFixed(0)}</span>
-        </div>
-      )})
-      if (jsxInfo.length === 0) {
-        jsxInfo = <span className='fee'>No data provided</span>
-      }
-          
-      return(
-        <div className='info-box'>
-          <h3>Entrance</h3>
-          {jsxInfo}
-        </div>
-      )
-    }
+     let jsxInfo = siteData.entranceFees.map((type) => {
+      return (
+       <div className="fees">
+        <span className="fee" key={type.title}>
+         <b>Title:</b> {type.title}
+        </span>{" "}
+        <br />
+        <span className="fee" key={type.description}>
+         <b>Description:</b> {type.description}
+        </span>{" "}
+        <br />
+        <span className="fee" key={type.cost}>
+         <b>Cost:</b> ${Number(type.cost).toFixed(0)}
+        </span>
+       </div>
+      );
+     });
+     if (jsxInfo.length === 0) {
+      jsxInfo = <span className="fee">No data provided</span>;
+     }
+     return (
+      <div className="info-box">
+       <h3>Entrance</h3>
+       {jsxInfo}
+      </div>
+     );
+    
   }
 
 
   const operations = () => {
-    if (siteData.fullName === locationName) {
       const findHours = siteData.designation.includes("National Park") ? (
        <p>24 hours / 7 days</p>
       ) : (
@@ -175,25 +170,28 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
         </span>
        </div>
       );
-    }
   }
 
   return (
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header searchSites={searchSites} />
-    <span className='location-header'>
-      <h2 className="location-name">{getLocationName()}</h2>
-      <AddButton siteData={siteData} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
-    </span>
-    {description()}
-    {images()}
-    <section className="location-info">
-     {jsxActivities()}
-     {weather()}
-     {operations()}
-     {jsxFees()}
-    </section>
+    {siteData && siteData.fullName && (
+      <> 
+        <span className='location-header'>
+          <h2 className="location-name">{getLocationName()}</h2>
+          <AddButton siteData={siteData} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
+        </span>
+          {description()}
+          {images()}
+        <section className="location-info">
+          {jsxActivities()}
+          {weather()}
+          {operations()}
+          {jsxFees()}
+        </section>
+      </>)}
    </section>
+
   );
 
 }
