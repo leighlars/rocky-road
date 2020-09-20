@@ -20,7 +20,7 @@ handleChange = (event) => {
 addToExistingTrip = (e) => {
   e.preventDefault()
   const existingTrip = e.target.value
-  
+  this.props.addToExistingTrip(this.props.siteData, existingTrip)
 }
 
 showItineraries = () => {

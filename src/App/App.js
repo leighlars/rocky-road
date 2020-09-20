@@ -91,8 +91,11 @@ class App extends Component {
     const foundExistingTrip = itinerariesCopy.find(trip => {
       return trip.name === tripName
     })
-    foundExistingTrip.places.push(siteData)
+    if (!foundExistingTrip.places.includes(siteData)) {
+      foundExistingTrip.places.push(siteData)
+    }
     this.setState({itineraries: itinerariesCopy})
+    localStorage.setItem("savedTrips", JSON.stringify(this.state.itineraries));
   }
 
 
