@@ -21,8 +21,8 @@ class App extends Component {
      itineraries: [
       {
        name: "Girls Trip!",
-       startDate: "2020/10/20",
-       endDate: "2020/10/30",
+       startDate: "2020-10-20",
+       endDate: "2020-10-30",
        places: [
         {
          fullName: "Rocky Mountain National Park",

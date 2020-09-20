@@ -5,7 +5,11 @@
   height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  
+  background: url(../assets/idSunset.jpg);
+  background-position: center;
+  background-size: cover;
+
+
   header {
     margin: 0;
   }
@@ -28,6 +32,9 @@
     margin: 10px;
     height: 170px;
     width: 250px;
+    .trip-dates {
+      @include rowDisplay();
+    }
     h2 {
       @include headerFont(2em);
     }

@@ -11,27 +11,37 @@ const SavedTrips = ({searchSites, itineraries}) => {
     })
     return siteNames
   }, [])
+
   const jsxPlaces = placeNames.map(place => {
   return(<p>{place}</p>)
   })
-  const jsxTrips = itineraries.map(trip => {
-    return (
-     <div className="trip">
-      <h2>{trip.name}</h2>
-      <p className="trip-dates">
-       {moment(trip.startDate).format("ll")} - 
-      {moment(trip.endDate).format("ll")}
-      </p>
-      {jsxPlaces}
-     </div>
-    );
-  })
-  
+
+  const sortedItineraries = itineraries.sort((a,b) => a.startDate - b.startDate)
+
+  const jsxTrips = () => {
+    if (itineraries.length !== 0) {
+      return sortedItineraries.map(trip => {
+        return (
+        <div className="trip">
+          <h2>{trip.name}</h2>
+          <span className='trip-dates'>
+          <p>{moment(trip.startDate).format("ll")} </p> - 
+          <p> {moment(trip.endDate).format("ll")}</p>
+          </span>
+          {jsxPlaces}
+        </div>
+        );
+      })
+    } else {
+      return(<h2>Look around to plan your next adventure!</h2>)
+    }
+  }
+
   return(
     <section className='saved-section'>
       <Header searchSites={searchSites}  />
       <section className='saved-trips'>
-        {jsxTrips}
+        {jsxTrips()}
       </section>
     </section>
   )
@@ -39,5 +49,6 @@ const SavedTrips = ({searchSites, itineraries}) => {
 
 export default SavedTrips
 SavedTrips.propTypes = {
+  itineraries: PropTypes.array,
   searchSites: PropTypes.func,
 }
