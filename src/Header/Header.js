@@ -17,11 +17,11 @@ const Header = ({getCurrentPage, searchSites}) => {
      <Link to="/about" className="nav-btns about-link">
       About
      </Link>
+     <Link to={`/place/${stateName}`} className="nav-btns state-link">
+      State
+     </Link>
      <Link to="/home" className="nav-btns home-link">
       Home
-     </Link>
-     <Link to={`/place/${stateName}`} className="nav-btns state-link">
-      Back
      </Link>
     </nav>
     <SearchForm searchSites={searchSites} />
