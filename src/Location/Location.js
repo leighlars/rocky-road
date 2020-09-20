@@ -23,7 +23,6 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
     if (locationName === "Grant Kohrs Ranch National Historic Site") {
       locationName = "Grant-Kohrs Ranch National Historic Site"
     }
-    
     return locationName
   }
   
@@ -32,7 +31,8 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
     const defaultSite = {description: 'No data provided. Please modify your search.'}
     const siteInfo = allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
-        location = state.info.find(site => {
+        const allSites = state.info.natParks.concat(state.info.recAreas)
+        location = allSites.find(site => {
           return site.fullName === getLocationName()
         })
       }
