@@ -38,14 +38,15 @@ describe('Results', () => {
       <Results results={mockResults} searchSites={mockSearchSites} />
      </MemoryRouter>
     )
-
-    
+    // searching
     const input = getByPlaceholderText("Search the Range")
     fireEvent.change(input, { target: { value: "Colorado" } })
     expect(input.value).toBe("Colorado")
     const inputBtn = getByAltText("submit search")
     fireEvent.click(inputBtn)
     expect(mockSearchSites).toBeCalledTimes(1)
+
+    // displaying
     const rockyNP = getByRole('heading', {name: 'Rocky Mountain National Park'})   
     const curecanti = getByRole('heading', {name: 'Curecanti National Recreation Area'})
     expect(rockyNP).toBeInTheDocument()
@@ -62,13 +63,16 @@ describe('Results', () => {
         <Results getCurrentPage={mockGetCurrentPage} searchSites={mockSearchSites} />
       </MemoryRouter>
       )
-
+      
+      // searching
       const input = getByPlaceholderText("Search the Range")
       fireEvent.change(input, { target: { value: "Florida" } })
       expect(input.value).toBe("Florida")
       const inputBtn = getByAltText("submit search")
       fireEvent.click(inputBtn)
       expect(mockSearchSites).toBeCalledTimes(1)
+
+      // displaying
       const msg = getByText('No results found. Please modify your search and try again.')
       expect(msg).toBeInTheDocument()
 
