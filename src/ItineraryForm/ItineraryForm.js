@@ -57,7 +57,7 @@ showItineraries = () => {
 
 addToTrips = (e) => {
   e.preventDefault();
-  this.props.addNewTrip(this.state, this.props.siteData)
+  this.props.addNewTrip(this.state, this.props.siteData.fullName)
   this.hideModal()
 }
 

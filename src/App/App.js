@@ -18,27 +18,7 @@ class App extends Component {
      allStatesInfo: [],
      error: "",
      results: [],
-     itineraries: [
-      {
-       name: "Girls Trip!",
-       startDate: "2020-10-20",
-       endDate: "2020-10-30",
-       places: [
-        {
-         fullName: "Rocky Mountain National Park",
-         name: "Rocky Mountain",
-         town: "Estes Park",
-        },
-        {
-         fullName: "Mesa Verde National Park",
-         name: "Mesa Verde",
-         town: "Durango",
-        },
-      
-       ],
-       comment: 'Super excited!'
-      },
-     ],
+     itineraries: [],
     };
   }
 

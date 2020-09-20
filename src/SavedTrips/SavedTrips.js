@@ -8,7 +8,7 @@ const SavedTrips = ({searchSites, itineraries}) => {
 
   const placeNames = (trip) => {
     return trip.places.map(place => {
-     return(<p>{place.fullName}</p>)
+     return(<p>{place}</p>)
     })
   } 
 
