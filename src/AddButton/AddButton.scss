@@ -1,0 +1,15 @@
+@import '../styles/variables';
+
+.add-button {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+.add-icon {
+  margin: 0;
+  background: $alabaster;
+  border-radius: 50%;
+  &:hover {
+    background: $prussianBlue;
+  }
+}

@@ -31,7 +31,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
     const sites = getStateSites()
     if (sites.natParks.length === 0 && sites.recAreas.length === 0) {
          sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
-         sites.recAreas = sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
+         sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
     } else if (sites.recAreas.length !== 0) {
       if (sites.natParks.length === 0) {
         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
@@ -58,6 +58,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
     }    
     return sites    
   }
+
 
   const sites = jsxSites()
   const natParks = sites.natParks

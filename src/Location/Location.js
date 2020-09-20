@@ -2,6 +2,7 @@ import React from 'react'
 import './Location.scss'
 import Header from '../Header/Header'
 import PropTypes from "prop-types";
+import AddButton from '../AddButton/AddButton'
 
 const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
 
@@ -181,6 +182,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
     <h2 className="location-header">{getLocationName()}</h2>
+    <AddButton />
     {description()}
     {images()}
     <section className="location-info">
