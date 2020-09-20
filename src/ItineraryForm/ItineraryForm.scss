@@ -1,0 +1,38 @@
+@import '../styles/variables';
+
+.itinerary-modal {
+  @include columnDisplay();
+  justify-content: space-around;
+  background: $khaki;
+  border: 3px solid $pineGreen;
+  border-radius: 10px;
+  box-shadow: 1px 1px 115px black;
+  // display: none;
+  height: 70%;
+  margin: 0;
+  overflow-x: scroll;
+  padding: 1%;
+  position: fixed;
+  right: 15%;
+  top: 15%;
+  width: 70%;
+  z-index: 1000;
+  transition: .3s ease;
+}
+.existing-itineraries {
+  // @include rowDisplay();
+  @include textFont(1.5em);
+  color: $alabaster;
+
+}
+.form-prompt, .date-label {
+  @include textFont(1em);
+  color: $alabaster;
+}
+.itinerary-form {
+  @include columnDisplay();
+  justify-content: center;
+  .date-inputs {
+    @include rowDisplay();
+  }
+}

@@ -1,21 +1,28 @@
 import React, {Component} from 'react'
 import './AddButton.scss'
 import add from '../assets/add.png'
+import ItineraryForm from '../ItineraryForm/ItineraryForm'
 
 class AddButton extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      currentValue: undefined
+      currentValue: false
     }
   }
 
+  promptItineraryForm = () => {
+    console.log('hello')
+  }
 
   render() {
     return(
-      <button className='add-button'>
-        <img src={add} alt='heart icon' className='add-icon'/>
-      </button>
+      <span className='itinerary-modal'>
+        <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} />
+        <button className='add-button' onClick={this.toggleItineraryForm}>
+          <img src={add} alt='heart icon' className='add-icon'/>
+        </button>
+      </span>
     )
   }
 

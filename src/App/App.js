@@ -16,7 +16,8 @@ class App extends Component {
     this.state = {
       allStatesInfo: [],
       error: "",
-      results: []
+      results: [],
+      itineraries: [{name: 'Girls Trip!', startDate: '2020/10/20', endDate: '2020/10/30', places:[]}]
     }
   }
 
@@ -52,6 +53,18 @@ class App extends Component {
     })
     this.setState({results: foundSites})
   }
+
+  addNewTrips = (formInput, sitePicked) => {
+    const newTrip = {
+      name: formInput.tripName, 
+      startDate: formInput.startDate, 
+      endDate: formInput.endDate, 
+      places: [sitePicked]}
+    const itinerariesCopy = this.state.itineraries
+    itinerariesCopy.push(newTrip)
+    this.setState({itineraries: itinerariesCopy})
+  }
+
 
   render() { 
     return (
@@ -115,6 +128,7 @@ class App extends Component {
            allStatesInfo={this.state.allStatesInfo}
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
+           itineraries={this.state.itineraries}
           />
          );
         }}
