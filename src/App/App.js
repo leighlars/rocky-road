@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       allStatesInfo: [],
       error: "",
+      results: []
     }
   }
 
@@ -35,23 +36,22 @@ class App extends Component {
   } 
 
   searchSites = (query) => {
-    // let searchableQuery = query.toLowerCase()
-    const allPlaces = this.state.allStatesInfo.reduce((allNames, state) => {
-      console.log(state)
-      if (!allNames.includes(state.state)) {
-        allNames.push(allNames)
-      }
-      state.forEach(site => {
-        if (!allNames.includes(site.fullName)) {
-          allNames.push(site.fullName)
-        }
-      })
-      return allNames
-    }, [])
-    console.log(allPlaces)
+    const q = query.toLowerCase()
+    const allSites = this.state.allStatesInfo.reduce((sites, state) => {
+        const allSites = state.info.natParks.concat(state.info.recAreas)
+        allSites.forEach(site => {
+          sites.push(site)
+        })
+        return sites
+    }, []) 
+    const foundSites = allSites.filter(site => {
+      const siteName = site.fullName.toLowerCase()
+      const siteState = site.state.toLowerCase()
+      const siteTown = site.town.toLowerCase()
+      return siteName.includes(q) || site.description.includes(q) || siteState.includes(q) || siteTown.includes(q)
+    })
+    this.setState({results: foundSites})
   }
-
-
 
   render() { 
     return (
@@ -127,6 +127,7 @@ class App extends Component {
           <Results
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
+           results={this.state.results}
           />
          );
         }}
