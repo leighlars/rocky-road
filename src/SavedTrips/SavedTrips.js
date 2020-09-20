@@ -5,30 +5,26 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 
 const SavedTrips = ({searchSites, itineraries}) => {
-  const placeNames = itineraries.reduce((siteNames, trip) => {
-    trip.places.forEach(place => {
-      siteNames.push(place.fullName)
+
+  const placeNames = (trip) => {
+    return trip.places.map(place => {
+      console.log(place)
+     return(<p>{place.fullName}</p>)
     })
-    return siteNames
-  }, [])
-
-  const jsxPlaces = placeNames.map(place => {
-  return(<p>{place}</p>)
-  })
-
-  const sortedItineraries = itineraries.sort((a,b) => a.startDate - b.startDate)
+  } 
 
   const jsxTrips = () => {
     if (itineraries.length !== 0) {
-      return sortedItineraries.map(trip => {
+      return itineraries.map(trip => {
         return (
-        <div className="trip">
+        <div className="trip" key={trip.name}>
           <h2>{trip.name}</h2>
           <span className='trip-dates'>
           <p>{moment(trip.startDate).format("ll")} </p> - 
           <p> {moment(trip.endDate).format("ll")}</p>
           </span>
-          {jsxPlaces}
+         <span className='comment'>{trip.comment}</span>
+          {placeNames(trip)}
         </div>
         );
       })

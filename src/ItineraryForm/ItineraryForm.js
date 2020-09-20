@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './ItineraryForm.scss'
 import exitIcon from '../assets/cancel.png'
+import {Link} from 'react-router-dom'
 
 class ItineraryForm extends Component {
  constructor(props) {
@@ -9,7 +10,9 @@ class ItineraryForm extends Component {
    startDate: "",
    endDate: "",
    tripName: "",
-   display: 'itinerary-modal'
+   display: 'itinerary-modal',
+   comment: '',
+   existingTrip: {}
   };
  }
 
@@ -17,22 +20,30 @@ handleChange = (event) => {
   this.setState({ [event.target.name]: event.target.value });
 }
 
-addToExistingTrip = (e) => {
-  e.preventDefault()
-  const existingTrip = e.target.value
-  this.props.addToExistingTrip(this.props.siteData, existingTrip)
+addToExistingTrip = (e, tripName) => {
+  this.setState({existingTrip: e.target.value})
+  console.log(this.state.existingTrip)
+  this.props.addToExistingTrip(this.props.siteData, this.state.existingTrip)
 }
+
 
 showItineraries = () => {
   const tripDetails = this.props.itineraries.map(trip => {
-    return(
-    <option value={trip.name}>{trip.name}</option>
-    )
+    return (
+     <Link
+      to="/saved-trips"
+      key={trip.name}
+      className="existing-trip"
+      onClick={this.addToExistingTrip}
+     >
+      {trip.name}
+     </Link>
+    );
   })
   return (
-   <select id="trips">
-    {tripDetails}
-   </select>
+      <div className="itineraries" >
+        {tripDetails}
+      </div>
   );
 }
 
@@ -53,7 +64,7 @@ addToTrips = (e) => {
      <img src={exitIcon} alt="exit-icon" />
     </button>
     <span className="existing-itineraries">Add to existing trip:</span>
-      {this.showItineraries()}
+    {this.showItineraries()}
     <form className="itinerary-form">
      <span className="form-prompt">Or Start A New Trip:</span>
      <input
@@ -64,9 +75,7 @@ addToTrips = (e) => {
       onChange={this.handleChange}
       value={this.state.tripName}
      />
-     <label for="dates" class="date-label">
-      Type or select calendar date:
-     </label>
+     <label className="date-label">Type or select calendar date:</label>
      <div className="date-inputs">
       <input
        type="date"
@@ -75,7 +84,7 @@ addToTrips = (e) => {
        max="2021-08-30"
        name="startDate"
        onChange={this.handleChange}
-      //  value={this.state.startDate}
+       value={this.state.startDate}
        required
       />
       <input
@@ -89,8 +98,16 @@ addToTrips = (e) => {
        required
       />
      </div>
+      <textarea
+       type="date"
+       className="comment-input"
+       placeholder="Comment"
+       max="120"
+       name="comment"
+       onChange={this.handleChange}
+       value={this.state.comment}
+      />
      <button className="add-trip-button" onClick={this.addToTrips}>
-      {" "}
       Add {this.props.siteData.fullName}
      </button>
     </form>

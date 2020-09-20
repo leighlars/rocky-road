@@ -80,7 +80,9 @@ class App extends Component {
       name: formInput.tripName, 
       startDate: formInput.startDate, 
       endDate: formInput.endDate, 
-      places: [sitePicked]}
+      comment: formInput.comment,
+      places: [sitePicked],
+    }
     const itinerariesCopy = this.state.itineraries
     itinerariesCopy.push(newTrip)
     this.setState({itineraries: itinerariesCopy})
@@ -90,6 +92,7 @@ class App extends Component {
   addToExistingTrip = (siteData, tripName) => {
     const itinerariesCopy = this.state.itineraries;
     const foundExistingTrip = itinerariesCopy.find(trip => {
+        console.log(trip.name, tripName)
       return trip.name === tripName
     })
     if (!foundExistingTrip.places.includes(siteData)) {

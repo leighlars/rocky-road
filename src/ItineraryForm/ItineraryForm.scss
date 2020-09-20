@@ -7,7 +7,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 115px black;
   // display: none;
-  height: 70%;
+  height: 60%;
   margin: 0;
   overflow-x: scroll;
   padding: 1%;
@@ -28,14 +28,17 @@
   position: fixed;
   right: 300px;
   top: 120px;
+  &:hover {
+    background: $alabaster;
+    border-radius: 6px;
+  }
 }
 
 .existing-itineraries {
   @include columnDisplay();
-  @include textFont(1.5em);
+  @include textFont(1.75em);
   color: $alabaster;
-  margin-top: 2em;
-
+  margin-top: 1em;
 }
 .form-prompt {
   @include textFont(1.5em);
@@ -47,12 +50,37 @@
 }
 .itinerary-form {
   @include columnDisplay();
-  height: 45%;
+  height: 65%;
   justify-content: space-evenly;
+  .comment-input {
+    border-radius: 6px;
+    @include textFont(1em);
+    width: 200px;
+    height: 50px;
+    margin-bottom: 5px;
+    background: $mutedWhite;
+  }
   .date-inputs {
     @include rowDisplay();
     .date-input {
       margin: 5px;
+      border-radius: 8px;
+    }
+  }
+}
+
+.itineraries {
+  @include rowDisplay();
+  width: 40%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  .existing-trip {
+    text-decoration: none;
+    @include textFont(1em);
+    color: $alabaster;
+    &:hover {
+      background: $alabaster;
+      color: $prussianBlue;
     }
   }
 }

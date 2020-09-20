@@ -10,7 +10,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
   const stateName = getCurrentPage().split("/")[2];
  
   const getStateSites = () => {
-    const currentPage = getCurrentPage().split('/')[2]
+    const currentPage = stateName
     let stateSites = allStatesInfo.find(state => {
       return state.state === currentPage 
     })
@@ -33,9 +33,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
       if (sites.natParks.length === 0) {
         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
       } else {
-        console.log(sites.natParks)
           sites.natParks = sites.natParks.map(park => {
-            console.log(park)
             const location = park.fullName.split(" ").join("-"); 
             return (
               <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>
