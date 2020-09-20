@@ -181,8 +181,10 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites}) => {
   return (
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
-    <h2 className="location-header">{getLocationName()}</h2>
-    <AddButton />
+    <span className='location-header'>
+      <h2 className="location-name">{getLocationName()}</h2>
+      <AddButton />
+    </span>
     {description()}
     {images()}
     <section className="location-info">
