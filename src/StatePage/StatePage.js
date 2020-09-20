@@ -28,11 +28,14 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
     if (sites.natParks.length === 0 && sites.recAreas.length === 0) {
          sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
          sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
-    } else if (sites.recAreas.length !== 0) {
+    } 
+    else if (sites.recAreas.length !== 0) {
       if (sites.natParks.length === 0) {
         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
       } else {
+        console.log(sites.natParks)
           sites.natParks = sites.natParks.map(park => {
+            console.log(park)
             const location = park.fullName.split(" ").join("-"); 
             return (
               <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>

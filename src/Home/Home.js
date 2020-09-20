@@ -4,7 +4,7 @@ import Header from '../Header/Header'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const Home = ({getCurrentPage, searchSites}) => {
+const Home = ({searchSites}) => {
 
   const states = ['Colorado', 'Idaho', 'Montana', 'Wyoming']
   const jsxStates = states.map(state => {
@@ -13,7 +13,7 @@ const Home = ({getCurrentPage, searchSites}) => {
 
   return (
    <section className="home-section">
-    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+    <Header searchSites={searchSites} />
     <article className="state-box">{jsxStates}</article>
    </section>
   );
@@ -22,5 +22,5 @@ const Home = ({getCurrentPage, searchSites}) => {
 export default Home
 
 Home.propTypes = {
- getCurrentPage: PropTypes.func,
+ searchSites: PropTypes.func
 };

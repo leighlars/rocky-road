@@ -180,7 +180,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
 
   return (
    <section className={`location-section ${setBackgroundImage()}`}>
-    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+    <Header searchSites={searchSites} />
     <span className='location-header'>
       <h2 className="location-name">{getLocationName()}</h2>
       <AddButton siteData={siteData} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
@@ -201,8 +201,8 @@ export default Location
 
 Location.propTypes = {
  allStatesInfo: PropTypes.array,
- getCurrentPage: PropTypes.func,
  searchSites: PropTypes.func, 
+ getCurrentPage: PropTypes.func,
  itineraries: PropTypes.array,
  addNewTrip: PropTypes.func,
  addToExistingTrip: PropTypes.func

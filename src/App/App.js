@@ -110,7 +110,6 @@ class App extends Component {
         render={() => {
          return (
           <Landing
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
@@ -122,7 +121,6 @@ class App extends Component {
         render={() => {
          return (
           <Home
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
@@ -134,7 +132,6 @@ class App extends Component {
         render={() => {
          return (
           <About
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
@@ -175,7 +172,6 @@ class App extends Component {
         render={() => {
          return (
           <Results
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
            results={this.state.results}
           />
@@ -186,7 +182,9 @@ class App extends Component {
        exact path='/saved-trips'
        render={() => {
          return(
-           <SavedTrips itineraries={this.state.itineraries} />
+           <SavedTrips 
+           searchSites={this.searchSites}
+           itineraries={this.state.itineraries} />
          )
        }}
        />
@@ -196,7 +194,6 @@ class App extends Component {
         render={() => {
          return (
           <Gallery
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );

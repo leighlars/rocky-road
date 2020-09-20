@@ -4,7 +4,7 @@ import Header from '../Header/Header'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
-const Results = ({results, getCurrentPage, searchSites}) => {
+const Results = ({results, searchSites}) => {
   
   const queryResults = () => {
     if (results.length > 0) {
@@ -23,7 +23,7 @@ const Results = ({results, getCurrentPage, searchSites}) => {
 
   return(
     <section className='search-section'>
-      <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+      <Header searchSites={searchSites} />
       <section className='results-section'>
         {queryResults()}
       </section>

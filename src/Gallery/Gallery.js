@@ -5,13 +5,13 @@ import PropTypes from 'prop-types'
 import './Gallery.scss'
 import {photos} from './Photos'
 
-const Collage = ({getCurrentPage, searchSites}) => {
+const Collage = ({ searchSites}) => {
 
   const basicRows = () => <Gallery photos={photos}/>
 
   return (
    <section className="gallery-section">
-    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+    <Header  searchSites={searchSites} />
     <section className="photos">
      {basicRows()}
      <span>
@@ -28,7 +28,6 @@ const Collage = ({getCurrentPage, searchSites}) => {
 export default Collage
 
 Collage.propTypes = {
-  getCurrentPage: PropTypes.func,
   searchSites: PropTypes.func
 }
 

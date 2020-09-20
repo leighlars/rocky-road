@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 import SearchForm from '../SearchForm/SearchForm'
 
 
-const Header = ({getCurrentPage, searchSites}) => {
-  const stateName = getCurrentPage().split("/")[2];
+const Header = ({searchSites}) => {
   return (
    <header>
     <h1>Along the Rocky Road</h1>
@@ -20,9 +19,6 @@ const Header = ({getCurrentPage, searchSites}) => {
      <Link to="/about" className="nav-btns about-link">
       About
      </Link>
-     <Link to={`/place/${stateName}`} className="nav-btns state-link">
-      State
-     </Link>
      <Link to="/home" className="nav-btns home-link">
       Home
      </Link>
@@ -35,6 +31,5 @@ const Header = ({getCurrentPage, searchSites}) => {
 export default Header
 
 Header.propTypes = {
- getCurrentPage: PropTypes.func,
  searchSites: PropTypes.func
 };
