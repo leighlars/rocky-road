@@ -12,17 +12,17 @@ class AddButton extends Component {
   }
 
   showModal = () => {
-    this.setState({showModal: true})
+    this.setState({showModal: !this.state.showModal})
   }
 
   render() {
     return(
       <span className='itinerary-box'>
         <button className='add-button' onClick={this.showModal}>
-          <img src={add} alt='heart icon' className='add-icon'/>
+          Add To Trips
         </button>
         {this.state.showModal === true &&
-        <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} />
+          <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} />
         }
       </span>
     )

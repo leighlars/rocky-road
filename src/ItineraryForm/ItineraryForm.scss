@@ -12,9 +12,9 @@
   overflow-x: scroll;
   padding: 1%;
   position: fixed;
-  right: 15%;
+  right: 20%;
   top: 15%;
-  width: 70%;
+  width: 60%;
   z-index: 1000;
   transition: .3s ease;
 }
@@ -26,27 +26,30 @@
   border: none;
   margin: 0;
   position: fixed;
-  right: 230px;
+  right: 300px;
   top: 120px;
 }
 
 .existing-itineraries {
   @include columnDisplay();
-  height: 20%;
   justify-content: space-evenly;
   @include textFont(1.5em);
   color: $alabaster;
+  height: 20%;
   margin-top: 2em;
 
 }
-.form-prompt, .date-label {
-  @include textFont(1em);
+.form-prompt {
+  @include textFont(1.5em);
+  color: $alabaster;
+}
+.date-label {
+  @include textFont(1.25em);
   color: $alabaster;
 }
 .itinerary-form {
   @include columnDisplay();
-  // margin-top: 1em;
-  height: 40%;
+  height: 45%;
   justify-content: space-evenly;
   .date-inputs {
     @include rowDisplay();
@@ -59,6 +62,9 @@
 .add-trip-button {
   @include textFont(1em);
   border-radius: 6px;
+  background: $mutedWhite;
+  border: none;
+  font-weight: bold;
   &:hover {
     color: $alabaster;
     background: $blueSapphire;

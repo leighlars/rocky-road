@@ -3,16 +3,14 @@
 .add-button {
   border: none;
   padding: 0;
-  background: transparent;
-  margin-left: 10px;
-}
-.add-icon {
-  margin: 0;
+  color: $prussianBlue;
   background: $alabaster;
-  width: 20px;
-  border-radius: 50%;
+  margin-left: 10px;
+  border-radius: 4px;
   box-shadow: 1px 1px 5px black;
+  padding: .5%;
   &:hover {
-    background: $prussianBlue;
+    color: $alabaster;
+    background: $blueSapphire;
   }
 }

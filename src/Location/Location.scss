@@ -45,10 +45,10 @@
   }
 
   .location-header {
-    @include rowDisplay();
+    @include columnDisplay();
     width: 90%;
-    justify-content: flex-start;
-    margin-top: 3em;
+    align-items: baseline;
+    // justify-content: flex-start;
     h2 {
        @include headerFont(4em);
        color: $alabaster;

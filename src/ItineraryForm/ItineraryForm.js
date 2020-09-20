@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import './ItineraryForm.scss'
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
 import exitIcon from '../assets/cancel.png'
 
 class ItineraryForm extends Component {
@@ -48,7 +46,7 @@ hideModal = () => {
      <input
       aria-label="name-input"
       type="text"
-      name="tripName"
+      nameName="tripName"
       placeholder="Trip Name"
       onChange={this.handleChange}
      />
@@ -58,7 +56,7 @@ hideModal = () => {
      <div className='date-inputs'>
       <input
         type="date"
-        class="date-input"
+        className="date-input"
         min="2020-09-20"
         max="2021-08-30"
         name="startDate"
@@ -66,7 +64,7 @@ hideModal = () => {
       />
       <input
         type="date"
-        class="date-input"
+        className="date-input"
         min="2020-09-20"
         max="2021-08-30"
         name="endDate"
