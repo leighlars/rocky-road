@@ -14,6 +14,9 @@ const Header = ({getCurrentPage, searchSites}) => {
      <Link to="/gallery" className="nav-btns gallery-link">
       Gallery
      </Link>
+     <Link to="/saved-trips" className="nav-btns saved-link">
+      Saved Trips
+     </Link>
      <Link to="/about" className="nav-btns about-link">
       About
      </Link>
@@ -26,7 +29,7 @@ const Header = ({getCurrentPage, searchSites}) => {
     </nav>
     <SearchForm searchSites={searchSites} />
    </header>
-  )
+  );
 }
 
 export default Header

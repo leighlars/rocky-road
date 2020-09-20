@@ -9,6 +9,7 @@ import StatePage from '../StatePage/StatePage'
 import Location from '../Location/Location'
 import Results from '../Results/Results'
 import Gallery from '../Gallery/Gallery'
+import SavedTrips from '../SavedTrips/SavedTrips'
 
 class App extends Component {
   constructor() {
@@ -180,6 +181,14 @@ class App extends Component {
           />
          );
         }}
+       />
+       <Route 
+       exact path='/saved-trips'
+       render={() => {
+         return(
+           <SavedTrips itineraries={this.state.itineraries} />
+         )
+       }}
        />
        <Route
         exact
