@@ -20,6 +20,9 @@
     width: 90vw;
     flex-wrap: wrap;
     overflow-y: scroll;
+     h2 {
+      @include headerFont(2em);
+    }
   }
   .trip {
     @include columnDisplay();
@@ -36,9 +39,7 @@
     .trip-dates {
       @include rowDisplay();
     }
-    h2 {
-      @include headerFont(2em);
-    }
+   
     p {
       @include textFont(1em);
     }
@@ -47,6 +48,6 @@
       font-style: italic;
       margin-bottom: 5px;
     }
-
+    
   }
 }

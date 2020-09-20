@@ -28,7 +28,7 @@ const SavedTrips = ({searchSites, itineraries}) => {
         );
       })
     } else {
-      return(<h2>Look around to plan your next adventure!</h2>)
+      return(<h2 className='default-msg'>Look around to plan your next adventure!</h2>)
     }
   }
 

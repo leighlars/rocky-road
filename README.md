@@ -77,7 +77,7 @@ Once all dependencies are installed, run
 
 ## Roadmap
 
-See the [open issues](https://github.com/leighlars/rocky-road/issues) for a list of proposed features (and known issues).
+Please see [open issues](https://github.com/leighlars/rocky-road/issues) for a list of proposed features (and known issues).
 
 ## License
 
