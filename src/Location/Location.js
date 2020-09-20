@@ -30,12 +30,9 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   const getSiteInfo = () => {
     const stateName = getCurrentPage().split('/')[2]
     const defaultSite = {description: 'No data provided. Please modify your search.'}
-    console.log('before the reduce', allStatesInfo)
     const siteInfo = allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
-        console.log('in reduce', state.info)
         const allSites = state.info.natParks.concat(state.info.recAreas)
-        // console.log(allSites)
         location = allSites.find(site => {
           
           return site.fullName === getLocationName()

@@ -28,24 +28,31 @@ addToExistingTrip = (e, tripName) => {
 
 
 showItineraries = () => {
-  const tripDetails = this.props.itineraries.map(trip => {
-    return (
-     <Link
-      to="/saved-trips"
-      key={trip.name}
-      className="existing-trip"
-      onClick={this.addToExistingTrip}
-      name={trip.name}
-     >
-      {trip.name}
-     </Link>
-    );
-  })
+  const tripDetails = () => {
+    if (this.props.itineraries.length > 0) {
+     return this.props.itineraries.map(trip => {
+       return (
+        <Link
+         to="/saved-trips"
+         key={trip.name}
+         className="existing-trip"
+         onClick={this.addToExistingTrip}
+         name={trip.name}
+        >
+         {trip.name}
+        </Link>
+       );
+     })
+    } else {
+    return([<p>Start planning your next adventure by adding trips!</p>]) 
+    }
+  }
   return (
       <div className="itineraries" >
-        {tripDetails}
+        {tripDetails()}
       </div>
   );
+  
 }
 
 addToTrips = (e) => {

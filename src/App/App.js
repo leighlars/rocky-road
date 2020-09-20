@@ -45,7 +45,10 @@ class App extends Component {
   componentDidMount = async () => {
     try {
       const allData = await getCleanStatesInfo();
-      const trips = JSON.parse(localStorage.getItem('savedTrips'))
+      let trips = JSON.parse(localStorage.getItem('savedTrips'))
+      if (trips === null) {
+        trips = []
+      }
       this.setState({allStatesInfo: allData, itineraries: trips})
     } catch (error) {
       this.setState({
