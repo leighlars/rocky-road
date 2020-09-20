@@ -11,7 +11,8 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
  
   const getStateSites = () => {
     const currentPage = stateName
-    let stateSites = allStatesInfo.find(state => {
+    const allStates = allStatesInfo
+    let stateSites = allStates.find(state => {
       return state.state === currentPage 
     })
     if (stateSites !== undefined) {
@@ -26,8 +27,9 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
  
   const jsxSites = () => {
     const sites = getStateSites()
+    const allSites = {natParks: [], recAreas: []}
     if (sites.natParks && sites.natParks.length > 0) {
-      sites.natParks = sites.natParks.map(park => {
+      allSites.natParks = sites.natParks.map(park => {
         const location = park.fullName.split(" ").join("-"); 
         return (
           <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>
@@ -37,14 +39,14 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
           )
         })
     } else {
-      sites.natParks = [
+      allSites.natParks = [
         <div className="park-nf" key="not-found">
          <h3>No National Parks found</h3>
         </div>
        ]
     }
     if (sites.recAreas && sites.recAreas.length > 0) {
-      sites.recAreas = sites.recAreas.map(area => {
+      allSites.recAreas = sites.recAreas.map(area => {
       const location = area.fullName.split(" ").join("-"); 
         return (
         <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
@@ -54,21 +56,20 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
         )
       }) 
     } else {
-      sites.recAreas = [
+      allSites.recAreas = [
         <div className="rec-nf" key="not-found">
          <h3>No Recreation Areas found</h3>
         </div>
        ]
       };
      
-    return sites    
+    return allSites    
   }
 
 
   const sites = jsxSites()
   const natParks = sites.natParks
   const recAreas = sites.recAreas
-  // console.log(recAreas)
 
 
   return (

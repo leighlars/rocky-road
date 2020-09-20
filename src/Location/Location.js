@@ -30,16 +30,19 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   const getSiteInfo = () => {
     const stateName = getCurrentPage().split('/')[2]
     const defaultSite = {description: 'No data provided. Please modify your search.'}
+    console.log('before the reduce', allStatesInfo)
     const siteInfo = allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {
+        console.log('in reduce', state.info)
         const allSites = state.info.natParks.concat(state.info.recAreas)
+        // console.log(allSites)
         location = allSites.find(site => {
+          
           return site.fullName === getLocationName()
         })
       }
       return location
     }, {})
-    console.log(siteInfo)
     return siteInfo || defaultSite
   }
 
@@ -175,12 +178,12 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   return (
    <section className={`location-section ${setBackgroundImage()}`}>
     <Header searchSites={searchSites} />
-    {siteData && siteData.fullName && (
-      <> 
         <span className='location-header'>
           <h2 className="location-name">{getLocationName()}</h2>
           <AddButton siteData={siteData} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
         </span>
+    {siteData && siteData.fullName && (
+      <> 
           {description()}
           {images()}
         <section className="location-info">
