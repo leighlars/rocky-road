@@ -163,7 +163,6 @@ describe('Location', () => {
     
      const defaultMsg = screen.getByText('No data provided. Check back soon!') 
       expect(defaultMsg).toBeInTheDocument()
-
   })
 
 })
