@@ -6,7 +6,6 @@ import { MemoryRouter } from "react-router-dom";
 
 describe('StatePage', () => {
 
-
     it('should render a header', () => {
       const mockedAllStateSites = [
        {
@@ -41,20 +40,18 @@ describe('StatePage', () => {
         />
        </MemoryRouter>
       );
-     const homeLink = getByRole("link", { name: "Home" });
-     const galleryLink = getByRole("link", { name: "Gallery" });
-     const aboutLink = getByRole("link", { name: "About" });
-     const backLink = getByRole("link", { name: "Back" });
-     const title = getByRole("heading", { name: "Along the Rocky Road" });
-     const input = getByPlaceholderText("Search the Range");
-     const inputBtn = getByAltText("submit search");
-     expect(title).toBeInTheDocument();
-     expect(homeLink).toBeInTheDocument();
-     expect(galleryLink).toBeInTheDocument();
-     expect(aboutLink).toBeInTheDocument();
-     expect(backLink).toBeInTheDocument();
-     expect(input).toBeInTheDocument();
-     expect(inputBtn).toBeInTheDocument();
+     const homeLink = getByRole("link", { name: "Home" })
+     const galleryLink = getByRole("link", { name: "Gallery" })
+     const aboutLink = getByRole("link", { name: "About" })
+     const title = getByRole("heading", { name: "Along the Rocky Road" })
+     const input = getByPlaceholderText("Search the Range")
+     const inputBtn = getByAltText("submit search")
+     expect(title).toBeInTheDocument()
+     expect(homeLink).toBeInTheDocument()
+     expect(galleryLink).toBeInTheDocument()
+     expect(aboutLink).toBeInTheDocument()
+     expect(input).toBeInTheDocument()
+     expect(inputBtn).toBeInTheDocument()
   })
 
     it("should render state sites' information", () => {

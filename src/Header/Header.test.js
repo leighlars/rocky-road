@@ -1,12 +1,12 @@
 import React from "react";
-import {render, screen} from "@testing-library/react";
+import {render, screen, fireEvent} from "@testing-library/react";
 import Header from "./Header";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 
 describe('Header', () => {
   
-  it('should render a title, and 3 nav buttons', () => {
+  it('should render a title, and 3 nav links', () => {
     let mockGetByCurrentPage = jest.fn(() => "/:page")
     const {getByRole, getByPlaceholderText, getByAltText} = render(<MemoryRouter>
       <Header getCurrentPage={mockGetByCurrentPage}/>
@@ -25,6 +25,13 @@ describe('Header', () => {
     expect(input).toBeInTheDocument()
     expect(inputBtn).toBeInTheDocument()
   })
+
+  it("should fire an event when search button is clicked", () => {
+   const inputBtn = screen.getByAltText("submit search");
+   expect(inputBtn).toBeInTheDocument();
+   fireEvent.click(inputBtn);
+   expect(mockSearchSites).toBeCalledTimes(1);
+  });
 
 
 })

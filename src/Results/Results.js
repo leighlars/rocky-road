@@ -7,10 +7,10 @@ import {Link} from 'react-router-dom'
 const Results = ({results, searchSites}) => {
   
   const queryResults = () => {
-    if (results.length > 0) {
+    if (results && results.length > 0) {
       return results.map(result => {
         return(
-          <Link to={`/place/${result.state}/${result.fullName}`} className='result'>
+          <Link to={`/place/${result.state}/${result.fullName}`} className='result' key={result.fullName}>
            <h2 className='result-name'>{result.fullName}</h2>
             <p className='result-town'>{result.town}, {result.state}</p>
         </Link>)
