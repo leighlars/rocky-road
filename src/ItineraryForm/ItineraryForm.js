@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './ItineraryForm.scss'
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import exitIcon from '../assets/cancel.png'
 
 class ItineraryForm extends Component {
  constructor(props) {
@@ -11,6 +12,7 @@ class ItineraryForm extends Component {
    endDate: "",
    tripName: "",
    places: [],
+   display: 'itinerary-modal'
   };
  }
 
@@ -20,19 +22,24 @@ class ItineraryForm extends Component {
 
 addToTrips = (e) => {
   e.preventDefault();
-  
+  this.props.addsNewTrip(this.state, this.props.siteData)
+}
+
+hideModal = () => {
+  this.setState({display: 'itinerary-modal-hidden'})
 }
 
  render() {
   return (
-   <section className="itinerary-modal">
+   <section className={this.state.display}>
+     <button 
+     className='exit-button' 
+     onClick={this.hideModal} 
+     >
+       <img src={exitIcon} alt='exit-icon'/></button>
     <span className="existing-itineraries">
      Add to existing trip:
-     <Dropdown
-      options={this.props.itineraries}
-      onClick={this.addToTrips}
-      placeholder="Trips"
-     />
+    
     </span>
     <form className="itinerary-form">
       <span className='form-prompt'>
@@ -66,7 +73,7 @@ addToTrips = (e) => {
         required
       />
      </div>
-    <button className='selected-trip'> Add {this.props.siteData.fullName}</button>
+    <button className='add-trip-button' onClick={this.addToTrips}> Add {this.props.siteData.fullName}</button>
     </form>
    </section>
   );

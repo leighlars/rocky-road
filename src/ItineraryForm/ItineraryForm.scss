@@ -2,8 +2,7 @@
 
 .itinerary-modal {
   @include columnDisplay();
-  justify-content: space-around;
-  background: $khaki;
+  background: $prussianBlue;
   border: 3px solid $pineGreen;
   border-radius: 10px;
   box-shadow: 1px 1px 115px black;
@@ -19,10 +18,25 @@
   z-index: 1000;
   transition: .3s ease;
 }
+.itinerary-modal-hidden {
+  display: none
+}
+.exit-button {
+  background: transparent;
+  border: none;
+  margin: 0;
+  position: fixed;
+  right: 230px;
+  top: 120px;
+}
+
 .existing-itineraries {
-  // @include rowDisplay();
+  @include columnDisplay();
+  height: 20%;
+  justify-content: space-evenly;
   @include textFont(1.5em);
   color: $alabaster;
+  margin-top: 2em;
 
 }
 .form-prompt, .date-label {
@@ -31,8 +45,22 @@
 }
 .itinerary-form {
   @include columnDisplay();
-  justify-content: center;
+  // margin-top: 1em;
+  height: 40%;
+  justify-content: space-evenly;
   .date-inputs {
     @include rowDisplay();
+    .date-input {
+      margin: 5px;
+    }
+  }
+}
+
+.add-trip-button {
+  @include textFont(1em);
+  border-radius: 6px;
+  &:hover {
+    color: $alabaster;
+    background: $blueSapphire;
   }
 }

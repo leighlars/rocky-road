@@ -7,21 +7,23 @@ class AddButton extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentValue: false
+      showModal: false
     }
   }
 
-  promptItineraryForm = () => {
-    console.log('hello')
+  showModal = () => {
+    this.setState({showModal: true})
   }
 
   render() {
     return(
-      <span className='itinerary-modal'>
-        <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} />
-        <button className='add-button' onClick={this.toggleItineraryForm}>
+      <span className='itinerary-box'>
+        <button className='add-button' onClick={this.showModal}>
           <img src={add} alt='heart icon' className='add-icon'/>
         </button>
+        {this.state.showModal === true &&
+        <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} />
+        }
       </span>
     )
   }

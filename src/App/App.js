@@ -14,11 +14,29 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      allStatesInfo: [],
-      error: "",
-      results: [],
-      itineraries: [{name: 'Girls Trip!', startDate: '2020/10/20', endDate: '2020/10/30', places:[]}]
-    }
+     allStatesInfo: [],
+     error: "",
+     results: [],
+     itineraries: [
+      {
+       name: "Girls Trip!",
+       startDate: "2020/10/20",
+       endDate: "2020/10/30",
+       places: [
+        {
+         fullName: "Rocky Mountain National Park",
+         name: "Rocky Mountain",
+         town: "Estes Park",
+        },
+        {
+         fullName: "Mesa Verde National Park",
+         name: "Mesa Verde",
+         town: "Durango",
+        },
+       ],
+      },
+     ],
+    };
   }
 
   componentDidMount = async () => {
@@ -54,7 +72,7 @@ class App extends Component {
     this.setState({results: foundSites})
   }
 
-  addNewTrips = (formInput, sitePicked) => {
+  addNewTrip = (formInput, sitePicked) => {
     const newTrip = {
       name: formInput.tripName, 
       startDate: formInput.startDate, 
@@ -129,6 +147,7 @@ class App extends Component {
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
            itineraries={this.state.itineraries}
+           addNewTrip={this.addNewTrip}
           />
          );
         }}
