@@ -8,7 +8,7 @@ const SavedTrips = ({searchSites, itineraries}) => {
 
   const placeNames = (trip) => {
     return trip.places.map(place => {
-     return(<p>{place}</p>)
+     return(<p key={place}>{place}</p>)
     })
   } 
 
@@ -28,7 +28,7 @@ const SavedTrips = ({searchSites, itineraries}) => {
         );
       })
     } else {
-      return(<h2 className='default-msg'>Look around to plan your next adventure!</h2>)
+      return(<h2 className='default-msg' key={'default-msg'}>Look around to plan your next adventure!</h2>)
     }
   }
 
