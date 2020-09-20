@@ -8,11 +8,7 @@ import PropTypes from "prop-types";
 const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
 
   const stateName = getCurrentPage().split("/")[2];
-  const getLocationName = (locationName) => {
-    const removeSpaces = locationName.split(' ').join('-') 
-    return removeSpaces
-  }
-  
+ 
   const getStateSites = () => {
     const currentPage = getCurrentPage().split('/')[2]
     let stateSites = allStatesInfo.find(state => {
@@ -37,7 +33,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
       } else {
           sites.natParks = sites.natParks.map(park => {
-            const location = getLocationName(park.fullName)
+            const location = park.fullName.split(" ").join("-"); 
             return (
               <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>
                <h3>{park.fullName}</h3>
@@ -46,7 +42,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
              )
             })
          sites.recAreas = sites.recAreas.map(area => {
-          const location = getLocationName(area.fullName)
+          const location = area.fullName.split(" ").join("-"); 
            return (
             <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
              <h4>{area.fullName}</h4>
