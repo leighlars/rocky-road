@@ -81,6 +81,7 @@ class App extends Component {
     const itinerariesCopy = this.state.itineraries
     itinerariesCopy.push(newTrip)
     this.setState({itineraries: itinerariesCopy})
+    localStorage.setItem('savedTrips', JSON.stringify(this.state.itineraries))
   }
 
 

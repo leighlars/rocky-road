@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './AddButton.scss'
-import add from '../assets/add.png'
 import ItineraryForm from '../ItineraryForm/ItineraryForm'
+import PropTypes from 'prop-types'
 
 class AddButton extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class AddButton extends Component {
           Add To Trips
         </button>
         {this.state.showModal === true &&
-          <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} />
+          <ItineraryForm itineraries={this.props.itineraries} siteData={this.props.siteData} addNewTrip={this.props.addNewTrip} />
         }
       </span>
     )
@@ -31,3 +31,9 @@ class AddButton extends Component {
 }
 
 export default AddButton
+
+AddButton.propTypes = {
+  itineraries: PropTypes.array,
+  siteData: PropTypes.object,
+
+}

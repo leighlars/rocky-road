@@ -27,6 +27,8 @@ hideModal = () => {
   this.setState({display: 'itinerary-modal-hidden'})
 }
 
+
+
  render() {
   return (
    <section className={this.state.display}>
@@ -34,11 +36,11 @@ hideModal = () => {
      className='exit-button' 
      onClick={this.hideModal} 
      >
-       <img src={exitIcon} alt='exit-icon'/></button>
-    <span className="existing-itineraries">
-     Add to existing trip:
-    
+    <img src={exitIcon} alt='exit-icon'/></button>
+      <span className="existing-itineraries">
+       Add to existing trip:
     </span>
+    
     <form className="itinerary-form">
       <span className='form-prompt'>
         Or Start A New Trip:

@@ -4,7 +4,7 @@ import Header from '../Header/Header'
 import PropTypes from "prop-types";
 import AddButton from '../AddButton/AddButton'
 
-const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries}) => {
+const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addNewTrip}) => {
 
   let locationName = getCurrentPage().split('/')[3].split('-').join(' ')
 
@@ -183,7 +183,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries}) => 
     <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
     <span className='location-header'>
       <h2 className="location-name">{getLocationName()}</h2>
-      <AddButton siteData={siteData} itineraries={itineraries} />
+      <AddButton siteData={siteData} itineraries={itineraries} addNewTrip={addNewTrip} />
     </span>
     {description()}
     {images()}
@@ -203,5 +203,6 @@ Location.propTypes = {
  allStatesInfo: PropTypes.array,
  getCurrentPage: PropTypes.func,
  searchSites: PropTypes.func, 
- itineraries: PropTypes.array
+ itineraries: PropTypes.array,
+ addNewTrip: PropTypes.array
 };
