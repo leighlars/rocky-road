@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
 
+  const stateName = getCurrentPage().split("/")[2];
   const getLocationName = (locationName) => {
     const removeSpaces = locationName.split(' ').join('-') 
     return removeSpaces
@@ -14,35 +15,37 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
   
   const getStateSites = () => {
     const currentPage = getCurrentPage().split('/')[2]
-    const stateSites = allStatesInfo.find(state => {
+    let stateSites = allStatesInfo.find(state => {
       return state.state === currentPage 
     })
-    if (stateSites) {
-      return stateSites.info
+    if (stateSites !== undefined) {
+      stateSites = stateSites.info
     } else {
-      return {natParks: [], recAreas: []}
+      stateSites = {natParks: [], recAreas: []}
     }
+    return stateSites
   }
- 
 
+ 
   const jsxSites = () => {
-      const sites = getStateSites()
-      console.log(sites)
-        sites.natParks = sites.natParks.map(park => {
-          const state = park.state
-          const location = getLocationName(park.fullName)
-          return (
-            <Link to={`/place/${state}/${location}`} className="park" key={`${park.name}`}>
-             <h3>{park.fullName}</h3>
-             <p>{park.town}</p>
-            </Link>
-           )
-          })
-        if (sites.natParks.length === 0) {
-          sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
-        }
-        sites.recAreas = sites.recAreas.map(area => {
-          const stateName = area.state
+    const sites = getStateSites()
+    if (sites.natParks.length === 0 && sites.recAreas.length === 0) {
+         sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
+         sites.recAreas = sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
+    } else if (sites.recAreas.length !== 0) {
+      if (sites.natParks.length === 0) {
+        sites.natParks = [<div className='park-nf' key='not-found'><h3>No National Parks found</h3></div>]
+      } else {
+          sites.natParks = sites.natParks.map(park => {
+            const location = getLocationName(park.fullName)
+            return (
+              <Link to={`/place/${stateName}/${location}`} className="park" key={`${park.name}`}>
+               <h3>{park.fullName}</h3>
+               <p>{park.town}</p>
+              </Link>
+             )
+            })
+         sites.recAreas = sites.recAreas.map(area => {
           const location = getLocationName(area.fullName)
            return (
             <Link to={`/place/${stateName}/${location}`} className="rec-area" key={`${area.name}`}>
@@ -51,14 +54,11 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
             </Link>
            )
         })
-        if (sites.recAreas.length === 0) {
-          sites.recAreas = [<div className='rec-nf' key='not-found'><h3>No Recreation Areas found</h3></div>]
-        }
-        return sites
-
+      }
+    }    
+    return sites    
   }
 
-  const stateName = getCurrentPage().split("/")[2]
   const sites = jsxSites()
   const natParks = sites.natParks
   const recAreas = sites.recAreas

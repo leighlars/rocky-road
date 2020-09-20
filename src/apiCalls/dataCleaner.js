@@ -42,17 +42,18 @@ export const getCleanStatesInfo = async() => {
   const ID = allSites.filter((site) => site.stateCode === "ID");
   const states = [
     {state: "Colorado", info: {
-      natParks: [CO.filter(site => site.designation.includes('National Park'))], 
-      recAreas: [CO.filter(site => !site.designation.includes('National Park'))]}}, 
+      natParks: CO.filter(site => site.designation.includes('National Park')), 
+      recAreas: CO.filter(site => !site.designation.includes('National Park'))}}, 
     {state: "Wyoming", info: {
-      natParks: [WY.filter(site => site.designation.includes('National Park'))], 
-      recAreas: [WY.filter(site => !site.designation.includes('National Park'))]}}, 
+      natParks: WY.filter(site => site.designation.includes('National Park')), 
+      recAreas: WY.filter(site => !site.designation.includes('National Park'))}}, 
     {state:"Montana", info: {
-      natParks: [MT.filter(site => site.designation.includes('National Park'))], 
-      recAreas: [MT.filter(site => !site.designation.includes('National Park'))]}}, 
+      natParks: MT.filter(site => site.designation.includes('National Park')), 
+      recAreas: MT.filter(site => !site.designation.includes('National Park'))}}, 
     {state: "Idaho", info: {
-      natParks: [ID.filter(site => site.designation.includes('National Park'))], 
-      recAreas: [ID.filter(site => !site.designation.includes('National Park'))]}}]
+      natParks: ID.filter(site => site.designation.includes('National Park')), 
+      recAreas: ID.filter(site => !site.designation.includes('National Park'))}}
+  ]
   return states
 }
 
