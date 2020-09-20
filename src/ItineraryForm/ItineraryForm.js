@@ -22,7 +22,7 @@ handleChange = (event) => {
 }
 
 addToExistingTrip = (e, tripName) => {
-  this.props.addToExistingTrip(this.props.siteData.fullName, e.target.name)
+  this.props.addToExistingTrip(this.props.siteName, e.target.name)
   this.setState({existingTrip: e.target.name})
 }
 
@@ -44,7 +44,7 @@ showItineraries = () => {
        );
      })
     } else {
-    return([<p>Start planning your next adventure by adding trips!</p>]) 
+    return([<p className='default-msg-existing'>Start planning your next adventure by adding trips below!</p>]) 
     }
   }
   return (
@@ -57,7 +57,7 @@ showItineraries = () => {
 
 addToTrips = (e) => {
   e.preventDefault();
-  this.props.addNewTrip(this.state, this.props.siteData.fullName)
+  this.props.addNewTrip(this.state, this.props.siteName)
   this.hideModal()
 }
 
@@ -116,7 +116,7 @@ addToTrips = (e) => {
        value={this.state.comment}
       />
      <button className="add-trip-button" onClick={this.addToTrips}>
-      Add {this.props.siteData.fullName}
+      Add {this.props.siteName}
      </button>
     </form>
    </section>
@@ -127,6 +127,7 @@ addToTrips = (e) => {
 export default ItineraryForm
 
 ItineraryForm.propTypes = {
+ siteName: PropTypes.object, 
  itineraries: PropTypes.array,
  addNewTrip: PropTypes.func,
  addToExistingTrip: PropTypes.func,

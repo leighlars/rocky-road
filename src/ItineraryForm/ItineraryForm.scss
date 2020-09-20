@@ -6,7 +6,6 @@
   border: 3px solid $pineGreen;
   border-radius: 10px;
   box-shadow: 1px 1px 115px black;
-  // display: none;
   height: 60%;
   margin: 0;
   overflow-x: scroll;
@@ -39,6 +38,10 @@
   @include textFont(1.75em);
   color: $alabaster;
   margin-top: 1em;
+}
+.default-msg-existing {
+  @include textFont(1em);
+  color: $alabaster;
 }
 .form-prompt {
   @include textFont(1.5em);

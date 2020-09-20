@@ -177,7 +177,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
     <Header searchSites={searchSites} />
         <span className='location-header'>
           <h2 className="location-name">{getLocationName()}</h2>
-          <AddButton siteData={siteData} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
+          <AddButton siteName={siteData.fullName} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
         </span>
     {siteData && siteData.fullName && (
       <> 
