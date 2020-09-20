@@ -38,7 +38,8 @@ class App extends Component {
   searchSites = (query) => {
     const q = query.toLowerCase()
     const allSites = this.state.allStatesInfo.reduce((sites, state) => {
-        state.info.forEach(site => {
+        const allSites = state.info.natParks.concat(state.info.recAreas)
+        allSites.forEach(site => {
           sites.push(site)
         })
         return sites
