@@ -23,6 +23,7 @@ const About = (props) => {
       <h2>Activities</h2>
       <p>
        Browse pictures, search parks, <br />
+       add or update itineraries, <br/>
        and find information about <br />
        your favorite spot within <br />
        the beautiful Rockies. <br />

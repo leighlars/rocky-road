@@ -23,8 +23,8 @@ const SavedTrips = ({searchSites, itineraries}) => {
           <p>{moment(trip.startDate).format("ll")} </p> - 
           <p> {moment(trip.endDate).format("ll")}</p>
           </span>
-         <span className='comment'>{trip.comment}</span>
           {placeNames(trip)}
+         <span className='comment'>Notes: {trip.comment}</span>
         </div>
         );
       })

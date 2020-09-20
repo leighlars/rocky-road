@@ -21,7 +21,7 @@ handleChange = (event) => {
 }
 
 addToExistingTrip = (e, tripName) => {
-  this.setState({existingTrip: e.target.value})
+  this.setState({existingTrip: e.target.name})
   console.log(this.state.existingTrip)
   this.props.addToExistingTrip(this.props.siteData, this.state.existingTrip)
 }
@@ -35,6 +35,7 @@ showItineraries = () => {
       key={trip.name}
       className="existing-trip"
       onClick={this.addToExistingTrip}
+      name={trip.name}
      >
       {trip.name}
      </Link>
