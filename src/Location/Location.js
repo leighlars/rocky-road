@@ -48,14 +48,21 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
 
 
   const description = () => {
+    if (siteData.description) {
       return (
        <span className="location-description">{siteData.description}</span>
       )
+    }
+    else {
+      return (
+       <span className="location-description">No data provided. Check back soon!</span>
+      );
+    }
   }
   
   const images = () => {
       const imageList = siteData.images.map(image => {
-        return <img src={image.url} alt={image.altText} className='site-image' key={image.title}/>
+        return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
       })
       return(
         <span className='images'>
@@ -179,9 +186,9 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
           <h2 className="location-name">{getLocationName()}</h2>
           <AddButton siteName={siteData.fullName} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
         </span>
+          {description()}
     {siteData && siteData.fullName && (
       <> 
-          {description()}
           {images()}
         <section className="location-info">
           {jsxActivities()}
