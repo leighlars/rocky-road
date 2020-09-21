@@ -48,6 +48,10 @@ Users can search places along the Rocky Mountain Range, explore the photo galler
 
 ## Getting Started
 
+Go to [Deployed Page](https://rocky-road-deploy.herokuapp.com/)
+
+OR
+
 Fork and clone down the repo. 
 
 Once you have locally cloned down the repo, within that directory, run 
@@ -74,7 +78,6 @@ Once all dependencies are installed, run
 
 ![gif of adding to existing itinerary](./src/assets/addExist.gif)</br>
 *Add to existing itinerary*
-
 
 
 ## Roadmap
