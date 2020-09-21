@@ -60,8 +60,7 @@ Once all dependencies are installed, run
 `npm start` to run on http://localhost:3000
 
 ## Usage
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7aLGTn9YG6Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Youtube Video](https://youtu.be/7aLGTn9YG6Q)
 
 ![gif of landing, about, home](./src/assets/galAbHome.gif)</br>
 *Landing Page to Gallery to About Page to Home*
