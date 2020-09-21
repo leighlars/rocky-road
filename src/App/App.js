@@ -78,7 +78,6 @@ class App extends Component {
     const foundExistingTrip = itinerariesCopy.find(trip => {
       return trip.name === tripName
     })
-    console.log(foundExistingTrip)
     if (!foundExistingTrip.places.includes(siteData)) {
       foundExistingTrip.places.push(siteData)
     }

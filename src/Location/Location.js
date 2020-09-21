@@ -61,6 +61,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   }
   
   const images = () => {
+    if (siteData.images && siteData.images.length > 0) {
       const imageList = siteData.images.map(image => {
         return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
       })
@@ -69,66 +70,73 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
           {imageList}
         </span>
       )
+    }
   }
 
   const weather = () => {
+    if (siteData.weather) {
         return (<div className="info-box">
           <h3>Weather</h3>
           <span>
           {siteData.weather}
           </span>
         </div>)
+    }
   }
 
 
   const jsxActivities = () => {
-     const sortedActivities = siteData.activities.sort();
-     const jsxInfo = sortedActivities.map((activity) => {
-      return <p key={activity}>{activity}</p>;
-     });
-     return (
-      <div className="info-box">
-       <h3>Activities</h3>
-       <span className="info">
-        For information about camping and tours, go{" "}
-        <a href={siteData.url} target="_blank" rel="noopener noreferrer">
-         here
-        </a>
-        .
-       </span>
-       <span className="activities">{jsxInfo}</span>
-      </div>
-     );
+    if (siteData.activities && siteData.activities.length > 0) {
+
+      const sortedActivities = siteData.activities.sort();
+      const jsxInfo = sortedActivities.map((activity) => {
+       return <p key={activity}>{activity}</p>;
+      });
+      return (
+       <div className="info-box">
+        <h3>Activities</h3>
+        <span className="info">
+         For information about camping and tours, go{" "}
+         <a href={siteData.url} target="_blank" rel="noopener noreferrer">
+          here
+         </a>
+         .
+        </span>
+        <span className="activities">{jsxInfo}</span>
+       </div>
+      );
+    }
   }
 
   const jsxFees = () => {
-     let jsxInfo = siteData.entranceFees.map((type) => {
+    if (siteData.entranceFees) {
+      let jsxInfo = siteData.entranceFees.map((type) => {
+       return (
+        <div className="fees">
+         <span className="fee" key={type.title}>
+          <b>Title:</b> {type.title}
+         </span>{" "}
+         <br />
+         <span className="fee" key={type.description}>
+          <b>Description:</b> {type.description}
+         </span>{" "}
+         <br />
+         <span className="fee" key={type.cost}>
+          <b>Cost:</b> ${Number(type.cost).toFixed(0)}
+         </span>
+        </div>
+       );
+      });
+      if (jsxInfo.length === 0) {
+       jsxInfo = <span className="fee">No data provided</span>;
+      }
       return (
-       <div className="fees">
-        <span className="fee" key={type.title}>
-         <b>Title:</b> {type.title}
-        </span>{" "}
-        <br />
-        <span className="fee" key={type.description}>
-         <b>Description:</b> {type.description}
-        </span>{" "}
-        <br />
-        <span className="fee" key={type.cost}>
-         <b>Cost:</b> ${Number(type.cost).toFixed(0)}
-        </span>
+       <div className="info-box">
+        <h3>Entrance</h3>
+        {jsxInfo}
        </div>
       );
-     });
-     if (jsxInfo.length === 0) {
-      jsxInfo = <span className="fee">No data provided</span>;
-     }
-     return (
-      <div className="info-box">
-       <h3>Entrance</h3>
-       {jsxInfo}
-      </div>
-     );
-    
+    }
   }
 
 
