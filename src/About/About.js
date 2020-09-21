@@ -7,7 +7,6 @@ const About = (props) => {
   return (
    <section className="about-section">
     <Header
-     getCurrentPage={props.getCurrentPage}
      searchSites={props.searchSites}
     />
     <section className="about-boxes">
@@ -24,6 +23,7 @@ const About = (props) => {
       <h2>Activities</h2>
       <p>
        Browse pictures, search parks, <br />
+       add or update itineraries, <br/>
        and find information about <br />
        your favorite spot within <br />
        the beautiful Rockies. <br />
@@ -57,6 +57,5 @@ const About = (props) => {
 
 export default About
 About.propTypes = {
- getCurrentPage: PropTypes.func,
  searchSites: PropTypes.func
 };

@@ -42,18 +42,20 @@
         border-radius: 4px;
       }
     }
-   
-    
   }
-  h2 {
-     @include headerFont(5em);
-     color: $alabaster;
-     text-align: left;
-    //  margin-top: 1em;
-     margin-left: 1.5em;
-     text-shadow: 2px 2px black;
-     width: 100%;
-   }
+
+  .location-header {
+    @include columnDisplay();
+    width: 90%;
+    align-items: baseline;
+    padding: 0;
+    h2 {
+       @include headerFont(4em);
+       color: $alabaster;
+       margin: 0;
+       text-shadow: 2px 2px black;
+     }
+  }
    .location-description {
      background: $mutedWhite;
      border: 2px solid $khaki;

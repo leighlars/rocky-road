@@ -17,29 +17,32 @@ describe('Location', () => {
      },
      {
       state: "Colorado",
-      info: [
-       { 
-       fullName: "Rocky Mountain National Park",
-       name: 'Rocky Mountain', 
-       description: 'Jagged peaks and alpine lake',
-       designation: "National Park", 
-       town: "Estes Park", state: 'CO', 
-       images: [{alt:'Mountains', url:"someUrl"}], 
-       entranceFees: [{title: 'day pass', description: 'one day', cost: '25.0000' }],
-       activities: [{name: 'Hiking'}, {name: 'Rock climbing'}],
-       weather: 'Cold in winter',
-       directions: 'Drive on 36 to Estes Park',
-       directionsPage: 'someDriving.url',
-       url: 'someMainUrl',
-       operationDesc: 'Open year round, Trail Ridge Road closed in winter',
-     
+      info: {
+        natParks: [
+          { 
+            fullName: "Rocky Mountain National Park",
+            name: 'Rocky Mountain', 
+            description: 'Jagged peaks and alpine lake',
+            designation: "National Park", 
+            town: "Estes Park", state: 'CO', 
+            images: [{alt:'Mountains', url:"someUrl"}], 
+            entranceFees: [{title: 'day pass', description: 'one day', cost: '25.0000' }],
+            activities: ['Hiking','Rock climbing'],
+            weather: 'Cold in winter',
+            directions: 'Drive on 36 to Estes Park',
+            directionsPage: 'someDriving.url',
+            url: 'someMainUrl',
+            operationDesc: 'Open year round, Trail Ridge Road closed in winter',
           },
-       {
-        fullName: "Dinosaur Valley",
-        designation: "National Monument",
-        town: "Somewhere",
-       },
-      ],
+        ],
+        recAreas: [
+          {
+            fullName: "Dinosaur Valley",
+            designation: "National Monument",
+            town: "Somewhere",
+          },
+        ],
+      }
      },
     ] 
     const mockGetCurrentPage = jest.fn(() => "/place/Colorado/Rocky-Mountain-National-Park") 
@@ -54,7 +57,7 @@ describe('Location', () => {
     const homeLink = screen.getByRole("link", { name: "Home" }) 
     const galleryLink = screen.getByRole("link", { name: "Gallery" }) 
     const aboutLink = screen.getByRole("link", { name: "About" }) 
-    const backLink = screen.getByRole("link", { name: "Back" }) 
+    const savedLink = screen.getByRole('link', {name: "Saved Trips"})
     const title = screen.getByRole("heading", { name: "Along the Rocky Road" }) 
     const input = screen.getByPlaceholderText("Search the Range");
     const inputBtn = screen.getByAltText("submit search");
@@ -62,9 +65,9 @@ describe('Location', () => {
     expect(homeLink).toBeInTheDocument() 
     expect(galleryLink).toBeInTheDocument() 
     expect(aboutLink).toBeInTheDocument() 
-    expect(backLink).toBeInTheDocument()
-    expect(input).toBeInTheDocument();
-    expect(inputBtn).toBeInTheDocument();
+    expect(input).toBeInTheDocument()
+    expect(inputBtn).toBeInTheDocument()
+    expect(savedLink).toBeInTheDocument()
   })
 
 
@@ -76,33 +79,37 @@ describe('Location', () => {
      },
      {
       state: "Colorado",
-      info: [
-       {
-        fullName: "Rocky Mountain National Park",
-        name: "Rocky Mountain",
-        designation: "National Park",
-        description: "Jagged peaks and alpine lakes",
-        town: "Estes Park",
-        state: "CO",
-        images: [{ altText: "Mountains", url: "someUrl" }],
-        entranceFees: [
-         { title: "day pass", description: "one day", cost: "25.0000" },
-        ],
-        activities: [{ name: "Hiking" }, { name: "Rock Climbing" }],
-        weather: "Cold in winter",
-        directions: "Drive on 36 to Estes Park",
-        directionsPage: "someDriving.url",
-        url: "someMain.url",
-        operationDesc: "Open year round, Trail Ridge Road closed in winter",
-       },
-       {
-        fullName: "Dinosaur Valley",
-        designation: "National Monument",
-        town: "Somewhere",
-       },
-      ],
+      info: {
+       natParks: [
+        {
+         fullName: "Rocky Mountain National Park",
+         name: "Rocky Mountain",
+         description: "Jagged peaks and alpine lake",
+         designation: "National Park",
+         town: "Estes Park",
+         state: "CO",
+         images: [{ alt: "Mountains", url: "someUrl" }],
+         entranceFees: [
+          { title: "day pass", description: "one day", cost: "25.0000" },
+         ],
+         activities: ["Hiking", "Rock climbing"],
+         weather: "Cold in winter",
+         directions: "Drive on 36 to Estes Park",
+         directionsPage: "someDriving.url",
+         url: "someMainUrl",
+         operationDesc: "Open year round, Trail Ridge Road closed in winter",
+        },
+       ],
+       recAreas: [
+        {
+         fullName: "Dinosaur Valley",
+         designation: "National Monument",
+         town: "Somewhere",
+        },
+       ],
+      },
      },
-    ] 
+    ]; 
     const mockGetCurrentPage = jest.fn(
      () => "/place/Colorado/Rocky-Mountain-National-Park"
     ) 
@@ -116,7 +123,7 @@ describe('Location', () => {
 
     ) 
       const title = screen.getByRole('heading', {name: 'Rocky Mountain National Park'})
-      const description = screen.getByText('Jagged peaks and alpine lakes')
+      const description = screen.getByText('Jagged peaks and alpine lake')
       const weather = screen.getByText('Cold in winter')
       const townState = screen.getByText("Estes Park, CO", {exact: false}) 
       const directions = screen.getByText("Drive on 36 to Estes Park", {exact: false}) 
@@ -124,9 +131,8 @@ describe('Location', () => {
       const feeDesc = screen.getByText('day pass')
       const hours = screen.getByText('24 hours / 7 days')
       const hiking = screen.getByText('Hiking')
-      const rockClimbing = screen.getByText('Rock Climbing')
+      const rockClimbing = screen.getByText('Rock climbing')
       const opDesc = screen.getByText('Open year round, Trail Ridge Road closed in winter')
-      const image = screen.getByAltText('Mountains')
 
       expect(title).toBeInTheDocument()
       expect(description).toBeInTheDocument() 
@@ -139,7 +145,6 @@ describe('Location', () => {
       expect(rockClimbing).toBeInTheDocument() 
       expect(hiking).toBeInTheDocument() 
       expect(opDesc).toBeInTheDocument() 
-      expect(image).toBeInTheDocument() 
   })
 
   it('should render a default message if no data is provided', () => {
@@ -158,7 +163,6 @@ describe('Location', () => {
     
      const defaultMsg = screen.getByText('No data provided. Check back soon!') 
       expect(defaultMsg).toBeInTheDocument()
-
   })
 
 })

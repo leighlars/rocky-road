@@ -4,10 +4,10 @@ import Header from '../Header/Header'
 import PropTypes from 'prop-types'
 
 
-const Landing = ({getCurrentPage, searchSites}) => {
+const Landing = ({searchSites}) => {
   return (
    <section className="landing">
-    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+    <Header searchSites={searchSites} />
    </section>
   )
 }
@@ -15,6 +15,5 @@ const Landing = ({getCurrentPage, searchSites}) => {
 export default Landing
 
 Landing.propTypes = {
- getCurrentPage: PropTypes.func,
  searchSites: PropTypes.func
 };

@@ -1,18 +1,17 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Home from "./Home";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 
 describe('Home', () => {
-  let mockGetCurrentPage
+  let mockSearchSites
   beforeEach(() => {
-    mockGetCurrentPage = jest.fn(() => "/about")
+    mockSearchSites = jest.fn()
     render(
       <MemoryRouter>
       <Home 
-        getCurrentPage={mockGetCurrentPage}
-        searchSites={jest.fn}
+        searchSites={mockSearchSites}
       />
      </MemoryRouter>
     );
@@ -20,9 +19,9 @@ describe('Home', () => {
 
   it('should list 4 state links and a header', () => {
     const title = screen.getByRole("heading", { name: "Along the Rocky Road" });
-    const homeLink = screen.getByRole("link", { name: "Home" });
     const galleryLink = screen.getByRole("link", { name: "Gallery" });
     const aboutLink = screen.getByRole("link", { name: "About" })
+    const savedLink = screen.getByRole("link", { name: "Saved Trips" });
     const input = screen.getByPlaceholderText("Search the Range");
     const inputBtn = screen.getByAltText("submit search");
     const co = screen.getByRole('link', {name: 'Colorado'})
@@ -31,8 +30,8 @@ describe('Home', () => {
     const wy = screen.getByRole('link', { name: 'Wyoming'})
 
     expect(title).toBeInTheDocument()
-    expect(homeLink).not.toBeInTheDocument()
     expect(galleryLink).toBeInTheDocument()
+    expect(savedLink).toBeInTheDocument()
     expect(aboutLink).toBeInTheDocument()
     expect(input).toBeInTheDocument()
     expect(inputBtn).toBeInTheDocument()
@@ -42,5 +41,11 @@ describe('Home', () => {
     expect(wy).toBeInTheDocument()
   })
 
+  it("should fire an event when search button is clicked", () => {
+   const inputBtn = screen.getByAltText("submit search")
+   expect(inputBtn).toBeInTheDocument()
+   fireEvent.click(inputBtn)
+   expect(mockSearchSites).toBeCalledTimes(1)
+  });
 
 })

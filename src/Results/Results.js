@@ -4,13 +4,13 @@ import Header from '../Header/Header'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
-const Results = ({results, getCurrentPage, searchSites}) => {
+const Results = ({results, searchSites}) => {
   
   const queryResults = () => {
-    if (results.length > 0) {
+    if (results && results.length > 0) {
       return results.map(result => {
         return(
-          <Link to={`/place/${result.state}/${result.fullName}`} className='result'>
+          <Link to={`/place/${result.state}/${result.fullName}`} className='result' key={result.fullName}>
            <h2 className='result-name'>{result.fullName}</h2>
             <p className='result-town'>{result.town}, {result.state}</p>
         </Link>)
@@ -23,7 +23,7 @@ const Results = ({results, getCurrentPage, searchSites}) => {
 
   return(
     <section className='search-section'>
-      <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+      <Header searchSites={searchSites} />
       <section className='results-section'>
         {queryResults()}
       </section>

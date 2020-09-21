@@ -1,0 +1,101 @@
+@import '../styles/variables';
+
+.itinerary-modal {
+  @include columnDisplay();
+  background: $prussianBlue;
+  border: 3px solid $pineGreen;
+  border-radius: 10px;
+  box-shadow: 1px 1px 115px black;
+  height: 60%;
+  margin: 0;
+  overflow-x: scroll;
+  padding: 1%;
+  position: fixed;
+  right: 20%;
+  top: 15%;
+  width: 60%;
+  z-index: 1000;
+  transition: .3s ease;
+}
+.itinerary-modal-hidden {
+  display: none
+}
+.exit-button {
+  background: transparent;
+  border: none;
+  margin: 0;
+  position: fixed;
+  right: 300px;
+  top: 120px;
+  &:hover {
+    background: $alabaster;
+    border-radius: 6px;
+  }
+}
+
+.existing-itineraries {
+  @include columnDisplay();
+  @include textFont(1.75em);
+  color: $alabaster;
+  margin-top: 1em;
+}
+.default-msg-existing {
+  @include textFont(1em);
+  color: $alabaster;
+}
+.form-prompt {
+  @include textFont(1.5em);
+  color: $alabaster;
+}
+.date-label {
+  @include textFont(1.25em);
+  color: $alabaster;
+}
+.itinerary-form {
+  @include columnDisplay();
+  height: 65%;
+  justify-content: space-evenly;
+  .comment-input {
+    border-radius: 6px;
+    @include textFont(1em);
+    width: 200px;
+    height: 50px;
+    margin-bottom: 5px;
+    background: $mutedWhite;
+  }
+  .date-inputs {
+    @include rowDisplay();
+    .date-input {
+      margin: 5px;
+      border-radius: 8px;
+    }
+  }
+}
+
+.itineraries {
+  @include rowDisplay();
+  width: 40%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  .existing-trip {
+    text-decoration: none;
+    @include textFont(1em);
+    color: $alabaster;
+    &:hover {
+      background: $alabaster;
+      color: $prussianBlue;
+    }
+  }
+}
+
+.add-trip-button {
+  @include textFont(1em);
+  border-radius: 6px;
+  background: $mutedWhite;
+  border: none;
+  font-weight: bold;
+  &:hover {
+    color: $alabaster;
+    background: $blueSapphire;
+  }
+}

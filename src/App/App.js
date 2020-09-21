@@ -9,21 +9,27 @@ import StatePage from '../StatePage/StatePage'
 import Location from '../Location/Location'
 import Results from '../Results/Results'
 import Gallery from '../Gallery/Gallery'
+import SavedTrips from '../SavedTrips/SavedTrips'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      allStatesInfo: [],
-      error: "",
-      results: []
-    }
+     allStatesInfo: [],
+     error: "",
+     results: [],
+     itineraries: [],
+    };
   }
 
   componentDidMount = async () => {
     try {
       const allData = await getCleanStatesInfo();
-      this.setState({allStatesInfo: allData})
+      let trips = JSON.parse(localStorage.getItem('savedTrips'))
+      if (trips === null) {
+        trips = []
+      }
+      this.setState({allStatesInfo: allData, itineraries: trips})
     } catch (error) {
       this.setState({
         error: "Oops, something went wrong! 🙁 Please try again.",
@@ -53,6 +59,33 @@ class App extends Component {
     this.setState({results: foundSites})
   }
 
+  addNewTrip = (formInput, sitePicked) => {
+    const newTrip = {
+      name: formInput.tripName, 
+      startDate: formInput.startDate, 
+      endDate: formInput.endDate, 
+      comment: formInput.comment,
+      places: [sitePicked],
+    }
+    const itinerariesCopy = this.state.itineraries
+    itinerariesCopy.push(newTrip)
+    this.setState({itineraries: itinerariesCopy})
+    localStorage.setItem('savedTrips', JSON.stringify(this.state.itineraries))
+  }
+
+  addToExistingTrip = (siteData, tripName) => {
+    const itinerariesCopy = this.state.itineraries;
+    const foundExistingTrip = itinerariesCopy.find(trip => {
+      return trip.name === tripName
+    })
+    if (!foundExistingTrip.places.includes(siteData)) {
+      foundExistingTrip.places.push(siteData)
+    }
+    localStorage.setItem("savedTrips", JSON.stringify(itinerariesCopy));
+    this.setState({itineraries: itinerariesCopy})
+  }
+
+
   render() { 
     return (
      <div className="App">
@@ -63,7 +96,6 @@ class App extends Component {
         render={() => {
          return (
           <Landing
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
@@ -75,7 +107,6 @@ class App extends Component {
         render={() => {
          return (
           <Home
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
@@ -87,7 +118,6 @@ class App extends Component {
         render={() => {
          return (
           <About
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
@@ -115,6 +145,9 @@ class App extends Component {
            allStatesInfo={this.state.allStatesInfo}
            getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
+           itineraries={this.state.itineraries}
+           addNewTrip={this.addNewTrip}
+           addToExistingTrip={this.addToExistingTrip}
           />
          );
         }}
@@ -125,12 +158,21 @@ class App extends Component {
         render={() => {
          return (
           <Results
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
            results={this.state.results}
           />
          );
         }}
+       />
+       <Route 
+       exact path='/saved-trips'
+       render={() => {
+         return(
+           <SavedTrips 
+           searchSites={this.searchSites}
+           itineraries={this.state.itineraries} />
+         )
+       }}
        />
        <Route
         exact
@@ -138,7 +180,6 @@ class App extends Component {
         render={() => {
          return (
           <Gallery
-           getCurrentPage={this.getCurrentPage}
            searchSites={this.searchSites}
           />
          );
