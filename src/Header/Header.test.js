@@ -9,7 +9,7 @@ describe('Header', () => {
   it('should render a title, and 3 nav links', () => {
     let mockGetByCurrentPage = jest.fn(() => "/:page")
     const {getByRole, getByPlaceholderText, getByAltText} = render(<MemoryRouter>
-      <Header getCurrentPage={mockGetByCurrentPage}/>
+      <Header getCurrentPage={mockGetByCurrentPage} searchSites={jest.fn()}/>
       </MemoryRouter>)
     const title = getByRole('heading', {name: 'Along the Rocky Road'})
     const homeLink = getByRole('link', {name: 'Home'})
@@ -27,6 +27,12 @@ describe('Header', () => {
   })
 
   it("should fire an event when search button is clicked", () => {
+    let mockSearchSites = jest.fn()
+   render(
+     <MemoryRouter>
+      <Header searchSites={mockSearchSites} />
+     </MemoryRouter>
+    );
    const inputBtn = screen.getByAltText("submit search");
    expect(inputBtn).toBeInTheDocument();
    fireEvent.click(inputBtn);

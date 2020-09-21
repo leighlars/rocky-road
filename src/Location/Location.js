@@ -63,7 +63,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   const images = () => {
     if (siteData.images && siteData.images.length > 0) {
       const imageList = siteData.images.map(image => {
-        return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
+        return <img src={image.url} alt={image.altText} className='site-image' key={Date.now()}/>
       })
       return(
         <span className='images'>
@@ -112,7 +112,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
     if (siteData.entranceFees) {
       let jsxInfo = siteData.entranceFees.map((type) => {
        return (
-        <div className="fees">
+        <div className="fees" key={type.title}>
          <span className="fee" key={type.title}>
           <b>Title:</b> {type.title}
          </span>{" "}
