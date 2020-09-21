@@ -3,6 +3,7 @@ import './ItineraryForm.scss'
 import exitIcon from '../assets/cancel.png'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 class ItineraryForm extends Component {
  constructor(props) {
@@ -13,7 +14,8 @@ class ItineraryForm extends Component {
    tripName: "",
    display: 'itinerary-modal',
    comment: '',
-   existingTrip: ''
+   existingTrip: '',
+   todayDate: moment().format('l')
   };
  }
 
@@ -89,7 +91,7 @@ addToTrips = (e) => {
        aria-label='start-date-input'
        type="date"
        className="date-input"
-       min="2020-09-20"
+       min={this.state.todayDate}
        max="2021-08-30"
        name="startDate"
        onChange={this.handleChange}
@@ -99,7 +101,7 @@ addToTrips = (e) => {
       <input
        type="date"
        className="date-input"
-       min="2020-09-20"
+       min={this.state.startDate}
        max="2021-08-30"
        name="endDate"
        onChange={this.handleChange}
