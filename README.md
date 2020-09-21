@@ -53,26 +53,24 @@ Once all dependencies are installed, run
 
 ## Usage
 
-<!-- ![gif of home](../src/assets/homeload.gif)</br>
-*Home Page* -->
+![gif of landing, about, home](./src/assets/galAbHome.gif)</br>
+*Landing Page to Gallery to About Page to Home*
 
-<!-- ![gif of location page](../src/assets/locationPage.gif)</br>
+![gif of state page](./src/assets/home-allStates.gif)</br>
+*Home page to each State Page*
+
+![gif of location page](./src/assets/loc.gif)</br>
 *Location Page*
 
-![gif of about page](../src/assets/about.gif)</br>
-*About Page*
+![gif of search functionality](./src/assets/search.gif)</br>
+*Search functionality*
 
-![gif of search functionality](../src/assets/search.gif)</br>
-*Search functionality of American cities*
+![gif of adding new itinerary](../src/assets/addLoc.gif)</br>
+*Add new itinerary*
 
-![gif of searching from Home](../src/assets/searchFromHome.gif)</br>
-*Searching from Home Page*
+![gif of adding to existing itinerary](../src/assets/addExist.gif)</br>
+*Add to existing itinerary*
 
-![gif of outside links](../src/assets/outsideLinks.gif)</br>
-*Clicking external links*
-
-![gif of loading screen](../src/assets/loading.gif)</br>
-*Loading Page* -->
 
 
 ## Roadmap
