@@ -63,7 +63,7 @@ Once all dependencies are installed, run
 ![gif of state page](./src/assets/home-allStates.gif)</br>
 *Home page to each State Page*
 
-![gif of location page](./src/assets/loc.gif)</br>
+![gif of location page](./src/assets/locPage.gif)</br>
 *Location Page*
 
 ![gif of search functionality](./src/assets/search.gif)</br>
