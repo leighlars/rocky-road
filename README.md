@@ -69,10 +69,10 @@ Once all dependencies are installed, run
 ![gif of search functionality](./src/assets/search.gif)</br>
 *Search functionality*
 
-![gif of adding new itinerary](../src/assets/addLoc.gif)</br>
+![gif of adding new itinerary](./src/assets/addLoc.gif)</br>
 *Add new itinerary*
 
-![gif of adding to existing itinerary](../src/assets/addExist.gif)</br>
+![gif of adding to existing itinerary](./src/assets/addExist.gif)</br>
 *Add to existing itinerary*
 
 
