@@ -6,6 +6,8 @@
   <h3 align="center">Rocky Road</h3>
 
   <p align="center">
+  <br/>
+  <a href="https://youtu.be/7aLGTn9YG6Q">Youtube Walk-through</a>
     <br />
     <a href="https://github.com/leighlars/rocky-road"><strong>Explore the docs »</strong></a>
     <br />
@@ -60,8 +62,6 @@ Once all dependencies are installed, run
 `npm start` to run on http://localhost:3000
 
 ## Usage
-[Youtube Video](https://youtu.be/7aLGTn9YG6Q)
-
 ![gif of landing, about, home](./src/assets/galAbHome.gif)</br>
 *Landing Page to Gallery to About Page to Home*
 
