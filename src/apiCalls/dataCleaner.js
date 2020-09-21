@@ -36,10 +36,10 @@ export const formatAllData = async () => {
 
 export const getCleanStatesInfo = async() => {
   const allSites = await formatAllData()
-  const CO = allSites.filter(site => site.stateCode === 'CO')
-  const WY = allSites.filter((site) => site.stateCode === "WY")
-  const MT = allSites.filter((site) => site.stateCode === "MT");
-  const ID = allSites.filter((site) => site.stateCode === "ID");
+  const CO = preventDupes(allSites.filter(site => site.stateCode === 'CO'))
+  const WY = preventDupes(allSites.filter((site) => site.stateCode === "WY"))
+  const MT = preventDupes(allSites.filter((site) => site.stateCode === "MT"))
+  const ID = preventDupes(allSites.filter((site) => site.stateCode === "ID"))
   const states = [
     {state: "Colorado", info: {
       natParks: CO.filter(site => site.designation.includes('National Park')), 
@@ -74,4 +74,11 @@ const getAllActivities = (activitiesList) => {
     return activity.name
   })
   return activities
+}
+
+const preventDupes = (array) => {
+  const uniqueSites = Array.from(new Set(array.map(site => site.fullName))).map(fullName =>{
+        return array.find(site => site.fullName === fullName)
+      })
+  return uniqueSites
 }
