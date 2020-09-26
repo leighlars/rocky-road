@@ -44,7 +44,7 @@ Users can search places along the Rocky Mountain Range, explore the photo galler
 
 ### Built With
 
-- React 
+- React Hooks
 - SCSS
 - TDD with Jest
 
