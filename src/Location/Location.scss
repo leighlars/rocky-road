@@ -8,6 +8,7 @@
   padding: 3%;
   height: 100vh;
   width: 100%; 
+  overflow-x: hidden;
     
    header {
     @include columnDisplay();
@@ -56,6 +57,23 @@
        text-shadow: 2px 2px black;
      }
   }
+   .add-button {
+    border: none;
+    padding: 0;
+    @include headerFont(1.25em);
+    width: 5em;
+    text-shadow: none;
+    color: $prussianBlue;
+    background: $alabaster;
+    margin-left: 10px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px black;
+    padding: .5%;
+      &:hover {
+        color: $alabaster;
+        background: $blueSapphire;
+      }
+    }
    .location-description {
      background: $mutedWhite;
      border: 2px solid $khaki;
@@ -134,8 +152,6 @@
             text-align: left;
           }
         }
-            
-        
       }
 
 // backgrounds

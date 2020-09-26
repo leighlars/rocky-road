@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Location.scss'
 import Header from '../Header/Header'
 import PropTypes from "prop-types";
-import AddButton from '../AddButton/AddButton'
+import ItineraryForm from '../ItineraryForm/ItineraryForm'
 
 const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addNewTrip, addToExistingTrip}) => {
+  const [modal, setModalDisplay] = useState(false)
 
   let locationName = getCurrentPage().split('/')[3].split('-').join(' ')
 
@@ -46,6 +47,27 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   
   const siteData = getSiteInfo()
 
+  const toggleModal = () => {
+    setModalDisplay(!modal)
+  }
+ 
+
+  const jsxAddButton = () => {
+      return (
+        <span className='itinerary-box'>
+          <button className='add-button' onClick={toggleModal}>
+            Add To Trips
+        </button>
+          {modal === true &&
+            <ItineraryForm
+              itineraries={itineraries}
+              siteName={siteData.fullName}
+              addNewTrip={addNewTrip}
+              addToExistingTrip={addToExistingTrip} />
+          }
+        </span>
+      )
+  }
 
   const description = () => {
     if (siteData.description) {
@@ -192,7 +214,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
     <Header searchSites={searchSites} />
         <span className='location-header'>
           <h2 className="location-name">{getLocationName()}</h2>
-          <AddButton siteName={siteData.fullName} itineraries={itineraries} addNewTrip={addNewTrip} addToExistingTrip={addToExistingTrip} />
+          {jsxAddButton()}
         </span>
           {description()}
     {siteData && siteData.fullName && (

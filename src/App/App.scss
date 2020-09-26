@@ -5,7 +5,6 @@
   background: #EEEDE805;
   text-align: center;
   overflow-x: hidden;
-  overflow-x: hidden;
 }
 
 
@@ -13,6 +12,7 @@ main {
   @include columnDisplay();
   padding: 0;
   width: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 

@@ -1,80 +1,79 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './ItineraryForm.scss'
 import exitIcon from '../assets/cancel.png'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-class ItineraryForm extends Component {
- constructor(props) {
-  super(props);
-  this.state = {
-   startDate: "",
-   endDate: "",
-   tripName: "",
-   display: 'itinerary-modal',
-   comment: '',
-   existingTrip: '',
-   todayDate: moment().format('l')
-  };
- }
 
-handleChange = (event) => {
-  this.setState({ [event.target.name]: event.target.value });
-}
-
-addToExistingTrip = (e, tripName) => {
-  this.props.addToExistingTrip(this.props.siteName, e.target.name)
-  this.setState({existingTrip: e.target.name})
-}
+const ItineraryForm = (props) => {
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [tripName, setTripName] = useState('')
+  const [comment, setComment] = useState('')
+  const [existingTrip, setExistingTrip] = useState('')
+  const [display, setDisplay] = useState('itinerary-modal')
 
 
-showItineraries = () => {
-  const tripDetails = () => {
-    if (this.props.itineraries.length > 0) {
-     return this.props.itineraries.map(trip => {
-       return (
-        <Link
-         to="/saved-trips"
-         key={trip.name}
-         className="existing-trip"
-         onClick={this.addToExistingTrip}
-         name={trip.name}
-        >
-         {trip.name}
-        </Link>
-       );
-     })
+  const addToExistingTrip = (e, tripName) => {
+    props.addToExistingTrip(props.siteName, e.target.name)
+    setExistingTrip(e.target.name)
+  }
+
+
+  const showItineraries = () => {
+    let itinerariesInfo = [<p className='default-msg-existing' key={'default-msg'}>Start planning your next adventure by adding trips below!</p>]
+      if (props.itineraries.length > 0) {
+      itinerariesInfo = props.itineraries.map(trip => {
+        return (
+          <Link
+          to="/saved-trips"
+          key={trip.name}
+          className="existing-trip"
+          onClick={addToExistingTrip}
+          name={trip.name}
+          >
+          {trip.name}
+          </Link>
+        );
+      })
+      } 
+    return (
+        <div className="itineraries" >
+          {itinerariesInfo}
+        </div>
+    )
+  }
+
+  const hideModal = () => {
+    if (display === 'itinerary-modal') {
+      setDisplay('itinerary-modal-hidden')
     } else {
-    return([<p className='default-msg-existing' key={'default-msg'}>Start planning your next adventure by adding trips below!</p>]) 
+      setDisplay('itinerary-modal')
     }
   }
-  return (
-      <div className="itineraries" >
-        {tripDetails()}
-      </div>
-  );
-  
-}
 
-addToTrips = (e) => {
-  e.preventDefault();
-  this.props.addNewTrip(this.state, this.props.siteName)
-  this.hideModal()
-}
-
-  hideModal = () => {
-    this.setState({display: 'itinerary-modal-hidden'})
+  const addToTrips = (e) => {
+    e.preventDefault();
+    let formInputs = {
+      tripName: tripName,
+      startDate: startDate,
+      endDate: endDate,
+      comment: comment
+    }
+    props.addNewTrip(formInputs, props.siteName)
+    hideModal()
   }
 
- render() {
+  
+
   return (
-   <section className={this.state.display}>
-    <button className="exit-button" onClick={this.hideModal}>
+   <section className={display}>
+    <button className="exit-button" onClick={hideModal}>
      <img src={exitIcon} alt="exit-icon" />
     </button>
     <span className="existing-itineraries">Add to Existing Trip:</span>
-    {this.showItineraries()}
+    {showItineraries()}
     <form className="itinerary-form">
      <span className="form-prompt">Or Start A New Trip:</span>
      <input
@@ -82,8 +81,8 @@ addToTrips = (e) => {
       type="text"
       name="tripName"
       placeholder="Trip Name"
-      onChange={this.handleChange}
-      value={this.state.tripName}
+      onChange={(e) => setTripName(e.target.value)}
+      value={tripName}
      />
      <label className="date-label">Type or select calendar date:</label>
      <div className="date-inputs">
@@ -91,21 +90,20 @@ addToTrips = (e) => {
        aria-label='start-date-input'
        type="date"
        className="date-input"
-       min={this.state.todayDate}
+       min={moment().format('l')}
        max="2021-08-30"
        name="startDate"
-       onChange={this.handleChange}
-       value={this.state.startDate}
+       value={startDate}
+       onChange={(e) => setStartDate(e.target.value)}
        required
       />
       <input
        type="date"
        className="date-input"
-       min={this.state.startDate}
+       min={moment().format('l')}
        max="2021-08-30"
-       name="endDate"
-       onChange={this.handleChange}
-       value={this.state.endDate}
+       value={endDate}
+       onChange={(e) => setEndDate(e.target.value)}
        required
       />
      </div>
@@ -114,18 +112,17 @@ addToTrips = (e) => {
        className="comment-input"
        placeholder="Add Comment"
        max="120"
-       name="comment"
-       onChange={this.handleChange}
-       value={this.state.comment}
+       onChange={(e) => setComment(e.target.value)}
+       value={comment}
       />
-     <button className="add-trip-button" onClick={this.addToTrips}>
-      Add {this.props.siteName}
+     <button className="add-trip-button" onClick={addToTrips}>
+      Add {props.siteName}
      </button>
     </form>
    </section>
   );
  }
-}
+
 
 export default ItineraryForm
 
