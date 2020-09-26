@@ -13,7 +13,6 @@ const StatePage = ({allStatesInfo, searchSites}) => {
     const currentPage = stateName
     const allStates = allStatesInfo
     let stateSites = allStates.find(state => {
-      console.log(state)
       return state.state === currentPage 
     })
     if (stateSites !== undefined) {

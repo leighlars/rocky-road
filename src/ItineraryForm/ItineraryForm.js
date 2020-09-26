@@ -16,7 +16,7 @@ const ItineraryForm = (props) => {
 
 
   const addToExistingTrip = (e, tripName) => {
-    props.addToExistingTrip(props.siteName, e.target.name)
+    props.addToExistingTrip(props.siteName, props.siteState, e.target.name)
     setExistingTrip(e.target.name)
   }
 

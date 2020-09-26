@@ -67,13 +67,14 @@ const App = () => {
     localStorage.setItem('savedTrips', JSON.stringify(itineraries))
   }
 
-  const addToExistingTrip = (siteData, tripName) => {
+  const addToExistingTrip = (siteName, siteState, tripName) => {
     const itinerariesCopy = itineraries;
+    const site = {siteName: siteName, siteState: siteState}
     const foundExistingTrip = itinerariesCopy.find(trip => {
       return trip.name === tripName
     })
-    if (!foundExistingTrip.places.includes(siteData)) {
-      foundExistingTrip.places.push(siteData)
+    if (!foundExistingTrip.places.includes(siteName)) {
+      foundExistingTrip.places.push(site)
     }
     localStorage.setItem("savedTrips", JSON.stringify(itinerariesCopy));
     setItineraries(itinerariesCopy)
