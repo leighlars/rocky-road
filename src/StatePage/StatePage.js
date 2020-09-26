@@ -1,18 +1,19 @@
 import React from 'react'
 import './StatePage.scss'
 import Header from '../Header/Header'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import PropTypes from "prop-types";
 
 
-const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
+const StatePage = ({allStatesInfo, searchSites}) => {
 
-  const stateName = getCurrentPage().split("/")[2];
+  const stateName = useHistory().location.pathname.split("/")[2];
  
   const getStateSites = () => {
     const currentPage = stateName
     const allStates = allStatesInfo
     let stateSites = allStates.find(state => {
+      console.log(state)
       return state.state === currentPage 
     })
     if (stateSites !== undefined) {
@@ -74,7 +75,7 @@ const StatePage = ({allStatesInfo, getCurrentPage, searchSites}) => {
 
   return (
    <section className={`state-section ${stateName.toLowerCase()}`}>
-    <Header getCurrentPage={getCurrentPage} searchSites={searchSites} />
+    <Header searchSites={searchSites} />
     <section className="state-info">
      <h2 className="state-header">{stateName}</h2>
      <h2>National Parks</h2>

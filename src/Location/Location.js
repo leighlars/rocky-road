@@ -3,12 +3,14 @@ import './Location.scss'
 import Header from '../Header/Header'
 import PropTypes from "prop-types";
 import ItineraryForm from '../ItineraryForm/ItineraryForm'
+import { useHistory } from 'react-router-dom';
 
-const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addNewTrip, addToExistingTrip}) => {
+const Location = ({ allStatesInfo, searchSites, itineraries, addNewTrip, addToExistingTrip}) => {
   const [modal, setModalDisplay] = useState(false)
 
-  let locationName = getCurrentPage().split('/')[3].split('-').join(' ')
-
+  let locationName = useHistory().location.pathname.split('/')[3].split('-').join(' ')
+  const stateName = useHistory().location.pathname.split('/')[2]
+  
   const setBackgroundImage = () => {
     if (locationName === 'Great Sand Dunes National Park & Preserve') {
       let title = 'Great Sand Dunes National Park And Preserve'
@@ -29,7 +31,6 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   }
   
   const getSiteInfo = () => {
-    const stateName = getCurrentPage().split('/')[2]
     const defaultSite = {description: 'No data provided. Please modify your search.'}
     const siteInfo = allStatesInfo.reduce((location, state) => {
       if (state.state === stateName) {

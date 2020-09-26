@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Route, withRouter} from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import {Route, useHistory, withRouter} from 'react-router-dom'
 import {getCleanStatesInfo} from '../apiCalls/dataCleaner'
 import './App.scss';
 import About from '../About/About'
@@ -11,39 +11,33 @@ import Results from '../Results/Results'
 import Gallery from '../Gallery/Gallery'
 import SavedTrips from '../SavedTrips/SavedTrips'
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-     allStatesInfo: [],
-     error: "",
-     results: [],
-     itineraries: [],
-    };
-  }
+const App = () => {
+  const [allStatesInfo, setAllStatesInfo] =  useState([])
+  const [error, setError] = useState('')
+  const [results, setResults] = useState([])
+  const [itineraries, setItineraries] = useState([])
 
-  componentDidMount = async () => {
+  const getData = async () => {
     try {
       const allData = await getCleanStatesInfo();
       let trips = JSON.parse(localStorage.getItem('savedTrips'))
       if (trips === null) {
         trips = []
       }
-      this.setState({allStatesInfo: allData, itineraries: trips})
+      setItineraries(trips)
+      setAllStatesInfo(allData)
     } catch (error) {
-      this.setState({
-        error: "Oops, something went wrong! 🙁 Please try again.",
-      })
+      setError(error)
     }
   }
 
-  getCurrentPage = () => {
-    return this.props.history.location.pathname
-  } 
+  useEffect(() => {
+    getData()
+  }, [])
 
-  searchSites = (query) => {
+  const searchSites = (query) => {
     const q = query.toLowerCase()
-    const allSites = this.state.allStatesInfo.reduce((sites, state) => {
+    const allSites = allStatesInfo.reduce((sites, state) => {
         const allSites = state.info.natParks.concat(state.info.recAreas)
         allSites.forEach(site => {
           sites.push(site)
@@ -56,10 +50,10 @@ class App extends Component {
       const siteTown = site.town.toLowerCase()
       return siteName.includes(q) || site.description.includes(q) || siteState.includes(q) || siteTown.includes(q)
     })
-    this.setState({results: foundSites})
+    setResults(foundSites)
   }
 
-  addNewTrip = (formInput, sitePicked, siteState) => {
+  const addNewTrip = (formInput, sitePicked, siteState) => {
     const newTrip = {
       name: formInput.tripName, 
       startDate: formInput.startDate, 
@@ -67,14 +61,14 @@ class App extends Component {
       comment: formInput.comment,
       places: [{siteName: sitePicked, siteState: siteState}],
     }
-    const itinerariesCopy = this.state.itineraries
+    const itinerariesCopy = itineraries
     itinerariesCopy.push(newTrip)
-    this.setState({itineraries: itinerariesCopy})
-    localStorage.setItem('savedTrips', JSON.stringify(this.state.itineraries))
+    setItineraries(itinerariesCopy)
+    localStorage.setItem('savedTrips', JSON.stringify(itineraries))
   }
 
-  addToExistingTrip = (siteData, tripName) => {
-    const itinerariesCopy = this.state.itineraries;
+  const addToExistingTrip = (siteData, tripName) => {
+    const itinerariesCopy = itineraries;
     const foundExistingTrip = itinerariesCopy.find(trip => {
       return trip.name === tripName
     })
@@ -82,11 +76,10 @@ class App extends Component {
       foundExistingTrip.places.push(siteData)
     }
     localStorage.setItem("savedTrips", JSON.stringify(itinerariesCopy));
-    this.setState({itineraries: itinerariesCopy})
+    setItineraries(itinerariesCopy)
   }
 
 
-  render() { 
     return (
      <div className="App">
       <main>
@@ -96,7 +89,7 @@ class App extends Component {
         render={() => {
          return (
           <Landing
-           searchSites={this.searchSites}
+           searchSites={searchSites}
           />
          );
         }}
@@ -107,7 +100,7 @@ class App extends Component {
         render={() => {
          return (
           <Home
-           searchSites={this.searchSites}
+           searchSites={searchSites}
           />
          );
         }}
@@ -118,7 +111,7 @@ class App extends Component {
         render={() => {
          return (
           <About
-           searchSites={this.searchSites}
+           searchSites={searchSites}
           />
          );
         }}
@@ -129,9 +122,8 @@ class App extends Component {
         render={() => {
          return (
           <StatePage
-           allStatesInfo={this.state.allStatesInfo}
-           getCurrentPage={this.getCurrentPage}
-           searchSites={this.searchSites}
+           allStatesInfo={allStatesInfo}
+           searchSites={searchSites}
           />
          );
         }}
@@ -142,12 +134,11 @@ class App extends Component {
         render={() => {
          return (
           <Location
-           allStatesInfo={this.state.allStatesInfo}
-           getCurrentPage={this.getCurrentPage}
-           searchSites={this.searchSites}
-           itineraries={this.state.itineraries}
-           addNewTrip={this.addNewTrip}
-           addToExistingTrip={this.addToExistingTrip}
+           allStatesInfo={allStatesInfo}
+           searchSites={searchSites}
+           itineraries={itineraries}
+           addNewTrip={addNewTrip}
+           addToExistingTrip={addToExistingTrip}
           />
          );
         }}
@@ -158,8 +149,8 @@ class App extends Component {
         render={() => {
          return (
           <Results
-           searchSites={this.searchSites}
-           results={this.state.results}
+           searchSites={searchSites}
+           results={results}
           />
          );
         }}
@@ -169,8 +160,8 @@ class App extends Component {
        render={() => {
          return(
            <SavedTrips 
-           searchSites={this.searchSites}
-           itineraries={this.state.itineraries} />
+           searchSites={searchSites}
+           itineraries={itineraries} />
          )
        }}
        />
@@ -180,7 +171,7 @@ class App extends Component {
         render={() => {
          return (
           <Gallery
-           searchSites={this.searchSites}
+           searchSites={searchSites}
           />
          );
         }}
@@ -190,6 +181,5 @@ class App extends Component {
     );
   }
 
-}
 
 export default withRouter(App);
