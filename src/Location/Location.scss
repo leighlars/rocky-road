@@ -136,10 +136,10 @@
             text-align: justify;
             width: 90%;
           }
-            a {
-              margin-left: 2px;
-            }
-          p { 
+          a {
+            margin-left: 2px;
+          }
+          Link { 
             @include textFont(1em);
           }
           .city-state {

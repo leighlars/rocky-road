@@ -39,14 +39,13 @@
     .trip-dates {
       @include rowDisplay();
     }
-   
-    p {
+    p, a {
       @include textFont(1em);
     }
     .comment {
       @include textFont(1em);
       font-style: italic;
-      margin-bottom: 5px;
+      margin: 5px;
     }
     
   }

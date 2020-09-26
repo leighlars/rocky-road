@@ -3,12 +3,13 @@ import './SavedTrips.scss'
 import Header from '../Header/Header'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import {Link } from 'react-router-dom'
 
 const SavedTrips = ({searchSites, itineraries}) => {
 
   const placeNames = (trip) => {
     return trip.places.map(place => {
-     return(<p key={place}>{place}</p>)
+     return(<Link to={`/place/${place.siteState}/${place.siteName}`} key={place}>{place.siteName}</Link>)
     })
   } 
 

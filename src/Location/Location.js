@@ -35,7 +35,6 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
       if (state.state === stateName) {
         const allSites = state.info.natParks.concat(state.info.recAreas)
         location = allSites.find(site => {
-          
           return site.fullName === getLocationName()
         })
       }
@@ -44,29 +43,28 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
     return siteInfo || defaultSite
   }
 
-  
   const siteData = getSiteInfo()
 
   const toggleModal = () => {
     setModalDisplay(!modal)
   }
- 
 
   const jsxAddButton = () => {
-      return (
-        <span className='itinerary-box'>
-          <button className='add-button' onClick={toggleModal}>
-            Add To Trips
-        </button>
-          {modal === true &&
-            <ItineraryForm
-              itineraries={itineraries}
-              siteName={siteData.fullName}
-              addNewTrip={addNewTrip}
-              addToExistingTrip={addToExistingTrip} />
-          }
-        </span>
-      )
+    return (
+      <span className='itinerary-box'>
+        <button className='add-button' onClick={toggleModal}>
+          Add To Trips
+      </button>
+      {modal === true &&
+          <ItineraryForm
+            itineraries={itineraries}
+            siteName={siteData.fullName}
+            siteState={siteData.state}
+            addNewTrip={addNewTrip}
+            addToExistingTrip={addToExistingTrip} />
+        }
+      </span>
+    )
   }
 
   const description = () => {
@@ -85,7 +83,7 @@ const Location = ({getCurrentPage, allStatesInfo, searchSites, itineraries, addN
   const images = () => {
     if (siteData.images && siteData.images.length > 0) {
       const imageList = siteData.images.map(image => {
-        return <img src={image.url} alt={image.altText} className='site-image' key={Date.now()}/>
+        return <img src={image.url} alt={image.altText} className='site-image' key={image.altText}/>
       })
       return(
         <span className='images'>

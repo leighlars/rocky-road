@@ -59,13 +59,13 @@ class App extends Component {
     this.setState({results: foundSites})
   }
 
-  addNewTrip = (formInput, sitePicked) => {
+  addNewTrip = (formInput, sitePicked, siteState) => {
     const newTrip = {
       name: formInput.tripName, 
       startDate: formInput.startDate, 
       endDate: formInput.endDate, 
       comment: formInput.comment,
-      places: [sitePicked],
+      places: [{siteName: sitePicked, siteState: siteState}],
     }
     const itinerariesCopy = this.state.itineraries
     itinerariesCopy.push(newTrip)

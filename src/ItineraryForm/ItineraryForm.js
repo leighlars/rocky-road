@@ -61,7 +61,7 @@ const ItineraryForm = (props) => {
       endDate: endDate,
       comment: comment
     }
-    props.addNewTrip(formInputs, props.siteName)
+    props.addNewTrip(formInputs, props.siteName, props.siteState)
     hideModal()
   }
 
@@ -128,6 +128,7 @@ export default ItineraryForm
 
 ItineraryForm.propTypes = {
  siteName: PropTypes.string, 
+ siteState: PropTypes.string,
  itineraries: PropTypes.array,
  addNewTrip: PropTypes.func,
  addToExistingTrip: PropTypes.func,
